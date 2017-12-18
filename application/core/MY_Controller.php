@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* load the MX_Loader class */
 require APPPATH."third_party/MX/Controller.php";
+$this->load->add_package_path(APPPATH.'third_party/ion_auth/');
 class MY_Controller extends MX_Controller {
 
     protected $data = array();
