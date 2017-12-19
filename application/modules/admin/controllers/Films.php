@@ -39,7 +39,7 @@ class Films extends MY_Controller
                 $config['max_height']           = 4328;
                 $this->load->library('upload', $config);
                 $this->upload->do_upload('coverfilm');
-                print_r($this->upload->display_errors());
+                
                 $data = array(
                     'judul'          => $judul,
                     'sinopsis'       => $sinopsis,
@@ -62,7 +62,7 @@ class Films extends MY_Controller
                 echo json_encode($status);
             else:
                 $err = $this->validation->error_array();
-                show_error(500);
+                show_error($err);
             endif; //.Form Validation*/
         else:
             $this->data['genre'] = $this->genre->get_all();
