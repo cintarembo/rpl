@@ -18,7 +18,11 @@
                         </div>
                         <div class="form-group">   
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="remeber">Remember Me</label>
+                            <input type="checkbox" name="remember" id="remember">
                         </div>
                         <button type="submit" class="btn btn-success float-right mt-2" required>Login</button>
                     </form>
@@ -27,27 +31,31 @@
                     <form action="javascript:;" id="formReg"> 
                         <div class="form-group">
                             <label for="username">Username</label>    
-                            <input type="text" class="form-control" id="username">
+                            <input type="text" class="form-control" id="username" name="username" required>
                         </div>
                         <div class="form-group">
-                            <label for="username">Password</label>    
-                            <input type="text" class="form-control" id="username">
+                            <label for="password">Password</label>    
+                            <input type="password" class="form-control" id="password"  name="password"required>
                         </div>
                         <div class="form-group">
-                            <label for="username">Email</label>    
-                            <input type="text" class="form-control" id="username">
+                            <label for="email">Email</label>    
+                            <input type="text" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="username">Nama Lengkap</label>    
-                            <input type="text" class="form-control" id="username">
+                            <label for="nama-depan">Nama Depan</label>    
+                            <input type="text" class="form-control" id="nama-depan" name="nama-depan" required>
                         </div>
                         <div class="form-group">
-                            <label for="username">Alamat</label>    
-                            <input type="text" class="form-control" id="username">
+                            <label for="nama-belakang">Nama Belakang</label>    
+                            <input type="text" class="form-control" id="nama-belakang" name="nama-belakang" required>
                         </div>
                         <div class="form-group">
-                            <label for="username">No Handphone</label>    
-                            <input type="text" class="form-control" id="username">
+                            <label for="alamat">Alamat</label>    
+                            <input type="text" class="form-control" id="alamat" name="alamat" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">No Handphone</label>    
+                            <input type="text" class="form-control" id="phone" name="phone" required>
                         </div>
                         <button type="submit" class="btn btn-success float-right mt-2">Login</button>
                     </form>  
@@ -63,9 +71,25 @@
 let formLogin = document.getElementById('formLogin');
 formLogin.onsubmit = (e) => {
     const formData = new FormData(formLogin);
-    qwest.post('login',formData)
+    qwest.post('auth/login',formData)
     .then((res)=>{
-        console.log(res);
+        if(res.response==""){
+            alerty.toasts('Incorect username/password',{
+                place:'top',  
+                bgColor: 'red',
+                fontColor: '#fff' 
+            });
+        }else{
+            alerty.toasts(res.response,{
+                place:'top',  
+                bgColor: 'rgb(0, 202, 67)',
+                fontColor: '#fff' 
+            },(res)=>{
+                //Pjax.assign('<?php echo base_url()?>admin/films');
+            });
+            console.log(res);
+            
+        }
     }).catch((err)=>{
         console.log(err);
     });
@@ -73,6 +97,6 @@ formLogin.onsubmit = (e) => {
 
 let formReg = document.getElementById('formReg');
 formReg.onsubmit = (e) => {
-
+    const formData = new FormData(formReg);
 }
 </script>

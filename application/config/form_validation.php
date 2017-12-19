@@ -27,5 +27,18 @@ $config = array(
                         'label' => 'harga tiket',
                         'rules' => 'required|trim'
                 )
+        ),
+        'login' => array(
+                array(
+                        'field' => 'username',
+                        'label' => $this->lang->line('login_identity_label'),
+                        'rules' => 'required|trim'
+                ),
+                array(
+                        'field' => 'password',
+                        'label' => $this->lang->line('login_password_label'),
+                        'rules' => 'required|trim'
+                ),
         )
+
 );
