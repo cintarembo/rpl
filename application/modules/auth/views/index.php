@@ -14,11 +14,11 @@
                     <form action="javascript:;" id="formLogin"> 
                         <div class="form-group">   
                             <label for="username">Username</label>    
-                            <input type="text" class="form-control" id="username" name="username" required>
+                            <input type="text" class="form-control" id="usernameLogin" name="username" required>
                         </div>
                         <div class="form-group">   
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="passwordLogin" name="password" required>
                         </div>
                         <div class="form-group">
                             <label for="remeber">Remember Me</label>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>    
-                            <input type="text" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="nama-depan">Nama Depan</label>    
@@ -55,16 +55,15 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">No Handphone</label>    
-                            <input type="text" class="form-control" id="phone" name="phone" required>
+                            <input type="number" class="form-control" id="phone" name="phone" required>
                         </div>
-                        <button type="submit" class="btn btn-success float-right mt-2">Login</button>
+                        <button type="submit" class="btn btn-success float-right mt-2">Register</button>
                     </form>  
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <script>
 'use strict'
 
@@ -98,5 +97,16 @@ formLogin.onsubmit = (e) => {
 let formReg = document.getElementById('formReg');
 formReg.onsubmit = (e) => {
     const formData = new FormData(formReg);
+    qwest.post('auth/register',formData)
+         .then((res) => {
+            alerty.toasts(res.response,{
+                place:'top',  
+                bgColor: 'rgb(0, 202, 67)',
+                fontColor: '#fff' 
+            });
+         })
+         .catch((err) => {
+            console.log(err);
+         })
 }
 </script>

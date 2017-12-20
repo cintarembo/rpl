@@ -30,6 +30,18 @@ $config = array(
         ),
         'login' => array(
                 array(
+                        'field' => 'usernameLogin',
+                        'label' => $this->lang->line('login_identity_label'),
+                        'rules' => 'required|trim'
+                ),
+                array(
+                        'field' => 'passwordLogin',
+                        'label' => $this->lang->line('login_password_label'),
+                        'rules' => 'required|trim'
+                ),
+        ),
+        'register' => array(
+                array(
                         'field' => 'username',
                         'label' => $this->lang->line('login_identity_label'),
                         'rules' => 'required|trim'
@@ -37,6 +49,26 @@ $config = array(
                 array(
                         'field' => 'password',
                         'label' => $this->lang->line('login_password_label'),
+                        'rules' => 'required|trim'
+                ),
+                array(
+                        'field' => 'email',
+                        'label' => 'email',
+                        'rules' => 'required|valid_email'
+                ),
+                array(
+                        'field' => 'nama-depan',
+                        'label' => 'nama depan',
+                        'rules' => 'required'
+                ),
+                array(
+                        'field' => 'nama-belakang',
+                        'label' => 'nama belakang',
+                        'rules' => 'required|trim'
+                ),
+                array(
+                        'field' => 'phone',
+                        'label' => 'nomor telephone',
                         'rules' => 'required|trim'
                 ),
         )

@@ -10,6 +10,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
+      <script src="<?php echo base_url()?>public/assets/vendor/alerty/js/alerty.min.js"></script>
       <script>let base = '<?php echo base_url()?>';</script>
       </head>
   <body>
@@ -28,9 +29,9 @@
             <!-- /.container -->
         </footer>
         <!-- MAIN SCRIPT -->
+        <script src="<?php echo base_url()?>public/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/js/pjax-api.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/js/qwest.min.js"></script>
-        <script src="<?php echo base_url()?>public/assets/vendor/alerty/js/alerty.min.js"></script>
         
         <script>
              

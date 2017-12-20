@@ -39,10 +39,7 @@ class Auth extends MY_Controller{
                 $password = $this->input->post('password');
                 $remember = (bool)$this->input->post('remember');
                 if($this->ion_auth->login($username,$password,$remember)){
-                   $data = array(
-                       'status'     => TRUE
-                   );
-                    echo json_encode($data);
+                    echo json_encode($this->ion_auth->messages());
                 }else{
                     echo $this->ion_auth->messages();
                 }
@@ -53,7 +50,7 @@ class Auth extends MY_Controller{
     }
 
     public function register(){
-        if ($this->validation->run()==TRUE) {
+        if ($this->validation->run('register')==TRUE) {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $email    = $this->input->post('email');
@@ -66,16 +63,12 @@ class Auth extends MY_Controller{
             );
             if($this->ion_auth->register($username,$password,$email,$data_tambahan))
             {
-                $data = array(
-                    'status'    => true,
-                    'messages'  => $this->ion_auth->messages()
-                );
-                echo json_encode($data);
+                echo json_encode($this->ion_auth->messages());
             }else{
-                echo $this->ion_auth->errors();
+                echo json_encode($this->ion_auth->errors());
             }
         }else{
-
+            show_error($this->validation->error_array());
         }
     }
 }
