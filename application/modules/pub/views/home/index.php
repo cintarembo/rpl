@@ -219,20 +219,30 @@
             <div class="col-sm-12">
                 <div class="row">
                     <div class="col-sm-8 col-md-9">
+                        <?php foreach($film as $f): ?>
                         <!-- Movie variant with time -->
                             <div class="movie movie--test movie--test--dark movie--test--left">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                        <img alt='' src="http://placehold.it/424x424">
+                                        <img alt='<?php echo $f->judul ?>' src="<?php echo UPLOADPATH.$f->cover ?>">
                                     </a>
                                 </div>
 
                                 <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">Gravity (2013)  </a>
+                                    <a href='movie-page-left.html' class="movie__title"><?php echo $f->judul ?>  </a>
 
-                                    <p class="movie__time">91 min</p>
+                                    <p class="movie__time"><?php echo $f->durasi ?> min</p>
 
-                                    <p class="movie__option"><a href="#">Sci-Fi</a> | <a href="#">Thriller</a> | <a href="#">Drama</a></p>
+                                    <p class="movie__option">
+                                        <?php $genre = $this->gfm->with_genre()->where('id_film',$f->id_film)->get_all();
+                                            $a=count($genre);
+                                            foreach($genre as $g):
+                                                foreach($g->genre as $gg): ?>
+                                            <a href="#"><?php echo $gg->genre?></a>
+                                            <?php $car = ($a>1) ? '|' : '' ; echo $car;?>
+                                        <?php   endforeach;
+                                            endforeach;?>
+                                    </p>
                                     
                                     <div class="movie__rate">
                                         <div class="score"></div>
@@ -264,145 +274,7 @@
                                 </div>
                             </div>
                          <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--light movie--test--right">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">The Hunger Games: Catching Fire (2013)   </a>
-
-                                    <p class="movie__time">146 min</p>
-
-                                    <p class="movie__option"><a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Sci-Fi</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">4.9</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--dark movie--test--right">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">Thor: The Dark World (2013) </a>
-
-                                    <p class="movie__time">112 min</p>
-
-                                    <p class="movie__option"><a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Fantasy</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">5.0</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--dark movie--test--left">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">World War Z (2013)  </a>
-
-                                    <p class="movie__time">116 min</p>
-
-                                    <p class="movie__option"><a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Horror</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">4.1</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--light movie--test--left">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">Prisoners (2013) </a>
-
-                                    <p class="movie__time">153 min</p>
-
-                                    <p class="movie__option"><a href="#">Crime</a> | <a href="#">Thriller</a> | <a href="#">Drama</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">5.0</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--light movie--test--right">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">This Is the End (2013)   </a>
-
-                                    <p class="movie__time">107 min</p>
-
-                                    <p class="movie__option"><a href="#">Comedy</a> | <a href="#">Fantasy</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">4.9</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--dark movie--test--right">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">The Internship (2013)  </a>
-
-                                    <p class="movie__time">112 min</p>
-
-                                    <p class="movie__option"><a href="#">Comedy</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">5.0</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
+                        <?php endforeach;?>
 
                         <div class="row">
                             <div class="social-group">
