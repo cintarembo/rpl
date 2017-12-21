@@ -9,6 +9,7 @@
         <script src="<?php echo base_url()?>public/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/js/pjax-api.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/js/qwest.min.js"></script>
+        <script src="<?php echo base_url()?>public/assets/js/vanilla-masker.min.js"></script>
         
         <script src="<?php echo base_url()?>public/assets/vendor/datepickerX/js/DatePickerX.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/vendor/timepicker/js/timepicker.min.js"></script>
