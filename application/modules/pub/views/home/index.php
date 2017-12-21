@@ -116,6 +116,7 @@
             <div class="col-sm-12">
                 <div class="row">
                     <div class="col-sm-8 col-md-9">
+                        <?php if(!empty($film)):?>
                         <?php foreach($film as $f): ?>
                         <!-- Movie variant with time -->
                             <div class="movie movie--test movie--test--dark movie--test--left">
@@ -171,7 +172,10 @@
                                 </div>
                             </div>
                          <!-- Movie variant with time -->
-                        <?php endforeach;?>
+                        <?php endforeach;
+                            else:
+                                echo 'Maaf data belum tersedia';
+                            endif;?>
 
                         <div class="row">
                             <div class="social-group">
