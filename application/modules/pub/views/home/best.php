@@ -1,12 +1,11 @@
 <div class="movie-best">
-    <div class="col-sm-10 col-sm-offset-1 movie-best__rating">Today Best choice</div>
+    <div class="col-sm-10 col-sm-offset-1 movie-best__rating">Featured Movie</div>
     <div class="col-sm-12 change--col">
         <div class="movie-beta__item ">
         <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/380x600.png">
             <span class="best-rate">5.0</span>
 
             <ul class="movie-beta__info">
-                <li><span class="best-voted">71 people voted today</span></li>
                 <li>
                 <p class="movie__time">169 min</p>
                 <p>Adventure | Drama | Fantasy </p>
@@ -22,7 +21,6 @@
             <span class="best-rate">5.0</span>
 
             <ul class="movie-beta__info">
-                <li><span class="best-voted">71 people voted today</span></li>
                 <li>
                 <p class="movie__time">169 min</p>
                 <p>Adventure | Drama | Fantasy </p>
@@ -38,7 +36,6 @@
             <span class="best-rate">5.0</span>
 
             <ul class="movie-beta__info">
-                <li><span class="best-voted">71 people voted today</span></li>
                 <li>
                 <p class="movie__time">169 min</p>
                 <p>Adventure | Drama | Fantasy </p>
@@ -54,7 +51,6 @@
             <span class="best-rate">5.0</span>
 
             <ul class="movie-beta__info">
-                <li><span class="best-voted">71 people voted today</span></li>
                 <li>
                 <p class="movie__time">169 min</p>
                 <p>Adventure | Drama | Fantasy </p>
@@ -70,7 +66,6 @@
             <span class="best-rate">5.0</span>
 
             <ul class="movie-beta__info">
-                <li><span class="best-voted">71 people voted today</span></li>
                 <li>
                 <p class="movie__time">169 min</p>
                 <p>Adventure | Drama | Fantasy </p>
@@ -86,7 +81,6 @@
             <span class="best-rate">5.0</span>
 
             <ul class="movie-beta__info">
-                <li><span class="best-voted">71 people voted today</span></li>
                 <li>
                 <p class="movie__time">169 min</p>
                 <p>Adventure | Drama | Fantasy </p>
