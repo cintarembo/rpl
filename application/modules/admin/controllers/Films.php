@@ -60,8 +60,8 @@ class Films extends MY_Controller
                     'sinopsis'       => $sinopsis,
                     'tanggal_tayang' => $tgl,
                     'jam_tayang'     => $jam,
-                    'durasi'         => $durasi,
-                    'harga'          => $harga,
+                    'durasi'         => $this->number($durasi),
+                    'harga'          => $this->number($harga),
                     'cover'          => $this->upload->data('file_name')
                     );
                 
@@ -128,8 +128,8 @@ class Films extends MY_Controller
                     'sinopsis'       => $sinopsis,
                     'tanggal_tayang' => $tgl,
                     'jam_tayang'     => $jam,
-                    'durasi'         => $durasi,
-                    'harga'          => $harga,
+                    'durasi'         => $this->number($durasi),
+                    'harga'          => $this->number($harga),
                     'cover'          => $this->upload->data('file_name')
                     );
                 
@@ -143,7 +143,6 @@ class Films extends MY_Controller
                 show_error(500);
             endif; //.Form Validation
         else:
-//            $this->data['film'] = $this->film->get($id);
             $this->data['data'] = $this->gfm->with_film()->with_genre()->get($id);
             $this->data['genre'] = $this->genre->get_all();
             $this->render('films/editFilms');
