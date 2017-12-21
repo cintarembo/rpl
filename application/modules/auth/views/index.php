@@ -57,14 +57,13 @@
                             <label for="phone">No Handphone</label>    
                             <input type="number" class="form-control" id="phone" name="phone" required>
                         </div>
-                        <button type="submit" class="btn btn-success float-right mt-2">Login</button>
+                        <button type="submit" class="btn btn-success float-right mt-2">Register</button>
                     </form>  
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <script>
 'use strict'
 

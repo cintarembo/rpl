@@ -5,6 +5,11 @@ class Home extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model(array(
+            'admin/films/films_model'=> 'film',
+            'admin/films/genre_model'=> 'genre',
+            'admin/films/genrefilm_model'=>'gfm'
+        ));
     }
 
     /**
@@ -20,6 +25,7 @@ class Home extends MY_Controller
 
     public function index()
     {
+        $this->data['film'] = $this->film->get_all();
         $this->render('home/index');
     }
 
