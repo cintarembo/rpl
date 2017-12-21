@@ -1,6 +1,6 @@
 <!-- Banner -->
 <div class="banner-top">
-<img alt='top banner' src="http://placehold.it/1600x90">
+<img alt='top banner' src="<?php echo base_url()?>public/assets/vendor/amovie/images/1600x90.png">
 </div>
 
 <!-- Header section -->
@@ -8,7 +8,7 @@
 <div class="container">
     <!-- Logo link-->
     <a href='index.html' class="logo">
-        <img alt='logo' src="images/logo.png">
+        <img alt='logo' src="<?php echo base_url()?>public/assets/vendor/amovie/images/logo.png">
     </a>
     
     <!-- Main website navigation-->
@@ -141,7 +141,7 @@
         <div class="auth auth--home">
           <div class="auth__show">
             <span class="auth__image">
-              <img alt="" src="http://placehold.it/31x31">
+              <img alt="" src="<?php echo base_url()?>public/assets/vendor/amovie/images/31x31.png">
             </span>
           </div>
           <a href="#" class="btn btn--sign btn--singin">

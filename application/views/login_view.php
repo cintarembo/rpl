@@ -31,6 +31,7 @@
         <script src="<?php echo base_url()?>public/assets/js/pjax-api.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/js/qwest.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/vendor/alerty/js/alerty.min.js"></script>
+        <script src="<?php echo base_url()?>public/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
         
         <script>
              

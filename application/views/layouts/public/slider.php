@@ -4,7 +4,7 @@
                         <ul>
 
                             <li data-transition="fade" data-slotamount="7" class="slide" data-slide='Rush.'>
-                                <img alt='' src="http://placehold.it/1920x616">
+                                <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/1920x616.png">
                                 <div class="caption slide__name margin-slider" 
                                      data-x="right" 
                                      data-y="80" 
@@ -125,12 +125,13 @@
 
                             <li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Travel worldwide.
 Create trip film.'>
-                                <img alt='' src="http://placehold.it/1920x616">
+
+                                <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/1920x616.png">
                                  <div class="caption slide__video" data-x="0" data-y="0" data-autoplay='true'>
-                                   <video class="media-element"  autoplay="autoplay" preload='none' loop="loop" muted="" src="video/53170154.mp4" >
-                                        <source type="video/webm" src="video/53170154.webm">
-                                        <source type="video/mp4" src="video/53170154.mp4">
-                                        <source type="video/ogg" src="video/53170154.ogv">
+                                   <video class="media-element"  autoplay="autoplay" preload='none' loop="loop" muted="" src="<?php echo base_url()?>public/assets/vendor/amovie/video/53170154.mp4" >
+                                        <source type="video/webm" src="<?php echo base_url()?>public/assets/vendor/amovie/video/53170154.webm">
+                                        <source type="video/mp4" src="<?php echo base_url()?>public/assets/vendor/amovie/video/53170154.mp4">
+                                        <source type="video/ogg" src="<?php echo base_url()?>public/assets/vendor/amovie/video/53170154.ogv">
                                     </video>
                                 </div>
 
@@ -235,7 +236,7 @@ Create trip film.'>
 
                             <li data-transition="fade" data-slotamount="7" class="slide" data-slide='Stop wishing. 
 Start doing.'>
-                                <img alt='' src="http://placehold.it/1920x616">
+                                <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/1920x616.png">
                                  <div class="caption slide__name slide__name--smaller slide__name--specific customin customout" 
                                      data-x="left" 
                                      data-y="160" 

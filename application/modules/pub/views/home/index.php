@@ -1,107 +1,4 @@
-
-            <div class="movie-best">
-                 <div class="col-sm-10 col-sm-offset-1 movie-best__rating">Today Best choice</div>
-                 <div class="col-sm-12 change--col">
-                     <div class="movie-beta__item ">
-                        <img alt='' src="http://placehold.it/380x600">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item second--item">
-                         <img alt='' src="http://placehold.it/380x600">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item third--item">
-                         <img alt='' src="http://placehold.it/380x600">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item hidden-xs">
-                         <img alt='' src="http://placehold.it/380x600">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item hidden-xs hidden-sm">
-                         <img alt='' src="http://placehold.it/380x600">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item hidden-xs hidden-sm">
-                         <img alt='' src="http://placehold.it/380x600">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                 </div>
-                <div class="col-sm-10 col-sm-offset-1 movie-best__check">check all movies now playing</div>
-            </div>
-
+<?php $this->load->view('home/best.php') ?>
             <div class="col-sm-12">
                 <div class="mega-select-present mega-select-top mega-select--full">
                     <div class="mega-select-marker">
@@ -223,7 +120,7 @@
                             <div class="movie movie--test movie--test--dark movie--test--left">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                        <img alt='' src="http://placehold.it/424x424">
+                                        <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/424x424.png">
                                     </a>
                                 </div>
 
@@ -246,7 +143,7 @@
                             <div class="movie movie--test movie--test--light movie--test--left">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
+                                    <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/424x424.png">
                                     </a>
                                 </div>
 
@@ -269,7 +166,7 @@
                             <div class="movie movie--test movie--test--light movie--test--right">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
+                                    <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/424x424.png">
                                     </a>
                                 </div>
 
@@ -292,7 +189,7 @@
                             <div class="movie movie--test movie--test--dark movie--test--right">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
+                                    <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/424x424.png">
                                     </a>
                                 </div>
 
@@ -315,7 +212,7 @@
                             <div class="movie movie--test movie--test--dark movie--test--left">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
+                                    <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/424x424.png">
                                     </a>
                                 </div>
 
@@ -338,7 +235,7 @@
                             <div class="movie movie--test movie--test--light movie--test--left">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
+                                    <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/424x424.png">
                                     </a>
                                 </div>
 
@@ -361,7 +258,7 @@
                             <div class="movie movie--test movie--test--light movie--test--right">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
+                                    <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/424x424.png">
                                     </a>
                                 </div>
 
@@ -384,7 +281,7 @@
                             <div class="movie movie--test movie--test--dark movie--test--right">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="http://placehold.it/424x424">
+                                    <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/424x424.png">
                                     </a>
                                 </div>
 
@@ -402,8 +299,7 @@
                                 </div>
                             </div>
                          <!-- Movie variant with time -->
-
-
+                         
                         <div class="row">
                             <div class="social-group">
                               <div class="col-sm-6 col-md-4 col-sm-push-6 col-md-push-4">
@@ -413,7 +309,6 @@
 
                                 <div class="col-sm-6 col-md-4 col-sm-pull-6 col-md-pull-4">
                                      <div class="facebook-group">
-
                                         <iframe class="fgroup" src="http://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fthemeforest&amp;width=240&amp;height=330&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:330px;" allowTransparency="true"></iframe>
                                     </div>
                                 </div>
@@ -431,15 +326,15 @@
                     <aside class="col-sm-4 col-md-3">
                         <div class="sitebar first-banner--left">
                             <div class="banner-wrap first-banner--left">
-                                <img alt='banner' src="http://placehold.it/500x500">
+                                <img alt='banner' src="<?php echo base_url()?>public/assets/vendor/amovie/images/500x500.png">
                             </div>
 
                              <div class="banner-wrap">
-                                <img alt='banner' src="http://placehold.it/500x500">
+                                <img alt='banner' src="<?php echo base_url()?>public/assets/vendor/amovie/images/500x500.png">
                             </div>
 
                              <div class="banner-wrap banner-wrap--last">
-                                <img alt='banner' src="http://placehold.it/500x500">
+                                <img alt='banner' src="<?php echo base_url()?>public/assets/vendor/amovie/images/500x500.png">
                             </div>
 
                             <div class="promo marginb-sm">
@@ -447,9 +342,9 @@
                               <div class="promo__describe">for all smartphones<br> and tablets</div>
                               <div class="promo__content">
                                   <ul>
-                                      <li class="store-variant"><a href="#"><img alt='' src="images/apple-store.svg"></a></li>
-                                      <li class="store-variant"><a href="#"><img alt='' src="images/google-play.svg"></a></li>
-                                      <li class="store-variant"><a href="#"><img alt='' src="images/windows-store.svg"></a></li>
+                                      <li class="store-variant"><a href="#"><img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/apple-store.svg"></a></li>
+                                      <li class="store-variant"><a href="#"><img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/google-play.svg"></a></li>
+                                      <li class="store-variant"><a href="#"><img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/windows-store.svg"></a></li>
                                   </ul>
                               </div>
                           </div>
@@ -465,7 +360,7 @@
                 <div class="col-sm-4 similar-wrap col--remove">
                     <div class="post post--preview post--preview--wide">
                         <div class="post__image">
-                            <img alt='' src="http://placehold.it/270x330">
+                            <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/270x330.png">
                             <div class="social social--position social--hide">
                                 <span class="social__name">Share:</span>
                                 <a href='#' class="social__variant social--first fa fa-facebook"></a>
@@ -481,7 +376,7 @@
                 <div class="col-sm-4 similar-wrap col--remove">
                     <div class="post post--preview post--preview--wide">
                         <div class="post__image">
-                            <img alt='' src="http://placehold.it/270x330">
+                            <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/270x330.png">
                             <div class="social social--position social--hide">
                                 <span class="social__name">Share:</span>
                                 <a href='#' class="social__variant social--first fa fa-facebook"></a>
@@ -497,7 +392,7 @@
                 <div class="col-sm-4 similar-wrap col--remove">
                     <div class="post post--preview post--preview--wide">
                         <div class="post__image">
-                            <img alt='' src="http://placehold.it/270x330">
+                            <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/270x330.png">
                             <div class="social social--position social--hide">
                                 <span class="social__name">Share:</span>
                                 <a href='#' class="social__variant social--first fa fa-facebook"></a>

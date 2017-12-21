@@ -15,9 +15,9 @@
       <!-- Font awesome - icon font -->
       <link href="<?php echo base_url()?>public/assets/vendor/amovie/css/font-awesome.css" rel="stylesheet">
       <!-- Roboto -->
-      <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
+      <link href='<?php echo base_url()?>public/assets/vendor/amovie/css/roboto.css' rel='stylesheet' type='text/css'>
       <!-- Open Sans -->
-      <link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
+      <link href='<?php echo base_url()?>public/assets/vendor/amovie/css/opensans.css' rel='stylesheet' type='text/css'>
   
     <!-- Stylesheets -->
 
