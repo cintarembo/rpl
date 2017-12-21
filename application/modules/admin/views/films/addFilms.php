@@ -1,7 +1,6 @@
 <!-- Page Title -->
 <button class="btn btn-warning float-right" id="kembali">Kembali</button>
 <h1 class="my-4">Tambah Film Baru</h1>
-
 <!-- Forms -->
 <div class="row">
     <div class="col-md-8">
@@ -31,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="durasi">Durasi Film</label>
-                <input type="text" class="form-control" data-validate-field="durasi" data-toggle="timepicker" id="durasi-film" name="durasi-film" placeholder="Masukkan durasi film" required>
+                <input type="text" class="form-control" data-validate-field="durasi" id="durasi-film" name="durasi-film" placeholder="Masukkan durasi film" required>
             </div>
             <div class="form-group">
                 <label for="harga">Harga Tiket</label>
@@ -122,6 +121,19 @@
     timepicker.load({
         interval: 5,
         defaultHour: 7
+    });
+
+    VMasker(document.querySelector("#harga-tiket")).maskMoney({
+        precision: 2,
+        separator: ',',
+        delimiter: '.',
+        unit: 'Rp',
+    });
+
+    VMasker(document.querySelector("#durasi-film")).maskMoney({
+        precision: 0,
+        delimiter: '.',
+        suffixUnit: 'min',
     });
 
 

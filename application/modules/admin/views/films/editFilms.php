@@ -89,6 +89,19 @@
         defaultHour: 7
     });
 
+    VMasker(document.querySelector("#harga-tiket")).maskMoney({
+        precision: 2,
+        separator: ',',
+        delimiter: '.',
+        unit: 'Rp',
+    });
+
+    VMasker(document.querySelector("#durasi-film")).maskMoney({
+        precision: 0,
+        delimiter: '.',
+        suffixUnit: 'min',
+    });
+
     topbar.hide();
 
 </script>
