@@ -10,16 +10,27 @@ class Films extends MY_Controller
             'films/Genrefilm_model' =>'gfm'
             ));
         $this->load->library(array(
-            'form_validation' => 'validation'
+            'form_validation' => 'validation',
+            'image_nation'    => 'image'
         ));
         $this->validation->CI =& $this;
     }
 
+    /**
+     * index
+     *
+     * @return void
+     */
     public function index(){
         $this->data['film'] = $this->film->get_all();
         $this->render('films/films');
     }
 
+    /**
+     * addFilms
+     *
+     * @return void
+     */
     public function addFilms(){
         if ($this->input->post()):
             if ($this->validation->run('addFilms')==TRUE):
@@ -31,7 +42,7 @@ class Films extends MY_Controller
                 $sinopsis  = $this->input->post('sinopsis');
                 $genre  = $this->input->post('genrefilm');
                 
-                $config['upload_path']          = './public/uploads/';
+                $config['upload_path']          = './public/uploads/original';
                 $config['allowed_types']        = 'gif|jpg|png';
                 $config['encrypt_name']         = TRUE;
                 $config['max_size']             = 10000;
@@ -40,6 +51,10 @@ class Films extends MY_Controller
                 $this->load->library('upload', $config);
                 $this->upload->do_upload('coverfilm');
                 
+                /** Resize images */
+                $this->image->source($this->upload->data('file_name'));
+                $this->image->process('255x220|380x600|424x424');
+
                 $data = array(
                     'judul'          => $judul,
                     'sinopsis'       => $sinopsis,
@@ -49,7 +64,7 @@ class Films extends MY_Controller
                     'harga'          => $harga,
                     'cover'          => $this->upload->data('file_name')
                     );
-                    
+                
                 $this->film->insert($data);
                 $this->db->insert('tbl_genrefilm',array(
                                     'id_film' => $this->db->insert_id(),
@@ -70,6 +85,12 @@ class Films extends MY_Controller
         endif; //.this->input->post()
     }
 
+    /**
+     * editFilms
+     * Digunakan untuk edit/update pada film
+     * @param mixed $id
+     * @return void
+     */
     public function editFilms($id = NULL){
         if ($this->input->post()):
             if ($this->validation->run('addFilms')==TRUE):
@@ -89,7 +110,7 @@ class Films extends MY_Controller
                     'harga'          => $harga
                     );
 
-                $config['upload_path']          = './public/uploads/';
+                $config['upload_path']          = './public/uploads/original';
                 $config['allowed_types']        = 'gif|jpg|png';
                 $config['encrypt_name']         = TRUE;
                 $config['max_size']             = 100;
@@ -97,6 +118,10 @@ class Films extends MY_Controller
                 $config['max_height']           = 4328;
                 $this->load->library('upload', $config);
                 $this->upload->do_upload('coverFilm');
+
+                /** Resize images */
+                $this->image->source($this->upload->data('file_name'));
+                $this->image->process('255x220|380x600|424x424');
 
                 $data = array(
                     'judul'          => $judul,
@@ -125,24 +150,43 @@ class Films extends MY_Controller
         endif; //.this->input->post()
     }
 
+    /**
+     * delFilms
+     * Delete film and images
+     * @return void
+     */
     public function delFilms(){
         $id = $this->input->post('id');
         $data = $this->film->get($id);
-        if(file_exists($image = FCPATH.'public/uploads/'.$data->cover)):
+        if(file_exists($image = FCPATH.'public/uploads/original/'.$data->cover)):
+            $size = $this->config->item('default_sizes', 'image_nation');
+            $a = explode('|',$size);
+            foreach ($a as $b) {
+                if(file_exists($img = FCPATH.'public/uploads/'.$b.'/'.$data->cover)){
+                    unlink($img);
+                }
+            }
             unlink($image);
         endif;
         $this->film->delete($id);
     }
 
-
+    
     /**
-     * Function untuk genre dalam film
+     * Genre
+     *
+     * @return void
      */
     public function genre(){
         $this->data['genre'] = $this->genre->get_all();
         $this->render('films/genre');
     }
 
+    /**
+     * addgenre
+     * menambahkan genre baru
+     * @return void
+     */
     public function addgenre(){
         if ($this->input->post()):
             $nama = $this->input->post('nama');
@@ -152,12 +196,22 @@ class Films extends MY_Controller
         endif;
     }
 
+    /**
+     * editgenre
+     * digunakan untuk melakukan update/edit pada genre
+     * @return void
+     */
     public function editgenre(){
         $id = $this->input->post('id');
         $nama = $this->input->post('nama');
         $this->genre->update(array('genre'=>$nama),$id);
     }
 
+    /**
+     * delgenre
+     * digunakan untuk menghapus genre
+     * @return void
+     */
     public function delgenre(){
         $id = $this->input->post('id');
         $this->genre->delete($id);

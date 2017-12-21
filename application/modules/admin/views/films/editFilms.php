@@ -56,7 +56,7 @@
     
     /** Attach already uploaded image */
     let a = document.querySelector('.custom-file-container__image-preview');
-    a.style = 'background-image: url("<?php echo UPLOADPATH.$data->film->cover?>")';
+    a.style = 'background-image: url("<?php echo UPLOADPATH.'original/'.$data->film->cover?>")';
         
     /** Get value from input */
     document.getElementById('formAddFilm').onsubmit = (e) => {

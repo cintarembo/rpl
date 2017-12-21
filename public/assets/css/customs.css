@@ -1,287 +1,296 @@
 body {
-  padding-top: 54px;
+	padding-top: 54px;
 }
 
 @media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
+	body {
+		padding-top: 56px;
+	}
 }
 
 .portfolio-item {
-  margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 .pagination {
-  margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
-.navbar .navbar-nav > li.dropdown:hover > a, 
+.navbar .navbar-nav > li.dropdown:hover > a,
 .navbar .navbar-nav > li.dropdown:hover > a:hover,
 .navbar .navbar-nav > li.dropdown:hover > a:focus {
-    color: rgba(0,0,0,.7)
+	color: rgba(0, 0, 0, .7);
 }
 li.dropdown:hover > .dropdown-menu {
-    display: block;
+	display: block;
 }
-.btn-outline-primary:not([disabled]):not(.disabled).active, .btn-outline-primary:not([disabled]):not(.disabled):active {
-    box-shadow: none;
+.btn-outline-primary:not([disabled]):not(.disabled).active,
+.btn-outline-primary:not([disabled]):not(.disabled):active {
+	box-shadow: none;
 }
 
 .box-shadow {
-  -webkit-transition: box-shadow .55s;
-  -webkit-transition: -webkit-box-shadow .55s;
-  transition: -webkit-box-shadow .55s;
-  transition: box-shadow .55s;
-  transition: box-shadow .55s,-webkit-box-shadow .55s;
-  -webkit-box-shadow: 0;
-  box-shadow: 0;
+	-webkit-transition: box-shadow .55s;
+	-webkit-transition: -webkit-box-shadow .55s;
+	transition: -webkit-box-shadow .55s;
+	transition: box-shadow .55s;
+	transition: box-shadow .55s, -webkit-box-shadow .55s;
+	-webkit-box-shadow: 0;
+	box-shadow: 0;
 }
 .box-shadow:hover {
-  -webkit-transition: box-shadow .45s;
-  -webkit-transition: -webkit-box-shadow .45s;
-  transition: -webkit-box-shadow .45s;
-  transition: box-shadow .45s;
-  transition: box-shadow .45s,-webkit-box-shadow .45s;
-  -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
-  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+	-webkit-transition: box-shadow .45s;
+	-webkit-transition: -webkit-box-shadow .45s;
+	transition: -webkit-box-shadow .45s;
+	transition: box-shadow .45s;
+	transition: box-shadow .45s, -webkit-box-shadow .45s;
+	-webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
 }
 
 .form-control[readonly] {
-  background-color: #ffffff;
+	background-color: #ffffff;
 }
 
 .date-picker-x {
-  background: #ffffff;
-  box-sizing: content-box;
-  color: #000;
-  display: none;
-  font: 18px/1 Arial;
-  padding: 10px;
-  position: absolute;
-  top: 100%;
-  -webkit-transform: translateY(15px);
-  transform: translateY(15px);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 308px;
-  z-index: 1;
-  -webkit-transition: box-shadow .45s;
-  -webkit-transition: -webkit-box-shadow .45s;
-  transition: -webkit-box-shadow .45s;
-  transition: box-shadow .45s;
-  transition: box-shadow .45s,-webkit-box-shadow .45s;
-  -webkit-box-shadow: 0 0px 2px 0 rgba(0,0,0,.2),0 2px 20px 0 rgba(0,0,0,.19);
-  box-shadow: 0 0px 2px 0 rgba(0,0,0,.2),0 2px 20px 0 rgba(0,0,0,.19)
+	background: #ffffff;
+	box-sizing: content-box;
+	color: #000;
+	display: none;
+	font: 18px/1 Arial;
+	padding: 10px;
+	position: absolute;
+	top: 100%;
+	-webkit-transform: translateY(15px);
+	transform: translateY(15px);
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	width: 308px;
+	z-index: 1;
+	-webkit-transition: box-shadow .45s;
+	-webkit-transition: -webkit-box-shadow .45s;
+	transition: -webkit-box-shadow .45s;
+	transition: box-shadow .45s;
+	transition: box-shadow .45s, -webkit-box-shadow .45s;
+	-webkit-box-shadow: 0 0px 2px 0 rgba(0, 0, 0, .2), 0 2px 20px 0 rgba(0, 0, 0, .19);
+	box-shadow: 0 0px 2px 0 rgba(0, 0, 0, .2), 0 2px 20px 0 rgba(0, 0, 0, .19);
 }
 
 .date-picker-x::before {
-  border-color: #fff transparent;
-  border-style: solid;
-  border-width: 0 10px 10px;
-  bottom: 100%;
-  content: "";
-  left: 20px;
-  position: absolute;
+	border-color: #fff transparent;
+	border-style: solid;
+	border-width: 0 10px 10px;
+	bottom: 100%;
+	content: "";
+	left: 20px;
+	position: absolute;
 }
 
-.date-picker-x .dpx-next, .date-picker-x .dpx-prev {
-  color: #000;
-  cursor: pointer;
-  display: block;
-  font-size: 22px;
-  line-height: 50px;
-  text-align: center;
-  transition: .2s;
-  width: 50px;
+.date-picker-x .dpx-next,
+.date-picker-x .dpx-prev {
+	color: #000;
+	cursor: pointer;
+	display: block;
+	font-size: 22px;
+	line-height: 50px;
+	text-align: center;
+	transition: .2s;
+	width: 50px;
 }
 
-.date-picker-x .dpx-next:hover, .date-picker-x .dpx-prev:hover {
-  color: rgb(128, 128, 128);
+.date-picker-x .dpx-next:hover,
+.date-picker-x .dpx-prev:hover {
+	color: rgb(128, 128, 128);
 }
 .date-picker-x .dpx-item:not(.dpx-weekday):hover {
-  box-shadow: none;
-  background-color: rgb(242, 242, 242);
+	box-shadow: none;
+	background-color: rgb(242, 242, 242);
 }
 .date-picker-x .dpx-current {
-  box-shadow: inset 0 0 0 2px rgb(242, 242, 242);
+	box-shadow: inset 0 0 0 2px rgb(242, 242, 242);
 }
 
 .date-picker-x .dpx-selected {
-  background: rgb(242, 242, 242);
+	background: rgb(242, 242, 242);
 }
 /* ======== MY WORK: BACK-END ======== */
-  picture img {
-    width: 280px;
-    height: auto;
-  }
-  .element-item {
-    padding-top: 5px;
-  }
-  .grid-films {
-    /* Prevent white space under image */
-    display: block;
-    width: 100%;
-    height: auto;
-    /* Prevent background from showing up on edges when */
-    /* hovering between images */
-    transform: scale(1.01); 
-    transition: all 300ms ease-out 20ms;
-  }
-  
-  /**baruuu */
-  .portfolio-item .cover-film {
-    transform: scale(1.01); 
-    transition: all 300ms ease-out;
-  }
+picture img {
+	width: 280px;
+	height: auto;
+}
+.element-item {
+	padding-top: 5px;
+}
+.grid-films {
+	/* Prevent white space under image */
+	display: block;
+	width: 100%;
+	height: auto;
+	/* Prevent background from showing up on edges when */
+	/* hovering between images */
+	transform: scale(1.01);
+	transition: all 300ms ease-out 20ms;
+}
 
-  .portfolio-item:hover .cover-film {
-    transform: scale(1.1);
-    filter: brightness(60%);
-    transform: scale(1.01); 
-    transition: all 300ms ease-in;
-    -webkit-transition: box-shadow .45s;
-    -webkit-transition: -webkit-box-shadow .45s;
-    transition: -webkit-box-shadow .45s;
-    transition: box-shadow .45s;
-    transition: box-shadow .45s,-webkit-box-shadow .45s;
-    -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
-  }
-  
-  .portfolio-item:hover div.caption h3 {
-    opacity: 1;
-    transform: translateY(0%);
-    transition: all 300ms ease-out 0ms;
-  }
-  
-  .portfolio-item:hover div.caption p {
-    opacity: 1;
-    transform: translateY(-50%);
-    transition: all 300ms ease-out 200ms;
-    color: rgb(0, 202, 67)
-  }
+/**baruuu */
+.portfolio-item .cover-film {
+	transform: scale(1.01);
+	transition: all 300ms ease-out;
+}
 
-  /* Selesai baru */
+.portfolio-item:hover .cover-film {
+	transform: scale(1.1);
+	filter: brightness(60%);
+	transform: scale(1.01);
+	transition: all 300ms ease-in;
+	-webkit-transition: box-shadow .45s;
+	-webkit-transition: -webkit-box-shadow .45s;
+	transition: -webkit-box-shadow .45s;
+	transition: box-shadow .45s;
+	transition: box-shadow .45s, -webkit-box-shadow .45s;
+	-webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+}
 
-  .grid-films .cover-film {
-    transform: scale(1.01); 
-    transition: all 300ms ease-out;
-  }
+.portfolio-item:hover div.caption h3 {
+	opacity: 1;
+	transform: translateY(0%);
+	transition: all 300ms ease-out 0ms;
+}
 
-  .grid-films:hover .cover-film {
-    transform: scale(1.1);
-    filter: brightness(60%);
-    transform: scale(1.01); 
-    transition: all 300ms ease-in;
-    -webkit-transition: box-shadow .45s;
-    -webkit-transition: -webkit-box-shadow .45s;
-    transition: -webkit-box-shadow .45s;
-    transition: box-shadow .45s;
-    transition: box-shadow .45s,-webkit-box-shadow .45s;
-    -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
-  }
-  
-  .grid-films:hover div.caption h3 {
-    opacity: 1;
-    transform: translateY(0%);
-    transition: all 300ms ease-out 0ms;
-  }
-  
-  .grid-films:hover div.caption p {
-    opacity: 1;
-    transform: translateY(0%);
-    transition: all 300ms ease-out 200ms;
-  }
+.portfolio-item:hover div.caption p {
+	opacity: 1;
+	transform: translateY(-50%);
+	transition: all 300ms ease-out 200ms;
+	color: rgb(0, 202, 67);
+}
 
-  div.caption{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    padding-left: 15%;
-    padding-right: 15%;
-  }
+.card-img-top {
+	width: 253px;
+	height: 219px;
+}
 
-  .caption h3 {
-    padding-bottom: 0.5em;
-    transform: translateY(50%);
-    color: #ffffff;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    opacity: 0;
-    transition: all 100ms ease-out 200ms;
-  }
+/* Selesai baru */
 
-  .caption p {
-    transform: translateY(50%);
-    color: #ffffff;
-    font-size: 1.8em;
-    text-transform: uppercase;
-    opacity: 0;
-    transition: all 100ms ease-out 0ms;
-  }
+.grid-films .cover-film {
+	transform: scale(1.01);
+	transition: all 300ms ease-out;
+}
 
+.grid-films:hover .cover-film {
+	transform: scale(1.1);
+	filter: brightness(60%);
+	transform: scale(1.01);
+	transition: all 300ms ease-in;
+	-webkit-transition: box-shadow .45s;
+	-webkit-transition: -webkit-box-shadow .45s;
+	transition: -webkit-box-shadow .45s;
+	transition: box-shadow .45s;
+	transition: box-shadow .45s, -webkit-box-shadow .45s;
+	-webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+}
+
+.grid-films:hover div.caption h3 {
+	opacity: 1;
+	transform: translateY(0%);
+	transition: all 300ms ease-out 0ms;
+}
+
+.grid-films:hover div.caption p {
+	opacity: 1;
+	transform: translateY(0%);
+	transition: all 300ms ease-out 200ms;
+}
+
+div.caption {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	padding-left: 15%;
+	padding-right: 15%;
+}
+
+.caption h3 {
+	padding-bottom: 0.5em;
+	transform: translateY(50%);
+	color: #ffffff;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	opacity: 0;
+	transition: all 100ms ease-out 200ms;
+}
+
+.caption p {
+	transform: translateY(50%);
+	color: #ffffff;
+	font-size: 1.8em;
+	text-transform: uppercase;
+	opacity: 0;
+	transition: all 100ms ease-out 0ms;
+}
 
 .filtr-item {
-    padding: 1rem;
+	padding: 1rem;
 }
 .item-desc {
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    position: absolute;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 1rem;
-    z-index: 1;
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	position: absolute;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 1rem;
+	z-index: 1;
+	bottom: 1rem;
+	left: 1rem;
+	right: 1rem;
 }
 
 /* Filter controls */
-.simplefilter li, .multifilter li, .sortandshuffle li {
-    color: white;
-    cursor: pointer;
-    display: inline-block;
-    text-transform: uppercase;
-    padding: 1rem 2rem;
+.simplefilter li,
+.multifilter li,
+.sortandshuffle li {
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	text-transform: uppercase;
+	padding: 1rem 2rem;
 }
 .simplefilter li {
-    background-color: #585858;
+	background-color: #585858;
 }
 .simplefilter li.active {
-    background-color: #212121;
+	background-color: #212121;
 }
 .multifilter li {
-    background-color: #4b9eff;
+	background-color: #4b9eff;
 }
 .multifilter li.active {
-    background-color: #2265b4;
+	background-color: #2265b4;
 }
 
 /* Shuffle and sort controls */
 select {
-    padding: 1rem 1rem;
-    text-transform: uppercase;
+	padding: 1rem 1rem;
+	text-transform: uppercase;
 }
 .sortandshuffle .shuffle-btn {
-    background-color: #dec800;
+	background-color: #dec800;
 }
 .sortandshuffle .sort-btn {
-    background-color: #de0000;
+	background-color: #de0000;
 }
 .sortandshuffle .sort-btn.active {
-    background-color: #9d0000;
+	background-color: #9d0000;
 }
 
 /* Search control */
 .search-row {
-    margin-left: 2.5rem;
+	margin-left: 2.5rem;
 }
 .filtr-search {
-    padding: 0.5rem;
-    text-transform: uppercase;
+	padding: 0.5rem;
+	text-transform: uppercase;
 }

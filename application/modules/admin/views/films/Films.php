@@ -12,7 +12,7 @@
               <div class="card box-shadow">
                 <a href="#">
                     <img class="card-img-top"
-                      src="<?php echo UPLOADPATH.$f->cover ?>" alt="<?php echo $f->judul?>">
+                      src="<?php echo UPLOADPATH.'255x220/'.$f->cover ?>" alt="<?php echo $f->judul?>">
                 </a>
                 <!-- Basic Informations -->
                 <div class="card-body">

@@ -121,7 +121,7 @@
                             <div class="movie movie--test movie--test--dark movie--test--left">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
-                                        <img alt='<?php echo $f->judul ?>' src="<?php echo UPLOADPATH.$f->cover ?>">
+                                        <img alt='<?php echo $f->judul ?>' src="<?php echo UPLOADPATH.'424x424/'.$f->cover ?>" style="width:424px;height:200px;">
                                     </a>
                                 </div>
 
