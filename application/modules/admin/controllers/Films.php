@@ -111,15 +111,6 @@ class Films extends MY_Controller
                 $hall      = $this->input->post('studio');
                 $featured  = $this->input->post('featured');
                 $status    = $this->input->post('status');
-                
-                $data = array(
-                    'judul'          => $judul,
-                    'sinopsis'       => $sinopsis,
-                    'tanggal_tayang' => $tgl,
-                    'jam_tayang'     => $jam,
-                    'durasi'         => $durasi,
-                    'harga'          => $harga
-                    );
 
                 $config['upload_path']          = './public/uploads/original';
                 $config['allowed_types']        = 'gif|jpg|png';

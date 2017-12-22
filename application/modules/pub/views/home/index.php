@@ -118,55 +118,32 @@
                     <div class="col-sm-8 col-md-9">
                         <?php if(!empty($film)):?>
                         <?php foreach($film as $f): ?>
-                        <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--dark movie--test--left">
+                         <!-- Movie variant with time -->
+                            <div class="movie movie--test movie--test--light movie--test--left">
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
                                         <img alt='<?php echo $f->judul ?>' src="<?php echo UPLOADPATH.'424x424/'.$f->cover ?>" style="width:424px;height:200px;">
                                     </a>
                                 </div>
-
                                 <div class="movie__info">
                                     <a href='movie-page-left.html' class="movie__title"><?php echo $f->judul ?>  </a>
-
                                     <p class="movie__time"><?php echo $f->durasi ?> min</p>
-
                                     <p class="movie__option">
                                         <?php $genre = $this->gfm->with_genre()->where('id_film',$f->id_film)->get_all();
                                             $a=count($genre);
                                             foreach($genre as $g):
                                                 foreach($g->genre as $gg): ?>
                                             <a href="#"><?php echo $gg->genre?></a>
-                                            <?php $car = ($a>1) ? '|' : '' ; echo $car;?>
+                                            <?php $car = ($a>1) ? '|' : '' ; echo $car;$a=$a-1;?>
                                         <?php   endforeach;
                                             endforeach;?>
                                     </p>
                                     
                                     <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">4.1</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--light movie--test--left">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/424x424.png">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">The Hobbit: The Desolation of Smaug (2013)  </a>
-
-                                    <p class="movie__time">169 min</p>
-
-                                    <p class="movie__option"><a href="#">Adventure</a> | <a href="#">Fantasy</a> | <a href="#">Drama</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
+                                        <?php 
+                                            $studio = $this->studio->get($f->id_hall);
+                                            echo ' <a href="#">'.$studio->nama.'</a>';
+                                        ?>
                                         <span class="movie__rating">5.0</span>
                                     </div>               
                                 </div>

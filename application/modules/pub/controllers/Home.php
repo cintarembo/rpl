@@ -8,7 +8,8 @@ class Home extends MY_Controller
         $this->load->model(array(
             'admin/films/films_model'=> 'film',
             'admin/films/genre_model'=> 'genre',
-            'admin/films/genrefilm_model'=>'gfm'
+            'admin/films/genrefilm_model'=>'gfm',
+            'admin/films/studio_model'=>'studio'
         ));
     }
 
