@@ -7,7 +7,8 @@ class Films extends MY_Controller
         $this->load->model(array(
             'films/Films_model'=>'film',
             'films/Genre_model'=>'genre',
-            'films/Genrefilm_model' =>'gfm'
+            'films/Genrefilm_model' =>'gfm',
+            'films/Studio_model'=> 'studio'
             ));
         $this->load->library(array(
             'form_validation' => 'validation',
@@ -34,13 +35,16 @@ class Films extends MY_Controller
     public function addFilms(){
         if ($this->input->post()):
             if ($this->validation->run('addFilms')==TRUE):
-                $judul  = $this->input->post('judul');
-                $tgl    = $this->input->post('tanggal-tayang');            
-                $jam    = $this->input->post('jam-tayang');
-                $durasi = $this->input->post('durasi-film');
-                $harga  = $this->input->post('harga-tiket');
+                $judul     = $this->input->post('judul');
+                $tgl       = $this->input->post('tanggal-tayang');            
+                $jam       = $this->input->post('jam-tayang');
+                $durasi    = $this->input->post('durasi-film');
+                $harga     = $this->input->post('harga-tiket');
                 $sinopsis  = $this->input->post('sinopsis');
-                $genre  = $this->input->post('genrefilm');
+                $genre     = $this->input->post('genrefilm');
+                $hall      = $this->input->post('studio');
+                $featured  = $this->input->post('featured');
+                $status    = $this->input->post('status');
                 
                 $config['upload_path']          = './public/uploads/original';
                 $config['allowed_types']        = 'gif|jpg|png';
@@ -62,7 +66,10 @@ class Films extends MY_Controller
                     'jam_tayang'     => $jam,
                     'durasi'         => $this->number($durasi),
                     'harga'          => $this->number($harga),
-                    'cover'          => $this->upload->data('file_name')
+                    'cover'          => $this->upload->data('file_name'),
+                    'id_hall'        => $hall,
+                    'featured'       => $feat = (!empty($featured)) ? '1' : '',
+                    'status'         => $sts  = (!empty($status)) ? '1' : '0'
                     );
                 
                 $this->film->insert($data);
@@ -81,6 +88,7 @@ class Films extends MY_Controller
             endif; //.Form Validation*/
         else:
             $this->data['genre'] = $this->genre->get_all();
+            $this->data['studio']= $this->studio->get_all();
             $this->render('films/addFilms');
         endif; //.this->input->post()
     }
@@ -100,6 +108,9 @@ class Films extends MY_Controller
                 $durasi = $this->input->post('durasi-film');
                 $harga  = $this->input->post('harga-tiket');
                 $sinopsis  = $this->input->post('sinopsis');
+                $hall      = $this->input->post('studio');
+                $featured  = $this->input->post('featured');
+                $status    = $this->input->post('status');
                 
                 $data = array(
                     'judul'          => $judul,
@@ -130,7 +141,10 @@ class Films extends MY_Controller
                     'jam_tayang'     => $jam,
                     'durasi'         => $this->number($durasi),
                     'harga'          => $this->number($harga),
-                    'cover'          => $this->upload->data('file_name')
+                    'cover'          => $this->upload->data('file_name'),
+                    'id_hall'        => $hall,
+                    'featured'       => $feat = (!empty($featured)) ? '1' : '',
+                    'status'         => $sts  = (!empty($status)) ? '1' : '0'
                     );
                 
                 $this->film->update($data,$id);
@@ -145,6 +159,7 @@ class Films extends MY_Controller
         else:
             $this->data['data'] = $this->gfm->with_film()->with_genre()->get($id);
             $this->data['genre'] = $this->genre->get_all();
+            $this->data['studio']= $this->studio->get_all();
             $this->render('films/editFilms');
         endif; //.this->input->post()
     }
