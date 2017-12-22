@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 19 Des 2017 pada 09.06
+-- Generation Time: 22 Des 2017 pada 20.22
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -55,14 +55,24 @@ CREATE TABLE `login_attempts` (
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `login_attempts`
+-- Struktur dari tabel `studio`
 --
 
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(4, '::1', 'admin@admin.comv', 1513615963),
-(5, '::1', 'admin@admin.comv', 1513615988),
-(6, '::1', 'admin@admin.comv', 1513616033);
+CREATE TABLE `studio` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `studio`
+--
+
+INSERT INTO `studio` (`id`, `nama`) VALUES
+(1, 'Amaris'),
+(2, 'Edelweiss');
 
 -- --------------------------------------------------------
 
@@ -104,15 +114,20 @@ CREATE TABLE `tbl_film` (
   `jam_tayang` time NOT NULL,
   `durasi` varchar(20) NOT NULL,
   `harga` int(20) NOT NULL,
-  `cover` varchar(200) NOT NULL
+  `id_hall` int(11) NOT NULL,
+  `cover` varchar(200) NOT NULL,
+  `featured` enum('1','0') NOT NULL DEFAULT '0',
+  `status` enum('1','0') NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbl_film`
 --
 
-INSERT INTO `tbl_film` (`id_film`, `judul`, `sinopsis`, `tanggal_tayang`, `jam_tayang`, `durasi`, `harga`, `cover`) VALUES
-(3, 'The Sims', 'Sinopsis', '2017-12-30', '07:00:00', '07:00', 2, '89d139510fdde070a2751545458abc92.png');
+INSERT INTO `tbl_film` (`id_film`, `judul`, `sinopsis`, `tanggal_tayang`, `jam_tayang`, `durasi`, `harga`, `id_hall`, `cover`, `featured`, `status`) VALUES
+(4, 'asdad', 'asd', '2017-12-15', '07:00:00', '222', 222, 2, '0006e730d549ca50646ee790fd0adc4f.jpg', '1', '1'),
+(5, 'kjkhdkjjk', 'hhjkhjk', '2017-12-09', '07:00:00', '222', 22, 1, 'd94df58d0b3b09739bc858c57d9061a2.jpg', '1', '1'),
+(6, 'ljjl', 'lkjlj', '2017-12-15', '11:35:00', '222', 10000, 1, 'd903842e8f2242f53fd0ee9e8a3157c7.jpg', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -150,7 +165,10 @@ CREATE TABLE `tbl_genrefilm` (
 --
 
 INSERT INTO `tbl_genrefilm` (`id_film`, `id_genre`) VALUES
-(3, NULL);
+(4, 8),
+(5, 4),
+(6, 4),
+(4, 7);
 
 -- --------------------------------------------------------
 
@@ -243,7 +261,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `address`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, 'CC1h1w1b5/CpGvMREPGaZO', 1268889823, 1513617120, 1, 'Admin', 'istrator', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, 'CC1h1w1b5/CpGvMREPGaZO', 1268889823, 1513850931, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(2, '::1', 'agung', '$2y$08$z0H/Zd8sdIk/ZKIhskWsq.QFe.pl9H93oAW9GeLQ2FC7uog2yzGzy', NULL, 'cintarembo@gmail.com', NULL, NULL, NULL, NULL, 1513850860, NULL, 1, 'Agung', 'Kurniawan', 'jalan pertanian', '089629050760'),
+(3, '::1', 'agung', '$2y$08$Ae3me6KJfh5ToDYlhDAfMeNiGzH8OMD9IfR4IorS7DCYq4UI2otum', NULL, 'cintarembo@gmail.com', NULL, NULL, NULL, NULL, 1513850876, NULL, 1, 'Agung', 'Kurniawan', 'jalan pertanian', '089629050760');
 
 -- --------------------------------------------------------
 
@@ -263,7 +283,9 @@ CREATE TABLE `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
-(2, 1, 2);
+(2, 1, 2),
+(3, 2, 2),
+(4, 3, 2);
 
 --
 -- Indexes for dumped tables
@@ -279,6 +301,12 @@ ALTER TABLE `groups`
 -- Indexes for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `studio`
+--
+ALTER TABLE `studio`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -303,7 +331,8 @@ ALTER TABLE `tbl_detailtransaksi`
 ALTER TABLE `tbl_film`
   ADD PRIMARY KEY (`id_film`),
   ADD KEY `judul` (`judul`),
-  ADD KEY `harga` (`harga`);
+  ADD KEY `harga` (`harga`),
+  ADD KEY `id_hall` (`id_hall`);
 
 --
 -- Indexes for table `tbl_genre`
@@ -371,12 +400,17 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `studio`
+--
+ALTER TABLE `studio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_film`
 --
 ALTER TABLE `tbl_film`
-  MODIFY `id_film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_genre`
 --
@@ -401,12 +435,12 @@ ALTER TABLE `tbl_member`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
@@ -419,6 +453,12 @@ ALTER TABLE `tbl_detailtransaksi`
   ADD CONSTRAINT `tbl_detailtransaksi_ibfk_3` FOREIGN KEY (`no_kursi`) REFERENCES `tbl_kursi` (`no_kursi`),
   ADD CONSTRAINT `tbl_detailtransaksi_ibfk_4` FOREIGN KEY (`id_lokasi`) REFERENCES `tbl_lokasi` (`id_lokasi`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_detailtransaksi_ibfk_5` FOREIGN KEY (`id_film`) REFERENCES `tbl_film` (`id_film`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `tbl_film`
+--
+ALTER TABLE `tbl_film`
+  ADD CONSTRAINT `tbl_film_ibfk_1` FOREIGN KEY (`id_hall`) REFERENCES `studio` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tbl_genrefilm`
