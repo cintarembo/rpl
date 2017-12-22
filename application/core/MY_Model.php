@@ -53,7 +53,7 @@ class MY_Model extends CI_Model
     /** @var bool | array
      * Enables created_at and updated_at fields
      */
-    protected $timestamps = TRUE;
+    protected $timestamps = FALSE;
     protected $timestamps_format = 'Y-m-d H:i:s';
 
     protected $_created_at_field;
