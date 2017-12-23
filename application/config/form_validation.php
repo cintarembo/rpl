@@ -30,12 +30,12 @@ $config = array(
         ),
         'login' => array(
                 array(
-                        'field' => 'usernameLogin',
+                        'field' => 'username',
                         'label' => $this->lang->line('login_identity_label'),
                         'rules' => 'required|trim'
                 ),
                 array(
-                        'field' => 'passwordLogin',
+                        'field' => 'password',
                         'label' => $this->lang->line('login_password_label'),
                         'rules' => 'required|trim'
                 ),
