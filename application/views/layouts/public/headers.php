@@ -51,9 +51,22 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
       <script>let base = '<?php echo base_url()?>';</script>
+      <!-- jQuery 1.9.1--> 
+      <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/external/jquery-1.10.1.min.js"><\/script>')</script>
+      <script src="<?php echo base_url()?>public/assets/js/pjax-api.min.js"></script>
+      <script>
+        var Pjax = require('pjax-api').Pjax;
+          new Pjax({
+          areas: [
+              'body'
+          ]
+          });
+      </script>
+
       </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" id="primary">
     <script src="<?php echo base_url()?>public/assets/js/topbar.min.js"></script>
 
 
