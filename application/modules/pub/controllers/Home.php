@@ -30,4 +30,8 @@ class Home extends MY_Controller
         $this->render('home/index');
     }
 
+    public function login(){
+        $this->render('login/login');
+    }
+
 }
