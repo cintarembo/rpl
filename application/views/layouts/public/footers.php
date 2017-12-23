@@ -79,14 +79,12 @@
             </section>
         </div>
 
-        <!-- jQuery 1.9.1--> 
-        <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/external/jquery-1.10.1.min.js"><\/script>')</script>
-        <!-- Migrate --> 
+       
+         <!-- Migrate --> 
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/jquery-migrate-1.2.1.min.js"></script>
         <!-- Bootstrap 3--> 
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/bootstrap.min.js"></script>
-
+        <script src="<?php echo base_url()?>public/assets/js/qwest.min.js"></script>
         <!-- jQuery REVOLUTION Slider -->
         <script type="text/javascript" src="<?php echo base_url()?>public/assets/vendor/amovie/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url()?>public/assets/vendor/amovie/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
@@ -99,7 +97,6 @@
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/jquery.raty.js"></script>
         
         <!-- Form element -->
-        <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/form-element.js"></script>
         <!-- Form validation -->
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/form.js"></script>
 
@@ -109,9 +106,9 @@
 	      <script type="text/javascript">
               $(document).ready(function() {
                 init_Home();
+                
                 topbar.hide();
               });
 		    </script>
-
-</body>
+ </body>
 </html>
