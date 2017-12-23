@@ -39,15 +39,31 @@ class Auth extends MY_Controller{
                 $password = $this->input->post('password');
                 $remember = (bool)$this->input->post('remember');
                 if($this->ion_auth->login($username,$password,$remember)){
-                    echo json_encode($this->ion_auth->messages());
+                    $data = array(
+                        'status'    => TRUE,
+                        'messages'  => $this->ion_auth->messages()
+                    );
+                    echo json_encode($data);
                 }else{
-                    echo $this->ion_auth->messages();
+                    $data = array(
+                        'status'    => FALSE,
+                        'messages'  => $this->ion_auth->errors()
+                    );
+                    echo json_encode($data);
                 }
             }else{
-                show_error($this->validation->error_array());
+                echo json_encode($this->validation->error_array());
             }
         }
     }
+
+    /**
+	 * Log the user out
+	 */
+	public function logout()
+	{	
+        $this->ion_auth->logout();
+	}
 
     /**
      * register
@@ -68,12 +84,20 @@ class Auth extends MY_Controller{
             );
             if($this->ion_auth->register($username,$password,$email,$data_tambahan))
             {
-                echo $this->ion_auth->messages();
+                $data = array(
+                    'status'    => TRUE,
+                    'messages'  => $this->ion_auth->messages()
+                );
+                echo json_encode($data);
             }else{
-                echo $this->ion_auth->messages();
+                $data = array(
+                    'status'    => TRUE,
+                    'messages'  => $this->ion_auth->errors()
+                );
+                echo json_encode($data);
             }
         }else{
-            show_error($this->validation->error_array());
+            echo json_encode($this->validation->error_array());
         }
     }
 }
