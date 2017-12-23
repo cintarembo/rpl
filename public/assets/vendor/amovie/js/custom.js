@@ -358,7 +358,7 @@ function init_Home() {
     $('.score').raty({
         width:130, 
         score: 0,
-        path: 'images/rate/',
+        path: './../../public/assets/vendor/amovie/images/rate/',
         starOff : 'star-off.svg',
         starOn  : 'star-on.svg' 
     });
@@ -1062,7 +1062,7 @@ function init_MovieList () {
     $('.score').raty({
         width:130, 
         score: 0,
-        path: 'images/rate/',
+        path: './../../public/assets/vendor/amovie/images/rate/',
         starOff : 'star-off.svg',
         starOn  : 'star-on.svg' 
     });
@@ -1114,7 +1114,7 @@ function init_MoviePage () {
     $('.score').raty({
         width:130, 
         score: 5,
-        path: 'images/rate/',
+        path: './../../public/assets/vendor/amovie/images/rate/',
         starOff : 'star-off.svg',
         starOn  : 'star-on.svg' 
     });
