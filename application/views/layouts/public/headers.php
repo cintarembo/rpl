@@ -20,18 +20,19 @@
       <link href='<?php echo base_url()?>public/assets/vendor/amovie/css/opensans.css' rel='stylesheet' type='text/css'>
   
     <!-- Stylesheets -->
+      <!-- Jquery UI -->  
+      <link href="<?php echo base_url()?>public/assets/vendor/amovie/css/external/jquery-ui.min.css" rel="stylesheet">
 
       <!-- Mobile menu -->
       <link href="<?php echo base_url()?>public/assets/vendor/amovie/css/gozha-nav.css" rel="stylesheet" />
       <!-- Select -->
       <link href="<?php echo base_url()?>public/assets/vendor/amovie/css/external/jquery.selectbox.css" rel="stylesheet" />
-
+      <!-- Swiper slider -->
+      <link href="<?php echo base_url()?>public/assets/vendor/amovie/css/external/idangerous.swiper.css" rel="stylesheet" />
+      <!-- Magnific-popup -->
+      <link href="<?php echo base_url()?>public/assets/vendor/amovie/css/external/magnific-popup.css" rel="stylesheet" />
       <!-- REVOLUTION BANNER CSS SETTINGS -->
       <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/assets/vendor/amovie/rs-plugin/css/settings.css" media="screen" />
-  
-      <!-- Custom -->
-      <link href="<?php echo base_url()?>public/assets/vendor/amovie/css/style.css?v=1" rel="stylesheet" />
-
 
       <!-- Modernizr --> 
       <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/modernizr.custom.js"></script>
@@ -43,19 +44,12 @@
       <![endif]-->
 
       <link rel="stylesheet" href="<?php echo base_url()?>public/assets/vendor/bootstrap/css/bootstrap.min.css">
-      <link rel="stylesheet" href="<?php echo base_url()?>public/assets/vendor/datatables/css/normalize.css">
-      
-      
-      <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      <script>let base = '<?php echo base_url()?>';</script>
+    <!-- Script -->
       <!-- jQuery 1.9.1--> 
-      <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/jquery.min.js"></script>
-      <script>window.jQuery || document.write('<script src="js/external/jquery-1.10.1.min.js"><\/script>')</script>
       <script src="<?php echo base_url()?>public/assets/js/pjax-api.min.js"></script>
+      
       <script>
+        let base = '<?php echo base_url()?>';
         var Pjax = require('pjax-api').Pjax;
           new Pjax({
           areas: [
@@ -63,10 +57,12 @@
           ]
           });
       </script>
-
+      
       </head>
   <body>
     <div class="wrapper" id="primary">
     <script src="<?php echo base_url()?>public/assets/js/topbar.min.js"></script>
+    <link href="<?php echo base_url()?>public/assets/vendor/amovie/css/style.css?v=1" rel="stylesheet" />
+
 
 
