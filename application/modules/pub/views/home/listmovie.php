@@ -4,12 +4,12 @@
         <!-- Movie variant with time -->
         <div class="movie movie--test movie--test--<?php $abc = ($a%2==0) ? 'light':'dark'; echo $abc;?> movie--test--left">
             <div class="movie__images">
-                <a href="movie-page-left.html" class="movie-beta__link">
+                <a href="<?php echo base_url()?>pub/home/view/<?php echo $f->slug?>" class="movie-beta__link">
                     <img alt='<?php echo $f->judul ?>' src="<?php echo UPLOADPATH.'424x424/'.$f->cover ?>" style="width:424px;height:200px;">
                 </a>
             </div>
             <div class="movie__info">
-                <a href='movie-page-left.html' class="movie__title"><?php echo $f->judul ?>  </a>
+                <a href='<?php echo base_url()?>pub/home/view/<?php echo $f->slug?>' class="movie__title"><?php echo $f->judul ?>  </a>
                 <p class="movie__time"><?php echo $f->durasi ?> min</p>
                 <p class="movie__option">
                     <?php $genre = $this->gfm->with_genre()->where('id_film',$f->id_film)->get_all();
