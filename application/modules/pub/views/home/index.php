@@ -205,3 +205,7 @@ $this->load->view('home/best') ?>
                 </div>
             </div>                
 </main>
+
+ <!-- jQuery REVOLUTION Slider -->
+<script type="text/javascript" src="<?php echo base_url()?>public/assets/vendor/amovie/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>public/assets/vendor/amovie/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
