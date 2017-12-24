@@ -7,7 +7,7 @@
 <header class="header-wrapper ">
     <div class="container">
         <!-- Logo link-->
-        <a href='index.html' class="logo">
+        <a href='<?php echo base_url()?>pub/home/' class="logo">
             <img alt='logo' src="<?php echo base_url()?>public/assets/vendor/amovie/images/logo.png">
         </a>
         
