@@ -4,6 +4,14 @@ class Films extends MY_Controller
 {
     public function __construct(){
         parent::__construct();
+        if ($this->ion_auth->logged_in()) {
+            if (!$this->ion_auth->is_admin()) {
+                redirect('pub/home');
+            }
+        }else{
+            redirect('pub/home');
+        }
+        
         $this->load->model(array(
             'films/Films_model'=>'film',
             'films/Genre_model'=>'genre',
@@ -14,6 +22,7 @@ class Films extends MY_Controller
             'form_validation' => 'validation',
             'image_nation'    => 'image'
         ));
+        $this->load->helper('slug_helper','slug');
         $this->validation->CI =& $this;
     }
 
@@ -57,7 +66,7 @@ class Films extends MY_Controller
                 
                 /** Resize images */
                 $this->image->source($this->upload->data('file_name'));
-                $this->image->process('255x220|380x600|424x424');
+                $this->image->process('255x220|380x600|424x424|526x773|400x420');
 
                 $data = array(
                     'judul'          => $judul,
@@ -69,7 +78,8 @@ class Films extends MY_Controller
                     'cover'          => $this->upload->data('file_name'),
                     'id_hall'        => $hall,
                     'featured'       => $feat = (!empty($featured)) ? '1' : '',
-                    'status'         => $sts  = (!empty($status)) ? '1' : '0'
+                    'status'         => $sts  = (!empty($status)) ? '1' : '0',
+                    'slug'           => slug($judul)
                     );
                 
                 $this->film->insert($data);
@@ -123,7 +133,7 @@ class Films extends MY_Controller
 
                 /** Resize images */
                 $this->image->source($this->upload->data('file_name'));
-                $this->image->process('255x220|380x600|424x424');
+                $this->image->process('255x220|380x600|424x424|526x773|400x420');
 
                 $data = array(
                     'judul'          => $judul,
@@ -135,7 +145,8 @@ class Films extends MY_Controller
                     'cover'          => $this->upload->data('file_name'),
                     'id_hall'        => $hall,
                     'featured'       => $feat = (!empty($featured)) ? '1' : '',
-                    'status'         => $sts  = (!empty($status)) ? '1' : '0'
+                    'status'         => $sts  = (!empty($status)) ? '1' : '0',
+                    'slug'           => slug($judul)
                     );
                 
                 $this->film->update($data,$id);
