@@ -14,8 +14,8 @@ class Home extends MY_Controller
     }
 
     /**
-     * render
-     *
+     * Render view 
+     * Sepert blade pada laravel hehe
      * @param mixed $the_view
      * @param mixed $template='public'
      * @return void
@@ -30,8 +30,28 @@ class Home extends MY_Controller
         $this->render('home/index');
     }
 
+    /**
+     * view
+     * Membuat view untuk single movie berdasarkan slug yang ada
+     * @param mixed $slug
+     * @return void
+     */
+    public function view($slug = NULL)
+    {
+        $this->data['film'] = $this->film->where('slug',$slug)->get();
+        if (empty($this->data['film'])) {
+            $this->render('error/404');
+        } else {
+            $this->render('film/single');
+        }  
+    }
+
     public function login(){
-        $this->render('login/login');
+        $this->render('auth/login');
+    }
+
+    public function register(){
+        $this->render('auth/register');
     }
 
 }
