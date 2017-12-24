@@ -79,9 +79,14 @@
             </section>
         </div>
 
-       
-         <!-- Migrate --> 
+        <!-- Jquery -->
+        <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/jquery-1.10.1.min.js"><\/script>')</script>
+
+        <!-- Migrate --> 
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/jquery-migrate-1.2.1.min.js"></script>
+        <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/jquery-ui.js"></script>
+
         <!-- Bootstrap 3--> 
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/js/qwest.min.js"></script>
@@ -95,8 +100,13 @@
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/jquery.selectbox-0.2.min.js"></script>
         <!-- Stars rate -->
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/jquery.raty.js"></script>
-        
+        <!-- Swiper slider -->
+        <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/idangerous.swiper.min.js"></script>
+        <!-- Magnific-popup -->
+        <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/jquery.magnific-popup.min.js"></script>  
+
         <!-- Form element -->
+        <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/form-element.js"></script>
         <!-- Form validation -->
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/form.js"></script>
 
@@ -109,6 +119,7 @@
                 
                 topbar.hide();
               });
-		    </script>
+            </script>
+        
  </body>
 </html>
