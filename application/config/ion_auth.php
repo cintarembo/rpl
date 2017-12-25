@@ -2,7 +2,8 @@
 /**
  * Name:    Ion Auth
  * Author:  Ben Edmunds
- *           ben.edmunds@gmail.com
+ *           ben.edmunds@gmail.com.
+ *
  *           @benedmunds
  *
  * Added Awesomeness: Phil Sturgeon
@@ -14,12 +15,12 @@
  *
  * Requirements: PHP5 or above
  *
- * @package    CodeIgniter-Ion-Auth
  * @author     Ben Edmunds
+ *
  * @link       http://github.com/benedmunds/CodeIgniter-Ion-Auth
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -27,10 +28,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | -------------------------------------------------------------------------
 | Database table names.
 */
-$config['tables']['users']           = 'users';
-$config['tables']['groups']          = 'groups';
-$config['tables']['users_groups']    = 'users_groups';
-$config['tables']['login_attempts']  = 'login_attempts';
+$config['tables']['users'] = 'users';
+$config['tables']['groups'] = 'groups';
+$config['tables']['users_groups'] = 'users_groups';
+$config['tables']['login_attempts'] = 'login_attempts';
 
 /*
  | Users table column and Group table column you want to join WITH.
@@ -38,7 +39,7 @@ $config['tables']['login_attempts']  = 'login_attempts';
  | Joins from users.id
  | Joins from groups.id
  */
-$config['join']['users']  = 'user_id';
+$config['join']['users'] = 'user_id';
 $config['join']['groups'] = 'group_id';
 
 /*
@@ -66,12 +67,12 @@ $config['join']['groups'] = 'group_id';
  | salt_prefix: Used for bcrypt. Versions of PHP before 5.3.7 only support "$2a$" as the salt prefix
  | Versions 5.3.7 or greater should use the default of "$2y$".
  */
-$config['hash_method']    = 'bcrypt';	// sha1 or bcrypt, bcrypt is STRONGLY recommended
+$config['hash_method'] = 'bcrypt';	// sha1 or bcrypt, bcrypt is STRONGLY recommended
 $config['default_rounds'] = 8;			// This does not apply if random_rounds is set to true
-$config['random_rounds']  = FALSE;
-$config['min_rounds']     = 5;
-$config['max_rounds']     = 9;
-$config['salt_prefix']    = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' : '$2y$';
+$config['random_rounds'] = false;
+$config['min_rounds'] = 5;
+$config['max_rounds'] = 9;
+$config['salt_prefix'] = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' : '$2y$';
 
 /*
  | -------------------------------------------------------------------------
@@ -82,27 +83,27 @@ $config['salt_prefix']    = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' 
  | The controller should check this function and act
  | appropriately. If this variable set to 0, there is no maximum.
  */
-$config['site_title']                 = "Tiket Bioskop XXX";       // Site Title, example.com
-$config['admin_email']                = "admin@example.com"; // Admin Email, admin@example.com
-$config['default_group']              = 'members';           // Default group, use name
-$config['admin_group']                = 'admin';             // Default administrators group, use name
-$config['identity']                   = 'email';             // You can use any unique column in your table as identity column. The values in this column, alongside password, will be used for login purposes
-$config['min_password_length']        = 8;                   // Minimum Required Length of Password
-$config['max_password_length']        = 20;                  // Maximum Allowed Length of Password
-$config['email_activation']           = FALSE;               // Email Activation for registration
-$config['manual_activation']          = FALSE;               // Manual Activation for registration
-$config['remember_users']             = TRUE;                // Allow users to be remembered and enable auto-login
-$config['user_expire']                = 86500;               // How long to remember the user (seconds). Set to zero for no expiration
-$config['user_extend_on_login']       = FALSE;               // Extend the users cookies every time they auto-login
-$config['track_login_attempts']       = TRUE;                // Track the number of failed login attempts for each user or ip.
-$config['track_login_ip_address']     = TRUE;                // Track login attempts by IP Address, if FALSE will track based on identity. (Default: TRUE)
-$config['maximum_login_attempts']     = 3;                   // The maximum number of failed login attempts.
-$config['lockout_time']               = 600;                 /* The number of seconds to lockout an account due to exceeded attempts
-																You should not use a value below 60 (1 minute) */
+$config['site_title'] = 'Tiket Bioskop XXX';       // Site Title, example.com
+$config['admin_email'] = 'admin@example.com'; // Admin Email, admin@example.com
+$config['default_group'] = 'members';           // Default group, use name
+$config['admin_group'] = 'admin';             // Default administrators group, use name
+$config['identity'] = 'email';             // You can use any unique column in your table as identity column. The values in this column, alongside password, will be used for login purposes
+$config['min_password_length'] = 8;                   // Minimum Required Length of Password
+$config['max_password_length'] = 20;                  // Maximum Allowed Length of Password
+$config['email_activation'] = false;               // Email Activation for registration
+$config['manual_activation'] = false;               // Manual Activation for registration
+$config['remember_users'] = true;                // Allow users to be remembered and enable auto-login
+$config['user_expire'] = 86500;               // How long to remember the user (seconds). Set to zero for no expiration
+$config['user_extend_on_login'] = false;               // Extend the users cookies every time they auto-login
+$config['track_login_attempts'] = true;                // Track the number of failed login attempts for each user or ip.
+$config['track_login_ip_address'] = true;                // Track login attempts by IP Address, if FALSE will track based on identity. (Default: TRUE)
+$config['maximum_login_attempts'] = 3;                   // The maximum number of failed login attempts.
+$config['lockout_time'] = 600;                 /* The number of seconds to lockout an account due to exceeded attempts
+                                                                You should not use a value below 60 (1 minute) */
 $config['forgot_password_expiration'] = 0;                   // The number of seconds after which a forgot password request will expire. If set to 0, forgot password requests will not expire.
-$config['recheck_timer']              = 0;                   /* The number of seconds after which the session is checked again against database to see if the user still exists and is active.
-																Leave 0 if you don't want session recheck. if you really think you need to recheck the session against database, we would
-																recommend a higher value, as this would affect performance */
+$config['recheck_timer'] = 0;                   /* The number of seconds after which the session is checked again against database to see if the user still exists and is active.
+                                                                Leave 0 if you don't want session recheck. if you really think you need to recheck the session against database, we would
+                                                                recommend a higher value, as this would affect performance */
 
 /*
  | -------------------------------------------------------------------------
@@ -122,10 +123,10 @@ $config['identity_cookie_name'] = 'identity';
  | 	  'file' = Use the default CI config or use from a config file
  | 	  array  = Manually set your email config settings
  */
-$config['use_ci_email'] = FALSE; // Send Email using the builtin CI email class, if false it will return the code and the identity
-$config['email_config'] = array(
-	'mailtype' => 'html',
-);
+$config['use_ci_email'] = false; // Send Email using the builtin CI email class, if false it will return the code and the identity
+$config['email_config'] = [
+    'mailtype' => 'html',
+];
 
 /*
  | -------------------------------------------------------------------------
@@ -172,15 +173,15 @@ $config['email_forgot_password_complete'] = 'new_password.tpl.php';
  | fbaa5e216d163a02ae630ab1a43372635dd374c0 with default salt.
  */
 $config['salt_length'] = 22;
-$config['store_salt']  = FALSE;
+$config['store_salt'] = false;
 
 /*
  | -------------------------------------------------------------------------
  | Message Delimiters.
  | -------------------------------------------------------------------------
  */
-$config['delimiters_source']       = 'config'; 	// "config" = use the settings defined here, "form_validation" = use the settings defined in CI's form validation library
+$config['delimiters_source'] = 'config'; 	// "config" = use the settings defined here, "form_validation" = use the settings defined in CI's form validation library
 $config['message_start_delimiter'] = ''; 	// Message start delimiter
-$config['message_end_delimiter']   = ''; 	// Message end delimiter
-$config['error_start_delimiter']   = '';		// Error message start delimiter
-$config['error_end_delimiter']     = '';	// Error message end delimiter
+$config['message_end_delimiter'] = ''; 	// Message end delimiter
+$config['error_start_delimiter'] = '';		// Error message start delimiter
+$config['error_end_delimiter'] = '';	// Error message end delimiter

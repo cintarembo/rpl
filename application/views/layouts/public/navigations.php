@@ -140,8 +140,8 @@
         <div class="control-panel">
         
             <?php if ($this->ion_auth->logged_in()) {
-                $user = $this->ion_auth->user()->row();
-                echo '
+    $user = $this->ion_auth->user()->row();
+    echo '
                 <div class="auth auth--home">
                     <div class="auth__show">
                         <span class="auth__image">
@@ -162,12 +162,12 @@
                 </div>
                 <a href="#" class="btn btn-md btn--warning btn--book btn-control--home login-window">Book a ticket</a>
                 ';
-            } else {
-                echo '
+} else {
+    echo '
                     <a href="'.base_url().'pub/home/login" class="btn btn--sign">Sign in</a>
                     <a href="#" class="btn btn-md btn--warning btn--book">Book a ticket</a>
                 ';
-            }?>
+}?>
         </div>
 
     </div>
