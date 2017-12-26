@@ -39,7 +39,7 @@
                     <a href="#" class="comment-link">Comments:  15</a>
 
                     <div class="movie__btns">
-                        <a href="#" class="btn btn-md btn--warning">book a ticket for this movie</a>
+                        <a href="<?php echo base_url()?>pub/home/book" class="btn btn-md btn--warning">book a ticket for this movie</a>
                         <a href="#" class="watchlist">Add to watchlist</a>
                     </div>
 
