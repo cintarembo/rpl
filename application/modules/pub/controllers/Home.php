@@ -46,6 +46,28 @@ class Home extends MY_Controller
         }  
     }
 
+    public function book()
+    {
+        $this->data['film'] = $this->film->get_all();
+        $this->render('book/step1');
+    }
+
+    public function book2()
+    {
+        $this->data['film'] = $this->film->get_all();
+        $this->render('book/step2');
+    }
+
+    public function book3()
+    {
+        $this->render('book/step3');
+    }
+
+    public function checkout()
+    {
+        $this->render('book/checkout');
+    }
+
     public function login(){
         $this->render('auth/login');
     }
