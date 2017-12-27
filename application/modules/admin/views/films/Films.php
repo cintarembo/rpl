@@ -12,26 +12,37 @@
               <div class="card box-shadow">
                 <a href="#">
                     <img class="card-img-top"
-                      src="<?php echo UPLOADPATH.'255x220/'.$f->cover ?>" alt="<?php echo $f->judul?>">
+                      src="<?php echo UPLOADPATH.'255x220/'.$f->cover; ?>" alt="<?php echo $f->judul; ?>">
                 </a>
                 <!-- Basic Informations -->
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#"><?php echo $f->judul ?></a>
+                    <a href="#"><?php echo $f->judul; ?></a>
                   </h4>
-                  <p class="card-text"><?php echo $f->sinopsis ?></p>
-                  <small><i><?php echo 'Tanggal :'.$f->tanggal_tayang.'<br>Jam: '.$f->jam_tayang?></i></small>
+                  <p class="card-text"><?php echo $f->sinopsis; ?></p>
+                  <small><i><?php echo 'Tanggal :'.$f->mulai_tayang.'<br>Durasi: '.$f->durasi; ?> min</i></small>
                   <br>
+                  <small><p><?php 
+                  $genre = $this->gfm->where('id_film', $f->id_film)->with_genre()->get_all();
+                  $a = count($genre);
+                  foreach ($genre as $g) {
+                      foreach ($g->genre as $gg) {
+                          echo $gg->genre;
+                          $koma = ($a > 1) ? ' | ' : '';
+                          echo $koma;
+                          $a = $a - 1;
+                      }
+                  } ?></p></small>
                   <div class="btn-group float-right filters-button-group" role="group">
-                    <button type="button" class="btn btn-sm btn-default edit-film" data-id="<?php echo $f->id_film ?>">Edit</button>    
-                    <button type="button" class="btn btn-sm btn-danger delete-film" data-id="<?php echo $f->id_film ?>">Delete</button>
+                    <button type="button" class="btn btn-sm btn-default edit-film" data-id="<?php echo $f->id_film; ?>">Edit</button>    
+                    <button type="button" class="btn btn-sm btn-danger delete-film" data-id="<?php echo $f->id_film; ?>">Delete</button>
                   </div>
                 </div>
                 <!-- .Basic Informations -->
               </div>
             </div>
             <!-- .Column Film -->
-          <?php endforeach;?>
+          <?php endforeach; ?>
         <?php else: ?>
         <p>Maaf, belum ada film yang tersedia.</p>
         <?php endif; ?>
@@ -67,10 +78,10 @@
   let a = document.getElementById('tambahFilm');
   a.addEventListener('click', function (e) {
       e.preventDefault();
-      Pjax.assign('<?php echo base_url()?>admin/films/addFilms');
+      Pjax.assign('<?php echo base_url(); ?>admin/films/addFilms');
   });
 
-<?php if(!empty($film)): ?>
+<?php if (!empty($film)): ?>
   let b = document.getElementsByClassName('edit-film');
   for (const edit of b) {
     edit.addEventListener('click', function (e) {
@@ -97,7 +108,7 @@
                     bgColor: 'rgb(0, 202, 67)',
                     fontColor: '#fff' 
                 },(res)=>{
-                    Pjax.assign('<?php echo base_url()?>admin/films');
+                    Pjax.assign('<?php echo base_url(); ?>admin/films');
                 });
            })
            .catch((err)=>{
@@ -106,11 +117,11 @@
                     bgColor: 'rgb(255, 46, 46)',
                     fontColor: '#fff' 
                 },(res)=>{
-                    Pjax.assign('<?php echo base_url()?>admin/films');
+                    Pjax.assign('<?php echo base_url(); ?>admin/films');
                 });
            }); 
       });  
     });
   }
-<?php endif;?>
+<?php endif; ?>
 </script>
