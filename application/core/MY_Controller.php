@@ -7,6 +7,9 @@ class MY_Controller extends MX_Controller
 {
     protected $data = [];
 
+    /**
+     * MY_Controller constructor.
+     */
     public function __construct()
     {
         $this->load->add_package_path(APPPATH.'third_party/ion_auth/');
@@ -14,6 +17,10 @@ class MY_Controller extends MX_Controller
         parent::__construct();
     }
 
+    /**
+     * @param null $the_view
+     * @param string $template
+     */
     protected function render($the_view = null, $template = 'admin')
     {
         if (is_null($template)) {
@@ -24,6 +31,10 @@ class MY_Controller extends MX_Controller
         }
     }
 
+    /**
+     * @param $string
+     * @return null|string|string[]
+     */
     public function number($string)
     {
         $a = preg_replace('/[^0-9]/', '', $string);
