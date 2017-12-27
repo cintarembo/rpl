@@ -4,12 +4,35 @@
 
 namespace Composer\Autoload;
 
-class autoload_static
+class ComposerStaticInit7de80da4c465615f61ed207bbd78919f
 {
-    public static $prefixesPsr0 = array(
-        'o' => array(
-            'org\\bovigo\\vfs' => array(
-                0 => __DIR__.'/..'.'/mikey179/vfsStream/src/main/php',
+    public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Twig\\' => 5,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'o' => 
+        array (
+            'org\\bovigo\\vfs' => 
+            array (
+                0 => __DIR__ . '/..' . '/mikey179/vfsStream/src/main/php',
+            ),
+        ),
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
             ),
         ),
     );
@@ -17,7 +40,10 @@ class autoload_static
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixesPsr0 = ComposerStaticInit2564e66fa633dbde8e8d187f94fa3782::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7de80da4c465615f61ed207bbd78919f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7de80da4c465615f61ed207bbd78919f::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit7de80da4c465615f61ed207bbd78919f::$prefixesPsr0;
+
         }, null, ClassLoader::class);
     }
 }
