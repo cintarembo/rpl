@@ -9,22 +9,24 @@ class Home extends MY_Controller
     {
         parent::__construct();
         $this->load->model(array(
-            'admin/films/films_model'=> 'film',
-            'admin/films/genre_model'=> 'genre',
-            'admin/films/genrefilm_model'=>'gfm',
-            'admin/films/studio_model'=>'studio'
+            'admin/films/films_model' => 'film',
+            'admin/films/genre_model' => 'genre',
+            'admin/films/genrefilm_model' => 'gfm',
+            'admin/films/studio_model' => 'studio',
+            'admin/films/film_studio_model'=>'fsm'
         ));
     }
 
     /**
-     * Render view 
-     * Sepert blade pada laravel
+     * Render view
+     * Sepert blade pada laravel.
+     *
      * @param mixed $the_view
      * @param mixed $template='public'
-     * @return void
      */
-    protected function render($the_view = NULL,$template='public'){
-        parent::render($the_view,$template);
+    protected function render($the_view = null, $template = 'public')
+    {
+        parent::render($the_view, $template);
     }
 
     public function index()
@@ -35,18 +37,18 @@ class Home extends MY_Controller
 
     /**
      * view
-     * Membuat view untuk single movie berdasarkan slug yang ada
+     * Membuat view untuk single movie berdasarkan slug yang ada.
+     *
      * @param mixed $slug
-     * @return void
      */
-    public function view($slug = NULL)
+    public function view($slug = null)
     {
-        $this->data['film'] = $this->film->where('slug',$slug)->get();
+        $this->data['film'] = $this->film->where('slug', $slug)->get();
         if (empty($this->data['film'])) {
             $this->render('error/404');
         } else {
             $this->render('film/single');
-        }  
+        }
     }
 
     public function book()
@@ -60,15 +62,6 @@ class Home extends MY_Controller
         $this->data['film'] = $this->film->get_all();
         $this->render('book/step2');
     }
-    public function test()
-    {
-        $movie = $this->input->get('choosen-movie');
-        if(!empty($movie)){
-            print_r($movie);
-        }else{
-            echo 'hahahha';
-        }
-    }
 
     public function book3()
     {
@@ -77,15 +70,18 @@ class Home extends MY_Controller
 
     public function checkout()
     {
+        $film = $this->input->get('film');
+        print_r($film);
         $this->render('book/checkout');
     }
 
-    public function login(){
+    public function login()
+    {
         $this->render('auth/login');
     }
 
-    public function register(){
+    public function register()
+    {
         $this->render('auth/register');
     }
-
 }

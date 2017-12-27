@@ -491,7 +491,7 @@
                     action = 'book3-reserve.html';
                 }
                 console.log(fullData);
-                qwest.get(base+'pub/home/test?'+fullData)
+                qwest.get(base+'pub/home/checkout?'+fullData)
                     .then((res)=>{
                         console.log(res);
                     })

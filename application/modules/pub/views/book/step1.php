@@ -29,7 +29,6 @@
                     <p class="choose-film__title"><?php echo $f->judul; ?></p>
                 </div>
             <?php endforeach; ?>
-            
         </div>
     </div>
 </div>
@@ -142,12 +141,12 @@
 <div class="clearfix"></div>
 
 <form id='film-and-time' class="booking-form" method='get' action="javascript:">
-    <input type='text' name='choosen-movie' class="choosen-movie">
-    <input type='text' name='choosen-city' class="choosen-city">
-    <input type='text' name='choosen-date' class="choosen-date">
+    <input type='text' name='film' class="choosen-movie">
+    <input type='text' name='lokasi' class="choosen-city">
+    <input type='text' name='tanggal' class="choosen-date">
     
-    <input type='text' name='choosen-cinema' class="choosen-cinema">
-    <input type='text' name='choosen-time' class="choosen-time">
+    <input type='text' name='studio' class="choosen-cinema">
+    <input type='text' name='jam' class="choosen-time">
 
     <div class="booking-pagination">
         <a href="#" class="booking-pagination__prev hide--arrow">
@@ -337,7 +336,6 @@
             // --- Step for data - serialize and send to next page---//
             $('.booking-form').submit(function() {
                 var bookData = $(this).serialize();
-                let movie = $('.choosen-movie').val();
                 Pjax.assign(base+'pub/home/book2?'+bookData);
             });
 

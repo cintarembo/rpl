@@ -23,10 +23,6 @@
                 </p>
                 
                 <div class="movie__rate">
-                    <?php 
-                        $studio = $this->studio->get($f->id_hall);
-                        echo ' <a href="#">'.$studio->nama.'</a>';
-                    ?>
                     <div class="score"></div>
                     <span class="movie__rating">5.0</span>
                 </div>               
