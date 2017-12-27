@@ -54,15 +54,15 @@ class Image_nation
                 $image_path = ($this->_size_folders) ? str_replace('\\', '/', FCPATH.$this->_parent_directory).'/'.$size.'/' : str_replace('\\', '/', FCPATH.$this->_parent_directory).'/';
                 $width_height = explode('x', $size);
                 $sizes_arr[$size] = [
-                    'width'             => $width_height[0],
-                    'height'            => $width_height[1],
-                    'master_dim'        => $this->_default_master_dim,
+                    'width' => $width_height[0],
+                    'height' => $width_height[1],
+                    'master_dim' => $this->_default_master_dim,
                     'keep_aspect_ratio' => $this->_keep_aspect_ratio,
-                    'style'             => $this->_default_style,
-                    'quality'           => $this->_default_quality,
-                    'directory'         => $image_path,
-                    'file_name'         => false,
-                    'overwrite'         => $this->_overwrite_images,
+                    'style' => $this->_default_style,
+                    'quality' => $this->_default_quality,
+                    'directory' => $image_path,
+                    'file_name' => false,
+                    'overwrite' => $this->_overwrite_images,
                 ];
             }
 
@@ -100,7 +100,7 @@ class Image_nation
 
         if (file_exists($source_image)) {
             $source_size = getimagesize($source_image);
-            $this->_images[] = ['source_image' => $source_image, 'image_name' => $image_name, 'source_width'=>$source_size[0], 'source_height'=>$source_size[1]];
+            $this->_images[] = ['source_image' => $source_image, 'image_name' => $image_name, 'source_width' => $source_size[0], 'source_height' => $source_size[1]];
         } else {
             $this->_errors[] = 'Image_nation: Couldn\'t find the image '.$source_image;
         }
@@ -193,7 +193,7 @@ class Image_nation
     private function _iterate_file_exists($path, $overwrite = false)
     {
         if (file_exists($path) && ($overwrite === false)) {
-            for ($i = 1; $i <= $this->_max_filename_increment; $i++) {
+            for ($i = 1; $i <= $this->_max_filename_increment; ++$i) {
                 $ext = pathinfo($path, PATHINFO_EXTENSION);
                 $new_file = rtrim($path, '.'.$ext);
                 $new_file .= '-'.$i.'.'.$ext;
@@ -340,11 +340,26 @@ class Image_nation
 
                 $file_name_arr = explode('/', $file_name);
                 $file_name = $file_name_arr[count($file_name_arr) - 1];
-                $this->_processed_images[$key][$image_size] = ['file_name'=>$file_name, 'path'=>$config['new_image'], 'errors'=>$errors];
+                $this->_processed_images[$key][$image_size] = ['file_name' => $file_name, 'path' => $config['new_image'], 'errors' => $errors];
             }
         }
 
         return $this->_processed_images;
+    }
+
+    public function delete($id)
+    {
+        $data = $this->film->get($id);
+        if (file_exists($image = FCPATH.'public/uploads/original/'.$data->cover)):
+            $size = $this->config->item('default_sizes', 'image_nation');
+        $a = explode('|', $size);
+        foreach ($a as $b) {
+            if (file_exists($img = FCPATH.'public/uploads/'.$b.'/'.$data->cover)) {
+                unlink($img);
+            }
+        }
+        unlink($image);
+        endif;
     }
 
     public function __get($var)
