@@ -350,16 +350,16 @@ class Image_nation
     public function delete($id)
     {
         $data = $this->film->get($id);
-        if (file_exists($image = FCPATH.'public/uploads/original/'.$data->cover)):
+        if (file_exists($image = FCPATH.'public/uploads/original/'.$data->cover)) {
+            unlink($image);
             $size = $this->config->item('default_sizes', 'image_nation');
-        $a = explode('|', $size);
-        foreach ($a as $b) {
-            if (file_exists($img = FCPATH.'public/uploads/'.$b.'/'.$data->cover)) {
-                unlink($img);
+            $a = explode('|', $size);
+            foreach ($a as $b) {
+                if (file_exists($img = FCPATH.'public/uploads/'.$b.'/'.$data->cover)) {
+                    unlink($img);
+                }
             }
         }
-        unlink($image);
-        endif;
     }
 
     public function __get($var)
