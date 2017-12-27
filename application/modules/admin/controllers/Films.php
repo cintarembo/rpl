@@ -150,7 +150,7 @@ class Films extends MY_Controller
 
                 /* Resize images */
                 if ($this->upload->do_upload('coverfilm')) {
-                    $this->image_nation->delete($id);
+                    $this->image->delete($id);
                     $this->image->source($this->upload->data('file_name'));
                     $this->image->process('255x220|380x600|424x424|526x773|400x420');
                     $data = [
