@@ -2,6 +2,9 @@
 
 class Home extends MY_Controller
 {
+    /**
+     * Home constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -15,7 +18,7 @@ class Home extends MY_Controller
 
     /**
      * Render view 
-     * Sepert blade pada laravel hehe
+     * Sepert blade pada laravel
      * @param mixed $the_view
      * @param mixed $template='public'
      * @return void
@@ -56,6 +59,15 @@ class Home extends MY_Controller
     {
         $this->data['film'] = $this->film->get_all();
         $this->render('book/step2');
+    }
+    public function test()
+    {
+        $movie = $this->input->get('choosen-movie');
+        if(!empty($movie)){
+            print_r($movie);
+        }else{
+            echo 'hahahha';
+        }
     }
 
     public function book3()
