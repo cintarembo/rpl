@@ -5,7 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require APPPATH.'third_party/MX/Controller.php';
 class MY_Controller extends MX_Controller
 {
-    protected $data = [];
+    protected $data = array();
 
     /**
      * MY_Controller constructor.
@@ -18,7 +18,7 @@ class MY_Controller extends MX_Controller
     }
 
     /**
-     * @param null $the_view
+     * @param null   $the_view
      * @param string $template
      */
     protected function render($the_view = null, $template = 'admin')
@@ -33,6 +33,7 @@ class MY_Controller extends MX_Controller
 
     /**
      * @param $string
+     *
      * @return null|string|string[]
      */
     public function number($string)
