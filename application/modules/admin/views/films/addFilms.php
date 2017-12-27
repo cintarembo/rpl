@@ -1,3 +1,7 @@
+<!-- Include Choices CSS -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendor/choices/assets/styles/css/choices.min.css">
+<!-- Include Choices JavaScript -->
+<script src="<?php echo base_url(); ?>public/assets/vendor/choices/assets/scripts/dist/choices.min.js"></script>
 <!-- Page Title -->
 <button class="btn btn-warning float-right" id="kembali">Kembali</button>
 <h1 class="my-4">Tambah Film Baru</h1>
@@ -16,46 +20,70 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="tanggal-tayang">Tanggal Tayang</label>
-                        <input type="text" class="form-control" data-validate-field="tanggal" id="tanggal-tayang" name="tanggal-tayang" placeholder="Masukkan tanggal tayang" required>
+                        <label for="tanggal-tayang">Mulai Tayang</label>
+                        <input type="text" class="form-control" id="mulai-tayang" name="mulai-tayang" placeholder="Masukkan tanggal mulai tayang" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="jam-tayang">Jam Tayang</label>
-                        <input type="text" class="form-control" data-validate-field="jam" data-toggle="timepicker" id="jam-tayang" name="jam-tayang" placeholder="Masukkan jam tayang" required>
+                        <label for="tanggal-tayang">Akhir Tayang</label>
+                        <input type="text" class="form-control" id="selesai-tayang" name="selesai-tayang" placeholder="Masukkan tanggal akhir tayang" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="durasi">Durasi Film</label>
-                        <input type="text" class="form-control" data-validate-field="durasi" id="durasi-film" name="durasi-film" placeholder="Masukkan durasi film" required>
+                        <input type="text" class="form-control" id="durasi-film" name="durasi-film" placeholder="Masukkan durasi film" value="0" required>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="genrefilm">Genre</label>
-                        <select name="genrefilm" id="genrefilm" class="form-control" required>
-                            <?php foreach ($genre as $g): ?>
-                            <option value="<?php echo $g->id_genre ?>"><?php echo $g->genre?></option>
+                        <label for="genre">Genre</label>
+                        <select class="form-control" name="genrefilm[]" id="genrefilm" placeholder="Silahkan pilih genre"
+                            multiple>
+                            <?php foreach ($genre as $s): ?>
+                                <option value="<?php echo $s->id_genre; ?>"><?php echo $s->genre; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="harga">Harga Tiket</label>
-                        <input type="text" class="form-control" data-validate-field="harga" id="harga-tiket" name="harga-tiket" placeholder="Masukkan harga tiket" required>
+                        <label for="studio">Studio</label>
+                        <select class="form-control" name="studio[]" id="studio" placeholder="Silahkan pilih studio"
+                            multiple>
+                            <?php foreach ($studio as $s): ?>
+                                <option value="<?php echo $s->id; ?>"><?php echo $s->nama; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="studio">Studio</label>
-                        <select name="studio" id="studio" class="form-control" required>
-                            <?php foreach ($studio as $s): ?>
-                                <option value="<?php echo $s->id ?>"><?php echo $s->nama?></option>
+                        <label for="jam-tayang">Jam Tayang</label>
+                        <select class="form-control" name="jam[]" id="jam" placeholder="Silahkan pilih jam tayang"
+                            multiple>
+                            <?php 
+                                $a = 0;
+                                $b = 0;
+                                for ($i = 0; $i <= 23; ++$i) {
+                                    for ($j = 0; $j <= 11; ++$j) {
+                                        $zero = ($i < 10) ? '0' : '';
+                                        $zero2 = ($a < 10) ? '0' : '';
+                                        echo '<option value="'.$b.':'.$a.':00">'.$zero.''.$b.':'.$zero2.''.$a.':00</option>
+                                        ';
+                                        $a += 5;
+                                    }
+                                    if ($a = 55) {
+                                        $a = 0;
+                                    }
+                                    ++$b;
+                                }
+                            ?>
+                            <?php foreach ($jam as $s): ?>
+                                <option value="<?php echo $s->id; ?>"><?php echo $s->jam; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -130,13 +158,23 @@
         let a = new FormData(form);
         qwest.post('admin/films/addfilms',a)
              .then((res) => {
-                alerty.toasts('Berhasil menambahkan film!',{
-                    place:'top',  
-                    bgColor: 'rgb(0, 202, 67)',
-                    fontColor: '#fff' 
-                },(res)=>{
-                    Pjax.assign('<?php echo base_url()?>admin/films');
-                });
+                let data = JSON.parse(res);
+                if(data.status==true){
+                    alerty.toasts(data.msg,{
+                        place:'top',  
+                        bgColor: 'rgb(0, 202, 67)',
+                        fontColor: '#fff' 
+                    },(res)=>{
+                        //Pjax.assign('<?php echo base_url(); ?>admin/films');
+                    });
+                }else{
+                    alerty.toasts(data.msg,{
+                        place:'top',  
+                        bgColor: 'red',
+                        fontColor: '#fff' 
+                    },(res)=>{
+                    });
+                }
              })
              .catch((err) => {
                 alerty.toasts('Terjadi suatu kesalahan, silahkan periksa kembali',{
@@ -149,14 +187,19 @@
 
     document.getElementById('kembali').onclick = (e) => {
         e.preventDefault();
-        Pjax.assign('<?php echo base_url()?>admin/films');
+        Pjax.assign('<?php echo base_url(); ?>admin/films');
     }
 
     /**DatePicker and Timepicker*/
-    let tgl = document.querySelector('.form-group [name="tanggal-tayang"]');
+    let tgl = document.getElementById('mulai-tayang');
+    let atgl = document.getElementById('selesai-tayang');
     tgl.DatePickerX.init({
         mondayFirst: true,
         minDate    : new Date(2017, 8, 13)
+    });
+    atgl.DatePickerX.init({
+        mondayFirst: true,
+        minDate    : new Date(2017, 8, 23)
     });
 
     timepicker.load({
@@ -164,11 +207,6 @@
         defaultHour: 7
     });
 
-    VMasker(document.querySelector("#harga-tiket")).maskMoney({
-        precision: 0,
-        delimiter: '.',
-        unit: 'Rp',
-    });
 
     VMasker(document.querySelector("#durasi-film")).maskMoney({
         precision: 0,
@@ -179,6 +217,14 @@
 
     topbar.hide();
 
-    
+    new Choices('#studio', {
+        removeItemButton: true,
+    });
+    new Choices('#genrefilm', {
+        removeItemButton: true,
+    });
+    new Choices('#jam', {
+        removeItemButton: true,
+    });
 
 </script>
