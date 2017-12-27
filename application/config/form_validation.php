@@ -11,23 +11,18 @@ $config = [
                         'rules' => 'required|trim',
                 ],
                 [
-                        'field' => 'tanggal-tayang',
-                        'label' => 'tanggal tayang',
+                        'field' => 'mulai-tayang',
+                        'label' => 'mulai tayang',
                         'rules' => 'required|trim',
                 ],
                 [
-                        'field' => 'jam-tayang',
-                        'label' => 'jam tayang',
+                        'field' => 'selesai-tayang',
+                        'label' => 'selesai tayang',
                         'rules' => 'required|trim',
                 ],
                 [
                         'field' => 'durasi-film',
                         'label' => 'durasi film',
-                        'rules' => 'required|trim',
-                ],
-                [
-                        'field' => 'harga-tiket',
-                        'label' => 'harga tiket',
                         'rules' => 'required|trim',
                 ],
         ],
@@ -80,5 +75,4 @@ $config = [
                         'rules' => 'required',
                 ],
         ],
-
 ];
