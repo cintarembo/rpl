@@ -18,11 +18,11 @@ class Image_nation
     private $_overwrite_images;
     private $_default_quality;
     private $_max_filename_increment = 100;
-    private $_sizes = [];
+    private $_sizes = array();
 
-    private $_errors = [];
-    private $_images = [];
-    private $_processed_images = [];
+    private $_errors = array();
+    private $_images = array();
+    private $_processed_images = array();
 
     public function __construct()
     {
@@ -37,7 +37,7 @@ class Image_nation
         $this->_default_style = $this->config->item('default_style', 'image_nation');
         $this->_overwrite_images = $this->config->item('overwrite_images', 'image_nation');
         $this->_default_quality = $this->config->item('default_quality', 'image_nation');
-        if (strlen($this->_parent_directory) == 0) {
+        if (strlen($this->_parent_directory) === 0) {
             $this->_parent_directory = $this->_source_directory;
         }
         $this->_sizes = $this->_set_defaults();
@@ -53,7 +53,7 @@ class Image_nation
             foreach ($sizes as $size) {
                 $image_path = ($this->_size_folders) ? str_replace('\\', '/', FCPATH.$this->_parent_directory).'/'.$size.'/' : str_replace('\\', '/', FCPATH.$this->_parent_directory).'/';
                 $width_height = explode('x', $size);
-                $sizes_arr[$size] = [
+                $sizes_arr[$size] = array(
                     'width' => $width_height[0],
                     'height' => $width_height[1],
                     'master_dim' => $this->_default_master_dim,
@@ -63,7 +63,7 @@ class Image_nation
                     'directory' => $image_path,
                     'file_name' => false,
                     'overwrite' => $this->_overwrite_images,
-                ];
+                );
             }
 
             return $sizes_arr;
@@ -100,7 +100,7 @@ class Image_nation
 
         if (file_exists($source_image)) {
             $source_size = getimagesize($source_image);
-            $this->_images[] = ['source_image' => $source_image, 'image_name' => $image_name, 'source_width' => $source_size[0], 'source_height' => $source_size[1]];
+            $this->_images[] = array('source_image' => $source_image, 'image_name' => $image_name, 'source_width' => $source_size[0], 'source_height' => $source_size[1]);
         } else {
             $this->_errors[] = 'Image_nation: Couldn\'t find the image '.$source_image;
         }
@@ -134,7 +134,7 @@ class Image_nation
      */
     public function clear_sizes()
     {
-        $this->_sizes = [];
+        $this->_sizes = array();
 
         return true;
     }
@@ -193,7 +193,7 @@ class Image_nation
     private function _iterate_file_exists($path, $overwrite = false)
     {
         if (file_exists($path) && ($overwrite === false)) {
-            for ($i = 1; $i <= $this->_max_filename_increment; ++$i) {
+            for ($i = 1; $i <= $this->_max_filename_increment; $i++) {
                 $ext = pathinfo($path, PATHINFO_EXTENSION);
                 $new_file = rtrim($path, '.'.$ext);
                 $new_file .= '-'.$i.'.'.$ext;
@@ -246,7 +246,7 @@ class Image_nation
             $master_config['image_library'] = $this->_image_library;
             $master_config['create_thumb'] = false;
             foreach ($image['sizes'] as $image_size => $params) {
-                $size_config = [];
+                $size_config = array();
                 $size_config['source_image'] = $image['source_image'];
                 $size_config['quality'] = '100%';
                 if (!isset($params['directory'])) {
@@ -275,8 +275,8 @@ class Image_nation
                 $size_config['new_image'] = $this->_iterate_file_exists($size_config['new_image'], $params['overwrite']);
                 $source_ratio = $image['source_width'] / $image['source_height'];
                 $new_ratio = $params['width'] / $params['height'];
-                if ($params['keep_aspect_ratio'] === false && ($source_ratio != $new_ratio)) {
-                    if ($new_ratio > $source_ratio || (($new_ratio == 1) && ($source_ratio < 1))) {
+                if ($params['keep_aspect_ratio'] === false && ($source_ratio !== $new_ratio)) {
+                    if ($new_ratio > $source_ratio || (($new_ratio === 1) && ($source_ratio < 1))) {
                         $size_config['width'] = $image['source_width'];
                         $size_config['height'] = round($image['source_width'] / $new_ratio);
                         switch ($params['style']['vertical']) {
@@ -312,7 +312,7 @@ class Image_nation
 
                 $config = array_merge($master_config, $size_config);
                 $this->load->library('image_lib');
-                if ($params['keep_aspect_ratio'] === false && ($source_ratio != $new_ratio)) {
+                if ($params['keep_aspect_ratio'] === false && ($source_ratio !== $new_ratio)) {
                     $config['maintain_ratio'] = false;
                     $this->image_lib->initialize($config);
                     if (!$this->image_lib->crop()) {
@@ -335,12 +335,12 @@ class Image_nation
                 $this->image_lib->clear();
 
                 if (!isset($errors)) {
-                    $errors = [];
+                    $errors = array();
                 }
 
                 $file_name_arr = explode('/', $file_name);
                 $file_name = $file_name_arr[count($file_name_arr) - 1];
-                $this->_processed_images[$key][$image_size] = ['file_name' => $file_name, 'path' => $config['new_image'], 'errors' => $errors];
+                $this->_processed_images[$key][$image_size] = array('file_name' => $file_name, 'path' => $config['new_image'], 'errors' => $errors);
             }
         }
 

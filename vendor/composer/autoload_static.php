@@ -4,14 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2564e66fa633dbde8e8d187f94fa3782
+class autoload_static
 {
-    public static $prefixesPsr0 = array (
-        'o' => 
-        array (
-            'org\\bovigo\\vfs' => 
-            array (
-                0 => __DIR__ . '/..' . '/mikey179/vfsStream/src/main/php',
+    public static $prefixesPsr0 = array(
+        'o' => array(
+            'org\\bovigo\\vfs' => array(
+                0 => __DIR__.'/..'.'/mikey179/vfsStream/src/main/php',
             ),
         ),
     );
@@ -20,7 +18,6 @@ class ComposerStaticInit2564e66fa633dbde8e8d187f94fa3782
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixesPsr0 = ComposerStaticInit2564e66fa633dbde8e8d187f94fa3782::$prefixesPsr0;
-
         }, null, ClassLoader::class);
     }
 }
