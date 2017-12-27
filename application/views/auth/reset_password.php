@@ -19,4 +19,4 @@
 
 	<p><?php echo form_submit('submit', lang('reset_password_submit_btn')); ?></p>
 
-<?php echo form_close();?>
+<?php echo form_close(); ?>

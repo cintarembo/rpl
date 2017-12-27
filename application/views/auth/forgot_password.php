@@ -12,4 +12,4 @@
 
       <p><?php echo form_submit('submit', lang('forgot_password_submit_btn')); ?></p>
 
-<?php echo form_close();?>
+<?php echo form_close(); ?>

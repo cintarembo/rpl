@@ -5,7 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require APPPATH.'third_party/MX/Controller.php';
 class MY_Controller extends MX_Controller
 {
-    protected $data = array();
+    protected $data = [];
 
     /**
      * MY_Controller constructor.

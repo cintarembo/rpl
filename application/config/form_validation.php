@@ -3,76 +3,76 @@
      exit('No direct script access allowed');
  }
 
-$config = array(
-        'addFilms' => array(
-                array(
+$config = [
+        'addFilms' => [
+                [
                         'field' => 'judul',
                         'label' => 'judul film',
                         'rules' => 'required|trim',
-                ),
-                array(
+                ],
+                [
                         'field' => 'mulai-tayang',
                         'label' => 'mulai tayang',
                         'rules' => 'required|trim',
-                ),
-                array(
+                ],
+                [
                         'field' => 'selesai-tayang',
                         'label' => 'selesai tayang',
                         'rules' => 'required|trim',
-                ),
-                array(
+                ],
+                [
                         'field' => 'durasi-film',
                         'label' => 'durasi film',
                         'rules' => 'required|trim',
-                ),
-        ),
-        'login' => array(
-                array(
+                ],
+        ],
+        'login' => [
+                [
                         'field' => 'username',
                         'label' => $this->lang->line('login_identity_label'),
                         'rules' => 'required|trim',
-                ),
-                array(
+                ],
+                [
                         'field' => 'password',
                         'label' => $this->lang->line('login_password_label'),
                         'rules' => 'required|trim',
-                ),
-        ),
-        'register' => array(
-                array(
+                ],
+        ],
+        'register' => [
+                [
                         'field' => 'username',
                         'label' => $this->lang->line('login_identity_label'),
                         'rules' => 'required|trim',
-                ),
-                array(
+                ],
+                [
                         'field' => 'password',
                         'label' => $this->lang->line('login_password_label'),
                         'rules' => 'required|trim',
-                ),
-                array(
+                ],
+                [
                         'field' => 'email',
                         'label' => 'email',
                         'rules' => 'required|valid_email',
-                ),
-                array(
+                ],
+                [
                         'field' => 'nama-depan',
                         'label' => 'nama depan',
                         'rules' => 'required',
-                ),
-                array(
+                ],
+                [
                         'field' => 'nama-belakang',
                         'label' => 'nama belakang',
                         'rules' => 'required',
-                ),
-                array(
+                ],
+                [
                         'field' => 'alamat',
                         'label' => 'alamat',
                         'rules' => 'required',
-                ),
-                array(
+                ],
+                [
                         'field' => 'phone',
                         'label' => 'phone',
                         'rules' => 'required',
-                ),
-        ),
-);
+                ],
+        ],
+];

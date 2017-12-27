@@ -14,90 +14,90 @@ if ($argc === 3) {
 class Installer
 {
     protected $tmp_dir;
-    protected $packages = array();
+    protected $packages = [];
 
     public function __construct()
     {
         $this->tmp_dir = __DIR__.'/tmp';
         @mkdir($this->tmp_dir);
 
-        $this->packages = array(
-            'translations' => array(
-                'site' => 'github',
-                'user' => 'bcit-ci',
-                'repos' => 'codeigniter3-translations',
-                'name' => 'Translations for CodeIgniter System Messages',
-                'dir' => 'language',
+        $this->packages = [
+            'translations' => [
+                'site'           => 'github',
+                'user'           => 'bcit-ci',
+                'repos'          => 'codeigniter3-translations',
+                'name'           => 'Translations for CodeIgniter System Messages',
+                'dir'            => 'language',
                 'example_branch' => '3.1.0',
-             ),
-            'restserver' => array(
-                'site' => 'github',
-                'user' => 'chriskacerguis',
-                'repos' => 'codeigniter-restserver',
-                'name' => 'CodeIgniter Rest Server',
-                'dir' => array('config', 'controllers', 'language', 'libraries', 'views'),
-                'pre' => 'application/',
-                'msg' => 'See https://github.com/chriskacerguis/codeigniter-restserver',
+             ],
+            'restserver' => [
+                'site'           => 'github',
+                'user'           => 'chriskacerguis',
+                'repos'          => 'codeigniter-restserver',
+                'name'           => 'CodeIgniter Rest Server',
+                'dir'            => ['config', 'controllers', 'language', 'libraries', 'views'],
+                'pre'            => 'application/',
+                'msg'            => 'See https://github.com/chriskacerguis/codeigniter-restserver',
                 'example_branch' => '2.7.2',
-            ),
-            'matches-cli' => array(
-                'site' => 'github',
-                'user' => 'avenirer',
-                'repos' => 'codeigniter-matches-cli',
-                'name' => 'Codeigniter Matches CLI',
-                'dir' => array('config', 'controllers', 'views'),
-                'msg' => 'See http://avenirer.github.io/codeigniter-matches-cli/',
+            ],
+            'matches-cli' => [
+                'site'           => 'github',
+                'user'           => 'avenirer',
+                'repos'          => 'codeigniter-matches-cli',
+                'name'           => 'Codeigniter Matches CLI',
+                'dir'            => ['config', 'controllers', 'views'],
+                'msg'            => 'See http://avenirer.github.io/codeigniter-matches-cli/',
                 'example_branch' => 'master',
-            ),
-            'hmvc-modules' => array(
-                'site' => 'github',
-                'user' => 'jenssegers',
-                'repos' => 'codeigniter-hmvc-modules',
-                'name' => 'CodeIgniter HMVC Modules (jenssegers)',
-                'dir' => array('core', 'third_party'),
-                'msg' => 'See https://github.com/jenssegers/codeigniter-hmvc-modules#installation',
+            ],
+            'hmvc-modules' => [
+                'site'           => 'github',
+                'user'           => 'jenssegers',
+                'repos'          => 'codeigniter-hmvc-modules',
+                'name'           => 'CodeIgniter HMVC Modules (jenssegers)',
+                'dir'            => ['core', 'third_party'],
+                'msg'            => 'See https://github.com/jenssegers/codeigniter-hmvc-modules#installation',
                 'example_branch' => 'master',
-            ),
-            'modular-extensions-hmvc' => array(
-                'site' => 'bitbucket',
-                'user' => 'wiredesignz',
-                'repos' => 'codeigniter-modular-extensions-hmvc',
-                'name' => 'Modular Extensions - HMVC (wiredesignz)',
-                'dir' => array('core', 'third_party'),
-                'msg' => 'See https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc',
+            ],
+            'modular-extensions-hmvc' => [
+                'site'           => 'bitbucket',
+                'user'           => 'wiredesignz',
+                'repos'          => 'codeigniter-modular-extensions-hmvc',
+                'name'           => 'Modular Extensions - HMVC (wiredesignz)',
+                'dir'            => ['core', 'third_party'],
+                'msg'            => 'See https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc',
                 'example_branch' => 'codeigniter-3.x',
-            ),
-            'ion-auth' => array(
-                'site' => 'github',
-                'user' => 'benedmunds',
+            ],
+            'ion-auth' => [
+                'site'  => 'github',
+                'user'  => 'benedmunds',
                 'repos' => 'CodeIgniter-Ion-Auth',
-                'name' => 'Codeigniter Ion Auth',
-                'dir' => array(
+                'name'  => 'Codeigniter Ion Auth',
+                'dir'   => [
                     'config', 'controllers', 'language', 'libraries',
                     'migrations', 'models', 'sql', 'views',
-                ),
-                'msg' => 'See http://benedmunds.com/ion_auth/',
+                ],
+                'msg'            => 'See http://benedmunds.com/ion_auth/',
                 'example_branch' => '2',
-            ),
-            'filename-checker' => array(
-                'site' => 'github',
-                'user' => 'kenjis',
-                'repos' => 'codeigniter3-filename-checker',
-                'name' => 'CodeIgniter3 Filename Checker',
-                'dir' => 'controllers',
-                'msg' => 'See https://github.com/kenjis/codeigniter3-filename-checker',
+            ],
+            'filename-checker' => [
+                'site'           => 'github',
+                'user'           => 'kenjis',
+                'repos'          => 'codeigniter3-filename-checker',
+                'name'           => 'CodeIgniter3 Filename Checker',
+                'dir'            => 'controllers',
+                'msg'            => 'See https://github.com/kenjis/codeigniter3-filename-checker',
                 'example_branch' => 'master',
-            ),
-            'codeigniter-develbar' => array(
-                'site' => 'github',
-                'user' => 'jcsama',
-                'repos' => 'codeigniter-develbar',
-                'name' => 'codeigniter-develbar',
-                'dir' => array('config', 'core', 'third_party', 'controllers'),
-                'msg' => 'See https://github.com/JCSama/CodeIgniter-develbar',
+            ],
+            'codeigniter-develbar' => [
+                'site'           => 'github',
+                'user'           => 'jcsama',
+                'repos'          => 'codeigniter-develbar',
+                'name'           => 'codeigniter-develbar',
+                'dir'            => ['config', 'core', 'third_party', 'controllers'],
+                'msg'            => 'See https://github.com/JCSama/CodeIgniter-develbar',
                 'example_branch' => 'master',
-            ),
-        );
+            ],
+        ];
     }
 
     public function usage($self)
@@ -166,7 +166,7 @@ class Installer
             $src = realpath(dirname($filepath)."/$repos-$version/$pre$dir");
             $dst = realpath(__DIR__."/../application/$dir");
 
-            return array($src, $dst);
+            return [$src, $dst];
         }
 
         foreach ($dir as $directory) {
@@ -175,7 +175,7 @@ class Installer
             $dst[] = realpath(__DIR__."/../application/$directory");
         }
 
-        return array($src, $dst);
+        return [$src, $dst];
     }
 
     private function downloadFromBitbucket($package, $version)
@@ -193,7 +193,7 @@ class Installer
             $src = realpath(dirname($filepath)."/$dirname/$dir");
             $dst = realpath(__DIR__."/../application/$dir");
 
-            return array($src, $dst);
+            return [$src, $dst];
         }
 
         foreach ($dir as $directory) {
@@ -202,7 +202,7 @@ class Installer
             $dst[] = realpath(__DIR__."/../application/$directory");
         }
 
-        return array($src, $dst);
+        return [$src, $dst];
     }
 
     private function download($url)

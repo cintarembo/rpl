@@ -18,11 +18,11 @@ class Image_nation
     private $_overwrite_images;
     private $_default_quality;
     private $_max_filename_increment = 100;
-    private $_sizes = array();
+    private $_sizes = [];
 
-    private $_errors = array();
-    private $_images = array();
-    private $_processed_images = array();
+    private $_errors = [];
+    private $_images = [];
+    private $_processed_images = [];
 
     public function __construct()
     {
@@ -53,17 +53,17 @@ class Image_nation
             foreach ($sizes as $size) {
                 $image_path = ($this->_size_folders) ? str_replace('\\', '/', FCPATH.$this->_parent_directory).'/'.$size.'/' : str_replace('\\', '/', FCPATH.$this->_parent_directory).'/';
                 $width_height = explode('x', $size);
-                $sizes_arr[$size] = array(
-                    'width' => $width_height[0],
-                    'height' => $width_height[1],
-                    'master_dim' => $this->_default_master_dim,
+                $sizes_arr[$size] = [
+                    'width'             => $width_height[0],
+                    'height'            => $width_height[1],
+                    'master_dim'        => $this->_default_master_dim,
                     'keep_aspect_ratio' => $this->_keep_aspect_ratio,
-                    'style' => $this->_default_style,
-                    'quality' => $this->_default_quality,
-                    'directory' => $image_path,
-                    'file_name' => false,
-                    'overwrite' => $this->_overwrite_images,
-                );
+                    'style'             => $this->_default_style,
+                    'quality'           => $this->_default_quality,
+                    'directory'         => $image_path,
+                    'file_name'         => false,
+                    'overwrite'         => $this->_overwrite_images,
+                ];
             }
 
             return $sizes_arr;
@@ -100,7 +100,7 @@ class Image_nation
 
         if (file_exists($source_image)) {
             $source_size = getimagesize($source_image);
-            $this->_images[] = array('source_image' => $source_image, 'image_name' => $image_name, 'source_width' => $source_size[0], 'source_height' => $source_size[1]);
+            $this->_images[] = ['source_image' => $source_image, 'image_name' => $image_name, 'source_width' => $source_size[0], 'source_height' => $source_size[1]];
         } else {
             $this->_errors[] = 'Image_nation: Couldn\'t find the image '.$source_image;
         }
@@ -134,7 +134,7 @@ class Image_nation
      */
     public function clear_sizes()
     {
-        $this->_sizes = array();
+        $this->_sizes = [];
 
         return true;
     }
@@ -246,7 +246,7 @@ class Image_nation
             $master_config['image_library'] = $this->_image_library;
             $master_config['create_thumb'] = false;
             foreach ($image['sizes'] as $image_size => $params) {
-                $size_config = array();
+                $size_config = [];
                 $size_config['source_image'] = $image['source_image'];
                 $size_config['quality'] = '100%';
                 if (!isset($params['directory'])) {
@@ -335,12 +335,12 @@ class Image_nation
                 $this->image_lib->clear();
 
                 if (!isset($errors)) {
-                    $errors = array();
+                    $errors = [];
                 }
 
                 $file_name_arr = explode('/', $file_name);
                 $file_name = $file_name_arr[count($file_name_arr) - 1];
-                $this->_processed_images[$key][$image_size] = array('file_name' => $file_name, 'path' => $config['new_image'], 'errors' => $errors);
+                $this->_processed_images[$key][$image_size] = ['file_name' => $file_name, 'path' => $config['new_image'], 'errors' => $errors];
             }
         }
 
