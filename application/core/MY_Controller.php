@@ -24,4 +24,10 @@ class MY_Controller extends MX_Controller {
             $this->load->view($template.'_view', $this->data);
         }
     }
+
+    public function number($string)
+    {
+        $a = preg_replace('/[^0-9]/','',$string);
+        return $a; 
+    }
 }

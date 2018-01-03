@@ -1,7 +1,6 @@
 <!-- Page Title -->
 <button class="btn btn-warning float-right" id="kembali">Kembali</button>
 <h1 class="my-4">Tambah Film Baru</h1>
-
 <!-- Forms -->
 <div class="row">
     <div class="col-md-8">
@@ -14,28 +13,69 @@
                 <label for="sinopsis">Sinopsis Film</label>
                 <textarea class="form-control" name="sinopsis" id="sinopsis" cols="30" rows="7"></textarea>
             </div>
-            <div class="form-group">
-                <select name="genrefilm" id="genrefilm" class="form-control" required>
-                    <?php foreach ($genre as $g): ?>
-                    <option value="<?php echo $g->id_genre ?>"><?php echo $g->genre?></option>
-                    <?php endforeach; ?>
-                </select>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="tanggal-tayang">Tanggal Tayang</label>
+                        <input type="text" class="form-control" data-validate-field="tanggal" id="tanggal-tayang" name="tanggal-tayang" placeholder="Masukkan tanggal tayang" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="jam-tayang">Jam Tayang</label>
+                        <input type="text" class="form-control" data-validate-field="jam" data-toggle="timepicker" id="jam-tayang" name="jam-tayang" placeholder="Masukkan jam tayang" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="durasi">Durasi Film</label>
+                        <input type="text" class="form-control" data-validate-field="durasi" id="durasi-film" name="durasi-film" placeholder="Masukkan durasi film" required>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="tanggal-tayang">Tanggal Tayang</label>
-                <input type="text" class="form-control" data-validate-field="tanggal" id="tanggal-tayang" name="tanggal-tayang" placeholder="Masukkan tanggal tayang" required>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="genrefilm">Genre</label>
+                        <select name="genrefilm" id="genrefilm" class="form-control" required>
+                            <?php foreach ($genre as $g): ?>
+                            <option value="<?php echo $g->id_genre ?>"><?php echo $g->genre?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="harga">Harga Tiket</label>
+                        <input type="text" class="form-control" data-validate-field="harga" id="harga-tiket" name="harga-tiket" placeholder="Masukkan harga tiket" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="studio">Studio</label>
+                        <select name="studio" id="studio" class="form-control" required>
+                            <?php foreach ($studio as $s): ?>
+                                <option value="<?php echo $s->id ?>"><?php echo $s->nama?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="jam-tayang">Jam Tayang</label>
-                <input type="text" class="form-control" data-validate-field="jam" data-toggle="timepicker" id="jam-tayang" name="jam-tayang" placeholder="Masukkan jam tayang" required>
-            </div>
-            <div class="form-group">
-                <label for="durasi">Durasi Film</label>
-                <input type="text" class="form-control" data-validate-field="durasi" data-toggle="timepicker" id="durasi-film" name="durasi-film" placeholder="Masukkan durasi film" required>
-            </div>
-            <div class="form-group">
-                <label for="harga">Harga Tiket</label>
-                <input type="text" class="form-control" data-validate-field="harga" id="harga-tiket" name="harga-tiket" placeholder="Masukkan harga tiket" required>
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="form-switch">
+                        <input name="featured" type="checkbox">
+                        <i></i>
+                        Featured
+                    </label>
+                </div>
+                <div class="col-md-3">
+                <label class="form-switch">
+                    <input name="status" type="checkbox">
+                    <i></i>
+                    Status
+                </label>
+                </div>
             </div>
             <div class="form-group">
                 <div class="custom-file-container" data-upload-id="coverFilm">
@@ -122,6 +162,18 @@
     timepicker.load({
         interval: 5,
         defaultHour: 7
+    });
+
+    VMasker(document.querySelector("#harga-tiket")).maskMoney({
+        precision: 0,
+        delimiter: '.',
+        unit: 'Rp',
+    });
+
+    VMasker(document.querySelector("#durasi-film")).maskMoney({
+        precision: 0,
+        delimiter: '.',
+        suffixUnit: 'min',
     });
 
 
