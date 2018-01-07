@@ -5,13 +5,13 @@
 //Modernizr touch detect
 Modernizr.load({
 	test: Modernizr.touch,
-	yep: [ 'css/touch.css?v=1' ],
+	yep: ['css/touch.css?v=1'],
 	nope: []
 });
 
 //1. Scroll to top arrow
 // Scroll to top
-var $block = $('<div/>', { class: 'top-scroll' }).append('<a href="#"/>').hide().appendTo('body').click(function() {
+var $block = $('<div/>', { class: 'top-scroll' }).append('<a href="#"/>').hide().appendTo('body').click(function () {
 	$('body,html').animate({ scrollTop: 0 }, 800);
 	return false;
 });
@@ -26,7 +26,7 @@ if ($window.scrollTop() > 35) {
 }
 
 //handlers
-$window.scroll(function() {
+$window.scroll(function () {
 	if ($(this).scrollTop() > 35) {
 		showElem();
 	} else {
@@ -53,8 +53,8 @@ $('#navigation').mobileMenu({
 //3. Search bar dropdown
 //search bar
 $('#search-sort').selectbox({
-	onChange: function(val, inst) {
-		$(inst.input[0]).children().each(function(item) {
+	onChange: function (val, inst) {
+		$(inst.input[0]).children().each(function (item) {
 			$(this).removeAttr('selected');
 		});
 		$(inst.input[0]).find('[value="' + val + '"]').attr('selected', 'selected');
@@ -63,16 +63,16 @@ $('#search-sort').selectbox({
 
 //4. Login window pop up
 //Login pop up
-$('.login-window').click(function(e) {
+$('.login-window').click(function (e) {
 	e.preventDefault();
 	$('.overlay').removeClass('close').addClass('open');
 });
 
-$('.overlay-close').click(function(e) {
+$('.overlay-close').click(function (e) {
 	e.preventDefault;
 	$('.overlay').removeClass('open').addClass('close');
 
-	setTimeout(function() {
+	setTimeout(function () {
 		$('.overlay').removeClass('close');
 	}, 500);
 });
@@ -88,8 +88,8 @@ function init_Elements() {
 	//2. Dropdown
 	//select
 	$('#select-sort').selectbox({
-		onChange: function(val, inst) {
-			$(inst.input[0]).children().each(function(item) {
+		onChange: function (val, inst) {
+			$(inst.input[0]).children().each(function (item) {
 				$(this).removeAttr('selected');
 			});
 			$(inst.input[0]).find('[value="' + val + '"]').attr('selected', 'selected');
@@ -103,7 +103,7 @@ function init_Elements() {
 		showAnim: 'fade'
 	});
 
-	$(document).click(function(e) {
+	$(document).click(function (e) {
 		var ele = $(e.target);
 		if (
 			!ele.hasClass('datepicker__input') &&
@@ -117,19 +117,19 @@ function init_Elements() {
 
 	//4. Tabs
 	//Init 2 type tabs
-	$('#hTab a').click(function(e) {
+	$('#hTab a').click(function (e) {
 		e.preventDefault();
 		$(this).tab('show');
 	});
 
-	$('#vTab a').click(function(e) {
+	$('#vTab a').click(function (e) {
 		e.preventDefault();
 		$(this).tab('show');
 	});
 
 	//5. Mega select with filters
 	//Mega select interaction
-	$('.mega-select__filter').click(function(e) {
+	$('.mega-select__filter').click(function (e) {
 		//prevent the default behaviour of the link
 		e.preventDefault();
 		$('.select__field').val('');
@@ -161,15 +161,15 @@ function init_Elements() {
 
 	$('.filter--active').trigger('click');
 
-	$('.select__field').focus(function() {
+	$('.select__field').focus(function () {
 		$(this).parent().find('.active-dropdown').css('opacity', 1);
 	});
 
-	$('.select__field').blur(function() {
+	$('.select__field').blur(function () {
 		$(this).parent().find('.active-dropdown').css('opacity', 0);
 	});
 
-	$('.select__variant').click(function() {
+	$('.select__variant').click(function () {
 		var value = $(this).attr('data-value');
 
 		$('.select__field').val(value);
@@ -178,7 +178,7 @@ function init_Elements() {
 	//6. Progressbar
 	//Count function for progressbar
 	function init_progressBar(duration) {
-		$('.progress').each(function() {
+		$('.progress').each(function () {
 			var value = $(this).find('.progress__bar').attr('data-level');
 			var result = value + '%';
 			if (duration) {
@@ -190,7 +190,7 @@ function init_Elements() {
 	}
 
 	//inview progress bars
-	$('.progress').one('inview', function(event, visible) {
+	$('.progress').one('inview', function (event, visible) {
 		if (visible == true) {
 			init_progressBar(2000);
 		}
@@ -198,12 +198,12 @@ function init_Elements() {
 
 	//7. Dropdown for authorize button
 	//user list option
-	$('.auth__show').click(function(e) {
+	$('.auth__show').click(function (e) {
 		e.preventDefault();
 		$('.auth__function').toggleClass('open-function');
 	});
 
-	$('.btn--singin').click(function(e) {
+	$('.btn--singin').click(function (e) {
 		e.preventDefault();
 		$('.auth__function').toggleClass('open-function');
 	});
@@ -251,7 +251,7 @@ function init_Home() {
 		fullScreen: 'off'
 	});
 
-	api.bind('revolution.slide.onchange', function(e, data) {
+	api.bind('revolution.slide.onchange', function (e, data) {
 		var slides = $('.banner .slide');
 		var currentSlide = data.slideIndex;
 
@@ -271,19 +271,19 @@ function init_Home() {
 
 	//2. Dropdown for authorize button
 	//user list option
-	$('.auth__show').click(function(e) {
+	$('.auth__show').click(function (e) {
 		e.preventDefault();
 		$('.auth__function').toggleClass('open-function');
 	});
 
-	$('.btn--singin').click(function(e) {
+	$('.btn--singin').click(function (e) {
 		e.preventDefault();
 		$('.auth__function').toggleClass('open-function');
 	});
 
 	//3. Mega select with filters (and markers)
 	//Mega select interaction
-	$('.mega-select__filter').click(function(e) {
+	$('.mega-select__filter').click(function (e) {
 		//prevent the default behaviour of the link
 		e.preventDefault();
 		$('.select__field').val('');
@@ -325,17 +325,17 @@ function init_Home() {
 	$('.filter--active').trigger('click');
 	$('.active-dropdown').css('z-index', '-1');
 
-	$('.select__field').focus(function() {
+	$('.select__field').focus(function () {
 		$(this).parent().find('.active-dropdown').css('opacity', 1);
 		$(this).parent().find('.active-dropdown').css('z-index', '50');
 	});
 
-	$('.select__field').blur(function() {
+	$('.select__field').blur(function () {
 		$(this).parent().find('.active-dropdown').css('opacity', 0);
 		$(this).parent().find('.active-dropdown').css('z-index', '-1');
 	});
 
-	$('.select__variant').click(function(e) {
+	$('.select__variant').click(function (e) {
 		e.preventDefault();
 		$(this).parent().find('.active-dropdown').css('z-index', '50');
 		var value = $(this).attr('data-value');
@@ -360,7 +360,7 @@ function init_Home() {
 
 	//5. Scroll down navigation function
 	//scroll down
-	$('.movie-best__check').click(function(ev) {
+	$('.movie-best__check').click(function (ev) {
 		ev.preventDefault();
 		$('html, body').stop().animate({ scrollTop: $('#target').offset().top - 30 }, 900, 'swing');
 	});
@@ -373,8 +373,8 @@ function init_CinemaList() {
 	//1. Dropdowns
 	//select
 	$('.select__sort').selectbox({
-		onChange: function(val, inst) {
-			$(inst.input[0]).children().each(function(item) {
+		onChange: function (val, inst) {
+			$(inst.input[0]).children().each(function (item) {
 				$(this).removeAttr('selected');
 			});
 			$(inst.input[0]).find('[value="' + val + '"]').attr('selected', 'selected');
@@ -383,7 +383,7 @@ function init_CinemaList() {
 
 	//2. Sorting buy category
 	// sorting function
-	$('.tags__item').click(function(e) {
+	$('.tags__item').click(function (e) {
 		//prevent the default behaviour of the link
 		e.preventDefault();
 
@@ -433,24 +433,24 @@ function init_Contact() {
 
 	//Custome map style
 	var map_style = [
-		{ stylers: [ { saturation: -100 }, { gamma: 3 } ] },
-		{ elementType: 'labels.text.stroke', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.business', elementType: 'labels.text', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.business', elementType: 'labels.icon', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.place_of_worship', elementType: 'labels.text', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.place_of_worship', elementType: 'labels.icon', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'road', elementType: 'geometry', stylers: [ { visibility: 'simplified' } ] },
+		{ stylers: [{ saturation: -100 }, { gamma: 3 }] },
+		{ elementType: 'labels.text.stroke', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'poi.business', elementType: 'labels.text', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'poi.business', elementType: 'labels.icon', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'poi.place_of_worship', elementType: 'labels.text', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'poi.place_of_worship', elementType: 'labels.icon', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'road', elementType: 'geometry', stylers: [{ visibility: 'simplified' }] },
 		{
 			featureType: 'water',
-			stylers: [ { visibility: 'on' }, { saturation: 0 }, { gamma: 2 }, { hue: '#aaaaaa' } ]
+			stylers: [{ visibility: 'on' }, { saturation: 0 }, { gamma: 2 }, { hue: '#aaaaaa' }]
 		},
 		{
 			featureType: 'administrative.neighborhood',
 			elementType: 'labels.text.fill',
-			stylers: [ { visibility: 'off' } ]
+			stylers: [{ visibility: 'off' }]
 		},
-		{ featureType: 'road.local', elementType: 'labels.text', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'transit.station', elementType: 'labels.icon', stylers: [ { visibility: 'off' } ] }
+		{ featureType: 'road.local', elementType: 'labels.text', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'transit.station', elementType: 'labels.icon', stylers: [{ visibility: 'off' }] }
 	];
 
 	//Then we use this data to create the styles.
@@ -496,7 +496,7 @@ function init_Contact() {
 	var infoboxA = new InfoBox(infoboxOptionsA);
 
 	//Add an 'event listener' to the Glastonbury map marker to listen out for when it is clicked.
-	google.maps.event.addListener(marker, 'click', function(e) {
+	google.maps.event.addListener(marker, 'click', function (e) {
 		//Open the Glastonbury info box.
 		infoboxA.open(map, this);
 		//Sets the Glastonbury marker to be the center of the map.
@@ -519,7 +519,7 @@ function init_Gallery() {
 		gallery: {
 			enabled: true,
 			navigateByImgClick: true,
-			preload: [ 0, 1 ] // Will preload 0 - before current, and 1 after the current image
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
 		}
 	});
 
@@ -534,7 +534,7 @@ function init_Gallery() {
 		gallery: {
 			enabled: true,
 			navigateByImgClick: true,
-			preload: [ 0, 1 ] // Will preload 0 - before current, and 1 after the current image
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
 		}
 	});
 
@@ -549,7 +549,7 @@ function init_Gallery() {
 		fixedContentPos: false,
 		gallery: {
 			enabled: true,
-			preload: [ 0, 1 ] // Will preload 0 - before current, and 1 after the current image
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
 		}
 	});
 
@@ -564,7 +564,7 @@ function init_Gallery() {
 		fixedContentPos: false,
 		gallery: {
 			enabled: true,
-			preload: [ 0, 1 ] // Will preload 0 - before current, and 1 after the current image
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
 		}
 	});
 }
@@ -575,8 +575,8 @@ function init_MovieList() {
 	//1. Dropdown init
 	//select
 	$('.select__sort').selectbox({
-		onChange: function(val, inst) {
-			$(inst.input[0]).children().each(function(item) {
+		onChange: function (val, inst) {
+			$(inst.input[0]).children().each(function (item) {
 				$(this).removeAttr('selected');
 			});
 			$(inst.input[0]).find('[value="' + val + '"]').attr('selected', 'selected');
@@ -590,7 +590,7 @@ function init_MovieList() {
 		showAnim: 'fade'
 	});
 
-	$(document).click(function(e) {
+	$(document).click(function (e) {
 		var ele = $(e.target);
 		if (
 			!ele.hasClass('datepicker__input') &&
@@ -614,7 +614,7 @@ function init_MovieList() {
 
 	//4. Sorting by category
 	// sorting function
-	$('.tags__item').click(function(e) {
+	$('.tags__item').click(function (e) {
 		//prevent the default behaviour of the link
 		e.preventDefault();
 
@@ -639,13 +639,13 @@ function init_MovieList() {
 
 	//5. Toggle function for additional content
 	//toggle timetable show
-	$('.movie__show-btn').click(function(ev) {
+	$('.movie__show-btn').click(function (ev) {
 		ev.preventDefault();
 
 		$(this).parents('.movie--preview').find('.time-select').slideToggle(500);
 	});
 
-	$('.time-select__item').click(function() {
+	$('.time-select__item').click(function () {
 		$('.time-select__item').removeClass('active');
 		$(this).addClass('active');
 	});
@@ -653,6 +653,11 @@ function init_MovieList() {
 
 function init_MoviePage() {
 	'use strict';
+
+	var cinema = $('.choosen-cinema'),
+		time = $('.choosen-time'),
+		date = $('.choosen-date'),
+		movie = $('.choosen-movie');
 
 	//1. Rating scrore init
 	//Rating star
@@ -674,7 +679,7 @@ function init_MoviePage() {
 	$('.swiper-slide-active').css({ marginLeft: '-1px' });
 
 	//Media switch
-	$('.list--photo').click(function(e) {
+	$('.list--photo').click(function (e) {
 		e.preventDefault();
 
 		var mediaFilter = $(this).attr('data-filter');
@@ -689,7 +694,7 @@ function init_MoviePage() {
 		$('.swiper-slide-active').css({ marginLeft: '-1px' });
 	});
 
-	$('.list--video').click(function(e) {
+	$('.list--video').click(function (e) {
 		e.preventDefault();
 
 		var mediaFilter = $(this).attr('data-filter');
@@ -729,7 +734,7 @@ function init_MoviePage() {
 	}
 
 	//Resize detect
-	$(window).resize(function() {
+	$(window).resize(function () {
 		if (($(window).width() > 760) & ($(window).width() < 992)) {
 			mySwiper.params.slidesPerView = 2;
 			mySwiper.reInit();
@@ -764,10 +769,10 @@ function init_MoviePage() {
 
 		gallery: {
 			enabled: true,
-			preload: [ 0, 1 ] // Will preload 0 - before current, and 1 after the current image
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
 		},
 
-		disableOn: function() {
+		disableOn: function () {
 			return toggle;
 		}
 	});
@@ -784,16 +789,16 @@ function init_MoviePage() {
 		gallery: {
 			enabled: true,
 			navigateByImgClick: true,
-			preload: [ 0, 1 ] // Will preload 0 - before current, and 1 after the current image
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
 		},
 
-		disableOn: function() {
+		disableOn: function () {
 			return toggle;
 		}
 	});
 
 	//detect if was move after click
-	$('.movie__media .swiper-slide').on('mousedown', function(e) {
+	$('.movie__media .swiper-slide').on('mousedown', function (e) {
 		toggle = true;
 		$(this).on('mousemove', function testMove() {
 			toggle = false;
@@ -803,8 +808,8 @@ function init_MoviePage() {
 	//4. Dropdown init
 	//select
 	$('#select-sort').selectbox({
-		onChange: function(val, inst) {
-			$(inst.input[0]).children().each(function(item) {
+		onChange: function (val, inst) {
+			$(inst.input[0]).children().each(function (item) {
 				$(this).removeAttr('selected');
 			});
 			$(inst.input[0]).find('[value="' + val + '"]').attr('selected', 'selected');
@@ -818,7 +823,7 @@ function init_MoviePage() {
 		showAnim: 'fade'
 	});
 
-	$(document).click(function(e) {
+	$(document).click(function (e) {
 		var ele = $(e.target);
 		if (
 			!ele.hasClass('datepicker__input') &&
@@ -834,21 +839,21 @@ function init_MoviePage() {
 	// button more comments
 	$('#hide-comments').hide();
 
-	$('.comment-more').click(function(e) {
+	$('.comment-more').click(function (e) {
 		e.preventDefault();
 		$('#hide-comments').slideDown(400);
 		$(this).hide();
 	});
 
 	//reply comment function
-	$('.comment__reply').click(function(e) {
+	$('.comment__reply').click(function (e) {
 		e.preventDefault();
 
 		$('.comment').find('.comment-form').remove();
 		$(this)
 			.parent()
 			.append(
-				"<form id='comment-form' class='comment-form' method='post'>\
+			"<form id='comment-form' class='comment-form' method='post'>\
                             <textarea class='comment-form__text' placeholder='Add you comment here'></textarea>\
                             <label class='comment-form__info'>250 characters left</label>\
                             <button type='submit' class='btn btn-md btn--danger comment-form__btn'>add comment</button>\
@@ -857,14 +862,44 @@ function init_MoviePage() {
 	});
 
 	//7. Timetable active element
-	$('.time-select__item').click(function() {
+	$('.time-select__item').click(function () {
 		$('.time-select__item').removeClass('active');
 		$(this).addClass('active');
+
+		//data element init
+		var chooseTime = $(this).attr('data-time');
+		$('.choose-indector--time').find('.choosen-area').text(chooseTime);
+
+		//data element init
+		var chooseCinema = $(this).parent().parent().find('.time-select__place').text();
+
+		//data element set
+		time.val(chooseTime);
+		cinema.val(chooseCinema);
+	});
+
+	var chooseDate = $('.datepicker__input').val();
+
+	//data element set (default)
+	date.val(chooseDate);
+
+
+	//7.1 Submit form
+	$('#book__ticket__this__film').click(function (e) {
+		var bookData = $('.booking-form').serialize();
+		if ((time.val() == '') || (date.val() == '') || (cinema.val() == '')) {
+            Notice('Anda belum memilih jam', {
+                level: 'error',
+                timeout: 6000
+            });
+		} else {
+			Pjax.assign(base + 'pub/home/book2?' + bookData);
+		}
 	});
 
 	//8. Toggle between cinemas timetable and map with location
 	//change map - ticket list
-	$('#map-switch').click(function(ev) {
+	$('#map-switch').click(function (ev) {
 		ev.preventDefault();
 
 		$('.time-select').slideToggle(500);
@@ -875,298 +910,9 @@ function init_MoviePage() {
 		$(this).blur();
 	});
 
-	$(window).load(function() {
-		$('.map').addClass('hide-map');
-	});
-
-	//9. Init map with several markers on.
-	//Map start init
-	var mapOptions = {
-		scaleControl: true,
-		center: new google.maps.LatLng(51.508798, -0.131687),
-		zoom: 15,
-		navigationControl: false,
-		streetViewControl: false,
-		mapTypeControl: false,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	var map = new google.maps.Map(document.getElementById('cimenas-map'), mapOptions);
-	var marker = new google.maps.Marker({
-		map: map,
-		position: map.getCenter()
-	});
-
-	var markerB = new google.maps.Marker({
-		map: map,
-		position: new google.maps.LatLng(51.510838, -0.1304)
-	});
-
-	var markerC = new google.maps.Marker({
-		map: map,
-		position: new google.maps.LatLng(51.512615, -0.130607)
-	});
-
-	var markerD = new google.maps.Marker({
-		map: map,
-		position: new google.maps.LatLng(51.509859, -0.130213)
-	});
-
-	var markerE = new google.maps.Marker({
-		map: map,
-		position: new google.maps.LatLng(51.509194, -0.130091)
-	});
-
-	//Custome map style
-	var map_style = [
-		{ stylers: [ { saturation: -100 }, { gamma: 3 } ] },
-		{ elementType: 'labels.text.stroke', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.business', elementType: 'labels.text', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.business', elementType: 'labels.icon', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.place_of_worship', elementType: 'labels.text', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.place_of_worship', elementType: 'labels.icon', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'road', elementType: 'geometry', stylers: [ { visibility: 'simplified' } ] },
-		{
-			featureType: 'water',
-			stylers: [ { visibility: 'on' }, { saturation: 0 }, { gamma: 2 }, { hue: '#aaaaaa' } ]
-		},
-		{
-			featureType: 'administrative.neighborhood',
-			elementType: 'labels.text.fill',
-			stylers: [ { visibility: 'off' } ]
-		},
-		{ featureType: 'road.local', elementType: 'labels.text', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'transit.station', elementType: 'labels.icon', stylers: [ { visibility: 'off' } ] }
-	];
-
-	//Then we use this data to create the styles.
-	var styled_map = new google.maps.StyledMapType(map_style, { name: 'Cusmome style' });
-
-	map.mapTypes.set('map_styles', styled_map);
-	map.setMapTypeId('map_styles');
-
-	//=====================================
-
-	// Maker A
-
-	//=====================================
-
-	//Creates the information to go in the pop-up info box.
-	var boxTextA = document.createElement('div');
-	boxTextA.innerHTML = '<span class="pop_up_box_text">Cineworld, 63-65 Haymarket, London</span>';
-
-	//Sets up the configuration options of the pop-up info box.
-	var infoboxOptionsA = {
-		content: boxTextA,
-		disableAutoPan: false,
-		maxWidth: 0,
-		pixelOffset: new google.maps.Size(30, -50),
-		zIndex: null,
-		boxStyle: {
-			background: '#4c4145',
-			opacity: 1,
-			width: '300px',
-			color: ' #b4b1b2',
-			fontSize: '13px',
-			padding: '14px 20px 15px'
-		},
-		closeBoxMargin: '6px 2px 2px 2px',
-		infoBoxClearance: new google.maps.Size(1, 1),
-		closeBoxURL: 'images/components/close.svg',
-		isHidden: false,
-		pane: 'floatPane',
-		enableEventPropagation: false
-	};
-
-	//Creates the pop-up infobox for Glastonbury, adding the configuration options set above.
-	var infoboxA = new InfoBox(infoboxOptionsA);
-
-	//Add an 'event listener' to the Glastonbury map marker to listen out for when it is clicked.
-	google.maps.event.addListener(marker, 'click', function(e) {
-		//Open the Glastonbury info box.
-		infoboxA.open(map, this);
-		//Sets the Glastonbury marker to be the center of the map.
-		map.setCenter(marker.getPosition());
-	});
-
-	//=====================================
-
-	// Maker B
-
-	//=====================================
-
-	//Creates the information to go in the pop-up info box.
-	var boxTextB = document.createElement('div');
-	boxTextB.innerHTML = '<span class="pop_up_box_text">Empire Cinemas, 5-6 Leicester Square, London</span>';
-
-	//Sets up the configuration options of the pop-up info box.
-	var infoboxOptionsB = {
-		content: boxTextB,
-		disableAutoPan: false,
-		maxWidth: 0,
-		pixelOffset: new google.maps.Size(30, -50),
-		zIndex: null,
-		boxStyle: {
-			background: '#4c4145',
-			opacity: 1,
-			width: '300px',
-			color: ' #b4b1b2',
-			fontSize: '13px',
-			padding: '14px 20px 15px'
-		},
-		closeBoxMargin: '6px 2px 2px 2px',
-		infoBoxClearance: new google.maps.Size(1, 1),
-		closeBoxURL: 'images/components/close.svg',
-		isHidden: false,
-		pane: 'floatPane',
-		enableEventPropagation: false
-	};
-
-	//Creates the pop-up infobox for Glastonbury, adding the configuration options set above.
-	var infoboxB = new InfoBox(infoboxOptionsB);
-
-	//Add an 'event listener' to the Glastonbury map marker to listen out for when it is clicked.
-	google.maps.event.addListener(markerB, 'click', function(e) {
-		//Open the Glastonbury info box.
-		infoboxB.open(map, this);
-		//Sets the Glastonbury marker to be the center of the map.
-		map.setCenter(markerB.getPosition());
-	});
-
-	//=====================================
-
-	// Maker C
-
-	//=====================================
-
-	//Creates the information to go in the pop-up info box.
-	var boxTextC = document.createElement('div');
-	boxTextC.innerHTML = '<span class="pop_up_box_text">Curzon Soho, 99 Shaftesbury Ave , London</span>';
-
-	//Sets up the configuration options of the pop-up info box.
-	var infoboxOptionsC = {
-		content: boxTextC,
-		disableAutoPan: false,
-		maxWidth: 0,
-		pixelOffset: new google.maps.Size(30, -50),
-		zIndex: null,
-		boxStyle: {
-			background: '#4c4145',
-			opacity: 1,
-			width: '300px',
-			color: ' #b4b1b2',
-			fontSize: '13px',
-			padding: '14px 20px 15px'
-		},
-		closeBoxMargin: '6px 2px 2px 2px',
-		infoBoxClearance: new google.maps.Size(1, 1),
-		closeBoxURL: 'images/components/close.svg',
-		isHidden: false,
-		pane: 'floatPane',
-		enableEventPropagation: false
-	};
-
-	//Creates the pop-up infobox for Glastonbury, adding the configuration options set above.
-	var infoboxC = new InfoBox(infoboxOptionsC);
-
-	//Add an 'event listener' to the Glastonbury map marker to listen out for when it is clicked.
-	google.maps.event.addListener(markerC, 'click', function(e) {
-		//Open the Glastonbury info box.
-		infoboxC.open(map, this);
-		//Sets the Glastonbury marker to be the center of the map.
-		map.setCenter(markerC.getPosition());
-	});
-
-	//=====================================
-
-	// Maker D
-
-	//=====================================
-
-	//Creates the information to go in the pop-up info box.
-	var boxTextD = document.createElement('div');
-	boxTextD.innerHTML = '<span class="pop_up_box_text">Odeon Cinema West End, Leicester Square, London</span>';
-
-	//Sets up the configuration options of the pop-up info box.
-	var infoboxOptionsD = {
-		content: boxTextD,
-		disableAutoPan: false,
-		maxWidth: 0,
-		pixelOffset: new google.maps.Size(30, -50),
-		zIndex: null,
-		boxStyle: {
-			background: '#4c4145',
-			opacity: 1,
-			width: '300px',
-			color: ' #b4b1b2',
-			fontSize: '13px',
-			padding: '14px 20px 15px'
-		},
-		closeBoxMargin: '6px 2px 2px 2px',
-		infoBoxClearance: new google.maps.Size(1, 1),
-		closeBoxURL: 'images/components/close.svg',
-		isHidden: false,
-		pane: 'floatPane',
-		enableEventPropagation: false
-	};
-
-	//Creates the pop-up infobox for Glastonbury, adding the configuration options set above.
-	var infoboxD = new InfoBox(infoboxOptionsD);
-
-	//Add an 'event listener' to the Glastonbury map marker to listen out for when it is clicked.
-	google.maps.event.addListener(markerD, 'click', function(e) {
-		//Open the Glastonbury info box.
-		infoboxD.open(map, this);
-		//Sets the Glastonbury marker to be the center of the map.
-		map.setCenter(markerD.getPosition());
-	});
-
-	//=====================================
-
-	// Maker E
-
-	//=====================================
-
-	//Creates the information to go in the pop-up info box.
-	var boxTextE = document.createElement('div');
-	boxTextE.innerHTML = '<span class="pop_up_box_text">Picturehouse Cinemas Ltd, Orange Street, London</span>';
-
-	//Sets up the configuration options of the pop-up info box.
-	var infoboxOptionsE = {
-		content: boxTextE,
-		disableAutoPan: false,
-		maxWidth: 0,
-		pixelOffset: new google.maps.Size(30, -50),
-		zIndex: null,
-		boxStyle: {
-			background: '#4c4145',
-			opacity: 1,
-			width: '300px',
-			color: ' #b4b1b2',
-			fontSize: '13px',
-			padding: '14px 20px 15px'
-		},
-		closeBoxMargin: '6px 2px 2px 2px',
-		infoBoxClearance: new google.maps.Size(1, 1),
-		closeBoxURL: 'images/components/close.svg',
-		isHidden: false,
-		pane: 'floatPane',
-		enableEventPropagation: false
-	};
-
-	//Creates the pop-up infobox for Glastonbury, adding the configuration options set above.
-	var infoboxE = new InfoBox(infoboxOptionsE);
-
-	//Add an 'event listener' to the Glastonbury map marker to listen out for when it is clicked.
-	google.maps.event.addListener(markerE, 'click', function(e) {
-		//Open the Glastonbury info box.
-		infoboxE.open(map, this);
-		//Sets the Glastonbury marker to be the center of the map.
-		map.setCenter(markerE.getPosition());
-	});
-
 	//10. Scroll down navigation function
 	//scroll down
-	$('.comment-link').click(function(ev) {
+	$('.comment-link').click(function (ev) {
 		ev.preventDefault();
 		$('html, body').stop().animate({ scrollTop: $('.comment-wrapper').offset().top - 90 }, 900, 'swing');
 	});
@@ -1183,7 +929,7 @@ function init_MoviePageFull() {
 	$('.swiper-slide-active').css({ marginLeft: '-1px' });
 
 	//Media switch
-	$('.list--photo').click(function(e) {
+	$('.list--photo').click(function (e) {
 		e.preventDefault();
 
 		var mediaFilter = $(this).attr('data-filter');
@@ -1198,7 +944,7 @@ function init_MoviePageFull() {
 		$('.swiper-slide-active').css({ marginLeft: '-1px' });
 	});
 
-	$('.list--video').click(function(e) {
+	$('.list--video').click(function (e) {
 		e.preventDefault();
 
 		var mediaFilter = $(this).attr('data-filter');
@@ -1237,7 +983,7 @@ function init_MoviePageFull() {
 	}
 
 	//Resize detect
-	$(window).resize(function() {
+	$(window).resize(function () {
 		if (($(window).width() > 993) & ($('.swiper-container').width() > 900)) {
 			mySwiper.params.slidesPerView = 5;
 			mySwiper.reInit();
@@ -1276,7 +1022,7 @@ function init_Rates() {
 	});
 
 	//After rate callback
-	$('.score').click(function() {
+	$('.score').click(function () {
 		$(this).children().hide();
 
 		$(this).html('<span class="rates__done">Thanks for your vote!<span>');
@@ -1315,7 +1061,7 @@ function init_Cinema() {
 	}
 
 	//resize detect
-	$(window).resize(function() {
+	$(window).resize(function () {
 		if (($(window).width() > 993) & ($(window).width() < 1199)) {
 			mySwiper.params.slidesPerView = 6;
 			mySwiper.reInit();
@@ -1342,7 +1088,7 @@ function init_Cinema() {
 		showAnim: 'fade'
 	});
 
-	$(document).click(function(e) {
+	$(document).click(function (e) {
 		var ele = $(e.target);
 		if (
 			!ele.hasClass('datepicker__input') &&
@@ -1358,7 +1104,7 @@ function init_Cinema() {
 	// button more comments
 	$('#hide-comments').hide();
 
-	$('.comment-more').click(function(e) {
+	$('.comment-more').click(function (e) {
 		e.preventDefault();
 		$('#hide-comments').slideDown(400);
 		$(this).hide();
@@ -1366,7 +1112,7 @@ function init_Cinema() {
 
 	//reply comment function
 
-	$('.comment__reply').click(function(e) {
+	$('.comment__reply').click(function (e) {
 		e.preventDefault();
 
 		$('.comment').find('.comment-form').remove();
@@ -1374,7 +1120,7 @@ function init_Cinema() {
 		$(this)
 			.parent()
 			.append(
-				"<form id='comment-form' class='comment-form' method='post'>\
+			"<form id='comment-form' class='comment-form' method='post'>\
                             <textarea class='comment-form__text' placeholder='Add you comment here'></textarea>\
                             <label class='comment-form__info'>250 characters left</label>\
                             <button type='submit' class='btn btn-md btn--danger comment-form__btn'>add comment</button>\
@@ -1400,24 +1146,24 @@ function init_Cinema() {
 
 	//Custome map style
 	var map_style = [
-		{ stylers: [ { saturation: -100 }, { gamma: 3 } ] },
-		{ elementType: 'labels.text.stroke', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.business', elementType: 'labels.text', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.business', elementType: 'labels.icon', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.place_of_worship', elementType: 'labels.text', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'poi.place_of_worship', elementType: 'labels.icon', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'road', elementType: 'geometry', stylers: [ { visibility: 'simplified' } ] },
+		{ stylers: [{ saturation: -100 }, { gamma: 3 }] },
+		{ elementType: 'labels.text.stroke', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'poi.business', elementType: 'labels.text', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'poi.business', elementType: 'labels.icon', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'poi.place_of_worship', elementType: 'labels.text', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'poi.place_of_worship', elementType: 'labels.icon', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'road', elementType: 'geometry', stylers: [{ visibility: 'simplified' }] },
 		{
 			featureType: 'water',
-			stylers: [ { visibility: 'on' }, { saturation: 0 }, { gamma: 2 }, { hue: '#aaaaaa' } ]
+			stylers: [{ visibility: 'on' }, { saturation: 0 }, { gamma: 2 }, { hue: '#aaaaaa' }]
 		},
 		{
 			featureType: 'administrative.neighborhood',
 			elementType: 'labels.text.fill',
-			stylers: [ { visibility: 'off' } ]
+			stylers: [{ visibility: 'off' }]
 		},
-		{ featureType: 'road.local', elementType: 'labels.text', stylers: [ { visibility: 'off' } ] },
-		{ featureType: 'transit.station', elementType: 'labels.icon', stylers: [ { visibility: 'off' } ] }
+		{ featureType: 'road.local', elementType: 'labels.text', stylers: [{ visibility: 'off' }] },
+		{ featureType: 'transit.station', elementType: 'labels.icon', stylers: [{ visibility: 'off' }] }
 	];
 
 	//Then we use this data to create the styles.
@@ -1463,7 +1209,7 @@ function init_Cinema() {
 	var infoboxA = new InfoBox(infoboxOptionsA);
 
 	//Add an 'event listener' to the Glastonbury map marker to listen out for when it is clicked.
-	google.maps.event.addListener(marker, 'click', function(e) {
+	google.maps.event.addListener(marker, 'click', function (e) {
 		//Open the Glastonbury info box.
 		infoboxA.open(map, this);
 		//Sets the Glastonbury marker to be the center of the map.
@@ -1527,11 +1273,11 @@ function init_SinglePage() {
 
 	//init slider navigation arrow
 
-	$('.arrow-left').on('click', function(e) {
+	$('.arrow-left').on('click', function (e) {
 		e.preventDefault();
 		mySwiper.swipePrev();
 	});
-	$('.arrow-right').on('click', function(e) {
+	$('.arrow-right').on('click', function (e) {
 		e.preventDefault();
 		mySwiper.swipeNext();
 	});
@@ -1540,7 +1286,7 @@ function init_SinglePage() {
 	// button more comments
 	$('#hide-comments').hide();
 
-	$('.comment-more').click(function(e) {
+	$('.comment-more').click(function (e) {
 		e.preventDefault();
 		$('#hide-comments').slideDown(400);
 		$(this).hide();
@@ -1548,7 +1294,7 @@ function init_SinglePage() {
 
 	//reply comment function
 
-	$('.comment__reply').click(function(e) {
+	$('.comment__reply').click(function (e) {
 		e.preventDefault();
 
 		$('.comment').find('.comment-form').remove();
@@ -1556,7 +1302,7 @@ function init_SinglePage() {
 		$(this)
 			.parent()
 			.append(
-				"<form id='comment-form' class='comment-form' method='post'>\
+			"<form id='comment-form' class='comment-form' method='post'>\
                             <textarea class='comment-form__text' placeholder='Add you comment here'></textarea>\
                             <label class='comment-form__info'>250 characters left</label>\
                             <button type='submit' class='btn btn-md btn--danger comment-form__btn'>add comment</button>\
@@ -1581,7 +1327,7 @@ function init_Trailer() {
 	});
 
 	//show hide content
-	$('.trailer-btn').click(function(e) {
+	$('.trailer-btn').click(function (e) {
 		e.preventDefault();
 
 		$(this).hide();

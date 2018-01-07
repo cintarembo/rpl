@@ -44,7 +44,9 @@
       <![endif]-->
 
       <link rel="stylesheet" href="<?php echo base_url()?>public/assets/vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Script -->
+      <link href="<?php echo base_url()?>public/assets/vendor/notices/css/styles.css" rel="stylesheet" />
+
+        <!-- Script -->
       <!-- jQuery 1.9.1--> 
       <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/jquery.min.js"></script>
       <script src="<?php echo base_url()?>public/assets/js/pjax-api.min.js"></script>

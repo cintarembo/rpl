@@ -1,3 +1,4 @@
+<style>.time-select .time-select__item::before{width: 68px;}</style>
 <!-- Main content -->
 <section class="container">
     <div class="col-sm-8 col-md-9">
@@ -7,7 +8,7 @@
                 <div class="col-sm-6 col-md-4 movie-mobile">
                     <div class="movie__images">
                         <span class="movie__rating">5.0</span>
-                        <img alt='' src="<?php echo base_url()?>public/assets/vendor/amovie/images/526x773.png">
+                        <img alt='' src="<?php echo UPLOADPATH.'526x773/'.$film->cover?>">
                     </div>
                     <div class="movie__rate">Your vote: <div id='score' class="score"></div></div>
                 </div>
@@ -39,17 +40,8 @@
                     <a href="#" class="comment-link">Comments:  15</a>
 
                     <div class="movie__btns">
-                        <a href="<?php echo base_url()?>pub/home/book" class="btn btn-md btn--warning">book a ticket for this movie</a>
+                        <a href="javascript:" class="btn btn-md btn--warning" id="book__ticket__this__film">book a ticket for this movie</a>
                         <a href="#" class="watchlist">Add to watchlist</a>
-                    </div>
-
-                    <div class="share">
-                        <span class="share__marker">Share: </span>
-                        <div class="addthis_toolbox addthis_default_style ">
-                            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-                            <a class="addthis_button_tweet"></a>
-                            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -164,80 +156,28 @@
 
             <div class="datepicker">
                 <span class="datepicker__marker"><i class="fa fa-calendar"></i>Date</span>
-                <input type="text" id="datepicker" value='03/10/2014' class="datepicker__input">
+                <input type="text" id="datepicker" value='03/10/2018' class="datepicker__input">
             </div>
 
-            <a href="#" id="map-switch" class="watchlist watchlist--map"><span class="show-map">Show cinemas on map</span><span  class="show-time">Show cinema time table</span></a>
-            
             <div class="clearfix"></div>
 
             <div class="time-select">
-                <div class="time-select__group group--first">
-                    <div class="col-sm-4">
-                        <p class="time-select__place">Cineworld</p>
-                    </div>
-                    <ul class="col-sm-8 items-wrap">
-                        <li class="time-select__item" data-time='09:40'>09:40</li>
-                        <li class="time-select__item" data-time='13:45'>13:45</li>
-                        <li class="time-select__item" data-time='15:45'>15:45</li>
-                        <li class="time-select__item" data-time='19:50'>19:50</li>
-                        <li class="time-select__item" data-time='21:50'>21:50</li>
-                    </ul>
-                </div>
-
-                <div class="time-select__group">
-                    <div class="col-sm-4">
-                        <p class="time-select__place">Empire</p>
-                    </div>
-                    <ul class="col-sm-8 items-wrap">
-                        <li class="time-select__item" data-time='10:45'>10:45</li>
-                        <li class="time-select__item" data-time='16:00'>16:00</li>
-                        <li class="time-select__item" data-time='19:00'>19:00</li>
-                        <li class="time-select__item" data-time='21:15'>21:15</li>
-                        <li class="time-select__item" data-time='23:00'>23:00</li>
-                    </ul>
-                </div>
-
-                <div class="time-select__group">
-                    <div class="col-sm-4">
-                        <p class="time-select__place">Curzon</p>
-                    </div>
-                    <ul class="col-sm-8 items-wrap">
-                        <li class="time-select__item" data-time='09:00'>09:00</li>
-                        <li class="time-select__item" data-time='11:00'>11:00</li>
-                        <li class="time-select__item" data-time='13:00'>13:00</li>
-                        <li class="time-select__item" data-time='15:00'>15:00</li>
-                        <li class="time-select__item" data-time='17:00'>17:00</li>
-                        <li class="time-select__item" data-time='19:0'>19:00</li>
-                        <li class="time-select__item" data-time='21:0'>21:00</li>
-                        <li class="time-select__item" data-time='23:0'>23:00</li>
-                        <li class="time-select__item" data-time='01:0'>01:00</li>
-                    </ul>
-                </div>
-
-                <div class="time-select__group">
-                    <div class="col-sm-4">
-                        <p class="time-select__place">Odeon</p>
-                    </div>
-                    <ul class="col-sm-8 items-wrap">
-                        <li class="time-select__item" data-time='10:45'>10:45</li>
-                        <li class="time-select__item" data-time='16:00'>16:00</li>
-                        <li class="time-select__item" data-time='19:00'>19:00</li>
-                        <li class="time-select__item" data-time='21:15'>21:15</li>
-                        <li class="time-select__item" data-time='23:00'>23:00</li>
-                    </ul>
-                </div>
-
-                <div class="time-select__group group--last">
-                    <div class="col-sm-4">
-                        <p class="time-select__place">Picturehouse</p>
-                    </div>
-                    <ul class="col-sm-8 items-wrap">
-                        <li class="time-select__item" data-time='17:45'>17:45</li>
-                        <li class="time-select__item" data-time='21:30'>21:30</li>
-                        <li class="time-select__item" data-time='02:20'>02:20</li>
-                    </ul>
-                </div>
+                <?php foreach($studio as $s): 
+                        foreach($s->studio as $s):?>
+                            <div class="time-select__group group--first">
+                                <div class="col-sm-4">
+                                    <p class="time-select__place"><?php echo $s->nama?></p>
+                                </div>
+                                <ul class="col-sm-8 items-wrap">
+                                    <?php foreach ($jam as $j) {
+                                        foreach ($j->jam as $j) {
+                                            echo '<li class="time-select__item" data-time="'.$j->jam.'">'.$j->jam.'</li>';
+                                        }
+                                    } ?>
+                                </ul>
+                            </div>
+                <?php   endforeach;
+                    endforeach;?>
             </div>
             
             <!-- hiden maps with multiple locator-->
@@ -332,7 +272,13 @@
             </div>
         </div>
     </div>
-
+    <form id='film-and-time' class="booking-form" method='get' action="javascript:">
+        <input type='text' name='film' value="<?php echo $film->judul ?>" class="choosen-movie">
+        <input type='text' name='tanggal' class="choosen-date" required>
+        
+        <input type='text' name='studio' class="choosen-cinema" required>
+        <input type='text' name='jam' class="choosen-time" required>
+    </form>
     <aside class="col-sm-4 col-md-3">
         <div class="sitebar">
             <div class="banner-wrap">

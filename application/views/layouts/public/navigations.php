@@ -153,14 +153,14 @@
                     </a>
                         <ul class="auth__function">
                             <li><a href="#" class="auth__function-item">Watchlist</a></li>
-                            <li><a href="#" class="auth__function-item">Booked tickets</a></li>
+                            <li><a href="'.base_url().'pub/member/bookedtickets" class="auth__function-item">Booked tickets</a></li>
                             <li><a href="#" class="auth__function-item">Discussion</a></li>
                             <li><a href="#" class="auth__function-item">Settings</a></li>
                             <li><a href="'.base_url().'auth/logout" class="auth__function-item" id="logout">Log out</a></li>
                         </ul>
 
                 </div>
-                <a href="#" class="btn btn-md btn--warning btn--book btn-control--home login-window">Book a ticket</a>
+                <a href="'.base_url().'pub/home/movielist" class="btn btn-md btn--warning btn--book btn-control--home login-window">Book a ticket</a>
                 ';
 } else {
     echo '

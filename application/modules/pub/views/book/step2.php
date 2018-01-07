@@ -1,3 +1,7 @@
+<?php if (!$this->ion_auth->logged_in()) {
+    redirect(base_url().'pub/home/login');
+}
+?>
 <!-- Main content -->
 <div class="place-form-area">
     <section class="container">
@@ -120,7 +124,7 @@
                             <span class="sits__place sits-price--cheap" data-place='D4' data-price='10'>D4</span>
                             <span class="sits__place sits-price--cheap" data-place='D5' data-price='10'>D5</span>
                             <span class="sits__place sits-price--cheap" data-place='D6' data-price='10'>D6</span>
-                            <span class="sits__place sits-price--cheap sits-state--not" data-place='D7' data-price='10'>D7</span>
+                            <span class="sits__place sits-price--cheap" data-place='D7' data-price='10'>D7</span>
                             <span class="sits__place sits-price--cheap sits-state--not" data-place='D8' data-price='10'>D8</span>
                             <span class="sits__place sits-price--cheap" data-place='D9' data-price='10'>D9</span>
                             <span class="sits__place sits-price--cheap" data-place='D10' data-price='10'>D10</span>
@@ -288,7 +292,7 @@
                 <div class="sits-area--mobile-wrap">
                     <div class="sits-select">
                         <select name="sorting_item" class="sits__sort sit-row" tabindex="0">
-                                <option value="1" selected='selected'>A</option>
+                                <option value="1">A</option>
                                 <option value="2">B</option>
                                 <option value="3">C</option>
                                 <option value="4">D</option>
@@ -302,7 +306,7 @@
                         </select>
 
                         <select name="sorting_item" class="sits__sort sit-number" tabindex="1">
-                                <option value="1" selected='selected'>1</option>
+                                <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
@@ -351,11 +355,11 @@
 <form id='film-and-time' class="booking-form" method='get' action='javascript:'>
 
     <input type='text' name='choosen-number' class="choosen-number">
-    <input type='text' name='choosen-number--cheap' class="choosen-number--cheap">
-    <input type='text' name='choosen-number--middle' class="choosen-number--middle">
-    <input type='text' name='choosen-number--expansive' class="choosen-number--expansive">
-    <input type='text' name='choosen-cost' class="choosen-cost">
-    <input type='text' name='choosen-sits' class="choosen-sits">
+    <input type='text' name='kursi-depan' class="choosen-number--cheap">
+    <input type='text' name='kursi-tengah' class="choosen-number--middle">
+    <input type='text' name='kursi-belakang' class="choosen-number--expansive">
+    <input type='text' name='total_harga' class="choosen-cost">
+    <input type='text' name='nomor_kursi' class="choosen-sits">
 
 
     <div class="booking-pagination booking-pagination--margin">
@@ -490,15 +494,7 @@
                 } else if (control == 'Reserve') {
                     action = 'book3-reserve.html';
                 }
-                console.log(fullData);
-                qwest.get(base+'pub/home/checkout?'+fullData)
-                    .then((res)=>{
-                        console.log(res);
-                    })
-                    .catch((err)=>{
-                        console.log(err);
-                    })
-                //Pjax.assign(base+'pub/home/book3?'+fullData);
+                Pjax.assign(base+'pub/home/checkout?'+fullData);
                // $.get(action, fullData, function(data) {});
             });
 

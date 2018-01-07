@@ -78,7 +78,13 @@ $('.login').submit(function(e) {
                 .hide()
                 .delay(300)
                 .fadeIn();
-            Pjax.replace(base+'pub/home');
+            
+            if (data.admin==true) {
+                Pjax.replace(base+"admin/films");
+            } else {
+                Pjax.replace(base+"pub/home");
+            }
+            
         } else {
             let element =
 			'<div class="inv-em alert alert-danger alert-dismissible" role="alert"><strong>' +

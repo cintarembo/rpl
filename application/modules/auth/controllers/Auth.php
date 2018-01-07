@@ -41,7 +41,8 @@ class Auth extends MY_Controller{
                 if($this->ion_auth->login($username,$password,$remember)){
                     $data = array(
                         'status'    => TRUE,
-                        'messages'  => $this->ion_auth->messages()
+                        'messages'  => $this->ion_auth->messages(),
+                        'admin'     => $this->ion_auth->is_admin()
                     );
                     echo json_encode($data);
                 }else{

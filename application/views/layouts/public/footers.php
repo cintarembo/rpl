@@ -75,11 +75,11 @@
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/external/form-element.js"></script>
         <!-- Form validation -->
         <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/form.js"></script>
+        <script src="<?php echo base_url()?>public/assets/vendor/notices/js/notice.js"></script>
 
         <!-- Custom -->
-        <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/custom.js"></script>
-		
-	      <script type="text/javascript">
+        <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/custom_es6.js"></script>
+          <script type="text/javascript">
               $(document).ready(function() {
                 init_Home();
                 
