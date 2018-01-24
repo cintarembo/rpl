@@ -9,7 +9,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url()?>admin/films/abcd">Dashboard <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="<?php echo base_url()?>admin/dashboard">Dashboard <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url()?>admin/films">Films</a>
@@ -28,7 +28,7 @@
                     <a class="nav-link" href="<?php echo base_url()?>admin/member">Member</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Laporan</a>
+                     <a class="nav-link" href="<?php echo base_url()?>admin/laporan">Laporan</a>
                   </li>
               </ul>
           </div>
