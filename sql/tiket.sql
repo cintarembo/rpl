@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 27 Des 2017 pada 19.11
+-- Generation Time: 24 Jan 2018 pada 19.19
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -31,8 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `detail_kursi` (
   `id` int(11) NOT NULL,
   `id_detail` int(11) NOT NULL,
-  `id_kursi` int(11) NOT NULL
+  `no_kursi` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `detail_kursi`
+--
+
+INSERT INTO `detail_kursi` (`id`, `id_detail`, `no_kursi`) VALUES
+(128, 72, ' B2'),
+(127, 72, 'E7');
 
 -- --------------------------------------------------------
 
@@ -51,7 +59,8 @@ CREATE TABLE `film_studio` (
 --
 
 INSERT INTO `film_studio` (`id`, `id_film`, `id_studio`) VALUES
-(32, 19, 1);
+(32, 19, 1),
+(33, 19, 2);
 
 -- --------------------------------------------------------
 
@@ -395,7 +404,29 @@ CREATE TABLE `jam_tayang` (
 --
 
 INSERT INTO `jam_tayang` (`id`, `id_film`, `id_jam`) VALUES
+(25, 19, 1),
 (24, 19, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `konfirmasi`
+--
+
+CREATE TABLE `konfirmasi` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(40) NOT NULL,
+  `bank` varchar(20) NOT NULL,
+  `bukti` varchar(255) NOT NULL,
+  `id_transaksi` char(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `konfirmasi`
+--
+
+INSERT INTO `konfirmasi` (`id`, `nama`, `bank`, `bukti`, `id_transaksi`) VALUES
+(1, 'asda', 'BRI', 'asddsadad', 'VWYRTV');
 
 -- --------------------------------------------------------
 
@@ -439,10 +470,19 @@ CREATE TABLE `tbl_detailtransaksi` (
   `id` int(11) NOT NULL,
   `id_transaksi` char(15) NOT NULL,
   `id_film` int(10) DEFAULT NULL,
-  `no_kursi` int(11) DEFAULT NULL,
-  `id_lokasi` int(11) DEFAULT NULL,
-  `jumlah_beli` int(15) DEFAULT NULL
+  `tanggal` varchar(10) NOT NULL,
+  `jam` varchar(5) NOT NULL,
+  `studio` varchar(10) NOT NULL,
+  `jumlah_beli` int(15) DEFAULT NULL,
+  `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_detailtransaksi`
+--
+
+INSERT INTO `tbl_detailtransaksi` (`id`, `id_transaksi`, `id_film`, `tanggal`, `jam`, `studio`, `jumlah_beli`, `harga`) VALUES
+(72, 'VWYRTV', 19, '03/10/2018', '00:10', 'Amaris', 2, 30000);
 
 -- --------------------------------------------------------
 
@@ -512,28 +552,6 @@ INSERT INTO `tbl_genrefilm` (`id`, `id_film`, `id_genre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_kursi`
---
-
-CREATE TABLE `tbl_kursi` (
-  `id` int(11) NOT NULL,
-  `no` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tbl_lokasi`
---
-
-CREATE TABLE `tbl_lokasi` (
-  `id_lokasi` int(11) NOT NULL,
-  `nama` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `tbl_transaksi`
 --
 
@@ -542,8 +560,16 @@ CREATE TABLE `tbl_transaksi` (
   `id_member` int(15) UNSIGNED NOT NULL,
   `tgl_beli` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `total_harga` int(20) NOT NULL,
-  `status` enum('lunas','menunggu','batal') NOT NULL
+  `status` enum('lunas','menunggu','batal') NOT NULL DEFAULT 'menunggu'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_transaksi`
+--
+
+INSERT INTO `tbl_transaksi` (`id_transaksi`, `id_member`, `tgl_beli`, `total_harga`, `status`) VALUES
+('ASD2X', 2, '2018-01-24 05:58:38', 2000, 'menunggu'),
+('VWYRTV', 1, '2018-01-13 16:52:39', 30000, 'menunggu');
 
 -- --------------------------------------------------------
 
@@ -576,7 +602,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `address`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, 'Dl6C9SfE7Cy6G6y.XX5OUu', 1268889823, 1514362395, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, 'Dl6C9SfE7Cy6G6y.XX5OUu', 1268889823, 1516790723, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '::1', 'agung', '$2y$08$z0H/Zd8sdIk/ZKIhskWsq.QFe.pl9H93oAW9GeLQ2FC7uog2yzGzy', NULL, 'cintarembo@gmail.com', NULL, NULL, NULL, NULL, 1513850860, NULL, 1, 'Agung', 'Kurniawan', 'jalan pertanian', '089629050760'),
 (3, '::1', 'agung', '$2y$08$Ae3me6KJfh5ToDYlhDAfMeNiGzH8OMD9IfR4IorS7DCYq4UI2otum', NULL, 'cintarembo@gmail.com', NULL, NULL, NULL, NULL, 1513850876, NULL, 1, 'Agung', 'Kurniawan', 'jalan pertanian', '089629050760'),
 (4, '::1', 'lkjlkjasldjklj', '$2y$08$Bw8IIpkxmolP89nWI1OwauoVMO74xwJO37SrLCnYqymnMtbNiEBNO', NULL, 'abcd@abcd.com', NULL, NULL, NULL, NULL, 1514041800, NULL, 1, 'asda', 'jlkjkj', 'kjakldjsakj', '080989'),
@@ -615,8 +641,8 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 --
 ALTER TABLE `detail_kursi`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_detail` (`id_detail`,`id_kursi`),
-  ADD KEY `id_kursi` (`id_kursi`);
+  ADD KEY `id_detail` (`id_detail`,`no_kursi`),
+  ADD KEY `id_kursi` (`no_kursi`);
 
 --
 -- Indexes for table `film_studio`
@@ -647,6 +673,13 @@ ALTER TABLE `jam_tayang`
   ADD KEY `id_jam` (`id_jam`);
 
 --
+-- Indexes for table `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_transaksi` (`id_transaksi`);
+
+--
 -- Indexes for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
@@ -664,9 +697,7 @@ ALTER TABLE `studio`
 ALTER TABLE `tbl_detailtransaksi`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `id_film` (`id_film`),
-  ADD KEY `id_transaksi` (`id_transaksi`),
-  ADD KEY `no_kursi` (`no_kursi`),
-  ADD KEY `id_lokasi` (`id_lokasi`);
+  ADD KEY `id_transaksi` (`id_transaksi`);
 
 --
 -- Indexes for table `tbl_film`
@@ -688,18 +719,6 @@ ALTER TABLE `tbl_genrefilm`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_film` (`id_film`),
   ADD KEY `id_genre` (`id_genre`);
-
---
--- Indexes for table `tbl_kursi`
---
-ALTER TABLE `tbl_kursi`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_lokasi`
---
-ALTER TABLE `tbl_lokasi`
-  ADD PRIMARY KEY (`id_lokasi`);
 
 --
 -- Indexes for table `tbl_transaksi`
@@ -731,12 +750,12 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `detail_kursi`
 --
 ALTER TABLE `detail_kursi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 --
 -- AUTO_INCREMENT for table `film_studio`
 --
 ALTER TABLE `film_studio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -751,7 +770,12 @@ ALTER TABLE `jam`
 -- AUTO_INCREMENT for table `jam_tayang`
 --
 ALTER TABLE `jam_tayang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT for table `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `login_attempts`
 --
@@ -762,6 +786,11 @@ ALTER TABLE `login_attempts`
 --
 ALTER TABLE `studio`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tbl_detailtransaksi`
+--
+ALTER TABLE `tbl_detailtransaksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `tbl_film`
 --
@@ -777,16 +806,6 @@ ALTER TABLE `tbl_genre`
 --
 ALTER TABLE `tbl_genrefilm`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
---
--- AUTO_INCREMENT for table `tbl_kursi`
---
-ALTER TABLE `tbl_kursi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tbl_lokasi`
---
-ALTER TABLE `tbl_lokasi`
-  MODIFY `id_lokasi` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -805,8 +824,7 @@ ALTER TABLE `users_groups`
 -- Ketidakleluasaan untuk tabel `detail_kursi`
 --
 ALTER TABLE `detail_kursi`
-  ADD CONSTRAINT `detail_kursi_ibfk_1` FOREIGN KEY (`id_detail`) REFERENCES `tbl_detailtransaksi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `detail_kursi_ibfk_2` FOREIGN KEY (`id_kursi`) REFERENCES `tbl_kursi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `detail_kursi_ibfk_3` FOREIGN KEY (`id_detail`) REFERENCES `tbl_detailtransaksi` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `film_studio`
@@ -823,12 +841,17 @@ ALTER TABLE `jam_tayang`
   ADD CONSTRAINT `jam_tayang_ibfk_2` FOREIGN KEY (`id_jam`) REFERENCES `jam` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Ketidakleluasaan untuk tabel `konfirmasi`
+--
+ALTER TABLE `konfirmasi`
+  ADD CONSTRAINT `konfirmasi_ibfk_1` FOREIGN KEY (`id_transaksi`) REFERENCES `tbl_transaksi` (`id_transaksi`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ketidakleluasaan untuk tabel `tbl_detailtransaksi`
 --
 ALTER TABLE `tbl_detailtransaksi`
   ADD CONSTRAINT `tbl_detailtransaksi_ibfk_1` FOREIGN KEY (`id_transaksi`) REFERENCES `tbl_transaksi` (`id_transaksi`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_detailtransaksi_ibfk_5` FOREIGN KEY (`id_film`) REFERENCES `tbl_film` (`id_film`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_detailtransaksi_ibfk_6` FOREIGN KEY (`id_lokasi`) REFERENCES `tbl_lokasi` (`id_lokasi`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tbl_detailtransaksi_ibfk_5` FOREIGN KEY (`id_film`) REFERENCES `tbl_film` (`id_film`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tbl_genrefilm`

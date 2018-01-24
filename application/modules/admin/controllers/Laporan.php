@@ -67,20 +67,22 @@ class Laporan extends MY_Controller
      * Detail
      * Melihat detail pembayaran dari satu id transaksi
      *
-     * @return void
+     * @param  string $id
+     * @return mixed void
      */
     public function detail($id)
     {
         $this->load->model('laporan/laporan_m', 'lap');
+        $this->load->model('laporan/detail_kursi_m', 'kursi');
         $this->data['laporan_detail'] = $this->lap
             ->with_detail(
                 array(
-                'fields' => 'tanggal,jam,studio,jumlah_beli,harga',
+                'fields' => 'id,tanggal,jam,studio,jumlah_beli,harga',
                 'with'   =>
                         array(
                             'relation'  => 'film' ,
-                            'fields'    => 'judul,mulai_tayang,selesai_tayang,durasi'
-                            )
+                            'fields'    => 'judul,mulai_tayang,selesai_tayang,durasi',
+                        )
                 )
             )
             ->with_member(
