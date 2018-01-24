@@ -40,7 +40,7 @@
       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries --> 
       <!--[if lt IE 9]> 
         <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script> 
-      <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>		
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>     
       <![endif]-->
 
       <link rel="stylesheet" href="<?php echo base_url()?>public/assets/vendor/bootstrap/css/bootstrap.min.css">
@@ -50,6 +50,7 @@
       <!-- jQuery 1.9.1--> 
       <script src="<?php echo base_url()?>public/assets/vendor/amovie/js/jquery.min.js"></script>
       <script src="<?php echo base_url()?>public/assets/js/pjax-api.min.js"></script>
+      <script src="<?php echo base_url()?>public/assets/js/qwest.min.js"></script>
       
       <script>
         let base = '<?php echo base_url()?>';
