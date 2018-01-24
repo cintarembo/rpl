@@ -16,7 +16,8 @@
         <script src="<?php echo base_url()?>public/assets/vendor/file-upload/js/file-upload.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/vendor/alerty/js/alerty.min.js"></script>
         <script src="<?php echo base_url()?>public/assets/vendor/datatables/js/vanilla-dataTables.min.js"></script>
-        
+        <script src="<?php echo base_url()?>public/assets/vendor/chartsjs/js/Chart.min.js"></script>
+
         <script>
             
             /** Collapsed hamburger menu after navigation in mobile */
@@ -39,6 +40,7 @@
             /** Add Event when pjax is success */
             document.addEventListener('pjax:ready', function (e) {
               backtocollapsed();
+              topbar.hide();
             });
 
             /** Add Event when pjax send new request */
@@ -52,7 +54,8 @@
               
               qwest.base =  '<?php echo base_url()?>';
             }
-           
+
+            
         </script>
     </body>
 </html>
