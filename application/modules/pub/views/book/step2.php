@@ -24,9 +24,9 @@
             <div class="choose-sits__info choose-sits__info--first">
                 <ul>
                     <li class="sits-price marker--none"><strong>Price</strong></li>
-                    <li class="sits-price sits-price--cheap">$10</li>
-                    <li class="sits-price sits-price--middle">$20</li>
-                    <li class="sits-price sits-price--expensive">$30</li>
+                    <li class="sits-price sits-price--cheap">Rp. 10.000</li>
+                    <li class="sits-price sits-price--middle">Rp. 20.000</li>
+                    <li class="sits-price sits-price--expensive">Rp. 30.000</li>
                 </ul>
             </div>
 
@@ -260,7 +260,7 @@
                             
                         </div>
                         <div class="checked-result">
-                            $0
+                            Rp. 0
                         </div>
                     </aside>
                     <footer class="sits__number">
@@ -418,20 +418,20 @@
 
                         switch (ticketPrice) {
                             case '10':
-                                sum += 10;
+                                sum += 10000;
                                 cheap += 1;
                                 break;
                             case '20':
-                                sum += 20;
+                                sum += 20000;
                                 middle += 1;
                                 break;
                             case '30':
-                                sum += 30;
+                                sum += 30000;
                                 expansive += 1;
                                 break;
                         }
 
-                        $('.checked-result').text('$' + sum);
+                        $('.checked-result').text('Rp. ' + sum);
                     }
                 } else {
                     $(this).removeClass('sits-state--your');
@@ -494,7 +494,20 @@
                 } else if (control == 'Reserve') {
                     action = 'book3-reserve.html';
                 }
-                Pjax.assign(base+'pub/home/checkout?'+fullData);
+                
+                $.get(base+'pub/home/purchase', fullData,
+                    function (data, textStatus, jqXHR) {
+                        let a = JSON.parse(data);
+                        if (a.sts == true) {
+                            Pjax.replace(base+'pub/home/checkout?t='+a.id);  
+                        } else {
+                            Notice('Silahkan pilih kursi terlebih dahulu', {
+                                level: 'error',
+                                timeout: 6000
+                            });
+                        }
+                    },
+                );
                // $.get(action, fullData, function(data) {});
             });
 
