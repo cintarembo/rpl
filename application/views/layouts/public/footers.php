@@ -82,7 +82,6 @@
           <script type="text/javascript">
               $(document).ready(function() {
                 init_Home();
-                
                 topbar.hide();
               });
             </script>
