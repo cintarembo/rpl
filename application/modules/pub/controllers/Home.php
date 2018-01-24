@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Home
+ */
 class Home extends MY_Controller
 {
     /**
@@ -8,15 +10,16 @@ class Home extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(array(
+        $this->load->model(
+            array(
             'admin/films/films_model' => 'film',
             'admin/films/genre_model' => 'genre',
             'admin/films/genrefilm_model' => 'gfm',
             'admin/films/studio_model' => 'studio',
             'admin/films/film_studio_model'=>'fsm',
             'admin/films/jam_tayang_model'=>'jtm',
-        ));
-        
+            )
+        );
     }
 
     /**
@@ -37,23 +40,35 @@ class Home extends MY_Controller
         $this->render('home/index');
     }
 
-    public function movielist(){
+    /**
+     * Movielist
+     *
+     * @return void
+     */
+    public function movielist()
+    {
         $this->render('film/film-list');
     }
-
-    /**
-     * view
+    
+    /*
+     * View
      * Membuat view untuk single movie berdasarkan slug yang ada.
      *
-     * @param mixed $slug
+     * @return void
      */
     public function view($slug = null)
     {
         $film = $this->film->where('slug', $slug)->get();
         $id_film = $film->id_film;
         $this->data['film'] = $film;
-        $this->data['studio'] = $this->fsm->where('id_film',$id_film)->with_studio()->get_all();
-        $this->data['jam'] = $this->jtm->where('id_film',$id_film)->with_jam()->get_all();
+        $this->data['studio'] = $this->fsm
+            ->where('id_film', $id_film)
+            ->with_studio()
+            ->get_all();
+        $this->data['jam'] = $this->jtm
+            ->where('id_film', $id_film)
+            ->with_jam()
+            ->get_all();
         if (empty($this->data['film'])) {
             $this->render('error/404');
         } else {
@@ -69,13 +84,19 @@ class Home extends MY_Controller
 
     public function timestudio()
     {
-        $this->load->model('home_model','coreM');
-        $film           = $this->film->where('judul',$this->input->get('f'))->get();
+        $this->load->model('home_model', 'coreM');
+        $film           = $this->film->where('judul', $this->input->get('f'))->get();
         $id_film        = $film->id_film;
         
-        $data['studio'] = $this->fsm->where('id_film',$id_film)->with_studio()->get_all();
-        $data['jam'] = $this->jtm->where('id_film',$id_film)->with_jam()->get_all();
-        $this->load->view('film/timestudio',$data);
+        $data['studio'] = $this->fsm
+            ->where('id_film', $id_film)
+            ->with_studio()
+            ->get_all();
+        $data['jam'] = $this->jtm
+            ->where('id_film', $id_film)
+            ->with_jam()
+            ->get_all();
+        $this->load->view('film/timestudio', $data);
     }
 
     public function book2()
@@ -83,41 +104,81 @@ class Home extends MY_Controller
         $this->render('book/step2');
     }
 
-    public function book3()
+    public function purchase()
     {
-        $this->render('book/step3');
+        if ($this->input->get()) {
+            $this->load->model('home_model', 'coreM');
+            $id_member      = $this->ion_auth->user()->row()->id;
+            $film           = $this->film
+                ->where('judul', $this->input->get('fillm'))
+                ->get();
+            $id_film        = $film->id_film;
+            $total_harga    = $this->input->get('total_harga');
+            $tanggal        = $this->input->get('tanggal');
+            $jam            = $this->input->get('jam');
+            $no = explode(',', $this->input->get('nomor_kursi'));
+            $id_transaksi   = $this->randomString();
+            $this->coreM->checkout(
+                $no,
+                $id_transaksi,
+                $id_member,
+                $total_harga,
+                $id_film,
+                $tanggal,
+                $jam
+            );
+        } else {
+            redirect('pub/home');
+        }
     }
 
     public function checkout()
     {
-        $this->load->model('home_model','coreM');
-        $id_member      = $this->ion_auth->user()->row()->id;
-        $film           = $this->film->where('judul',$this->input->get('fillm'))->get();
-        $id_film        = $film->id_film;
-        $total_harga    = $this->input->get('total_harga');
-        $tanggal        = $this->input->get('tanggal');
-        $jam            = $this->input->get('jam');
-        $no = explode(',',$this->input->get('nomor_kursi'));
-        $id_transaksi   = $this->randomString();
-        $this->coreM->checkout($no,$id_transaksi,$id_member,$total_harga,$id_film,$tanggal,$jam);  
-        $this->data['id_transaksi'] = $id_transaksi; 
+        $this->load->model('transaksi/transaksi_m', 'transaksi');
+        $id_transaksi = $this->input->get('t');
+        $this->data['transaksi'] = $this->transaksi
+            ->where('id_transaksi', $id_transaksi)
+            ->get();
         $this->render('book/checkout');
+    }
+
+    public function pay()
+    {
+        if ($this->input->get()) {
+            $this->render('book/pay');
+        } else {
+            $this->render('book/pay');
+        }
+    }
+
+    public function pay_upload()
+    {
+        $this->load->model('transaksi/transaksi_m', 'transaksi');
+        $this->transaksi->konfirmasi();
     }
 
     public function success()
     {
-        $this->load->model(array(
+        $this->load->model(
+            array(
             'transaksi/transaksi_m'=>'transaksi',
             'transaksi/dtransaksi_m'=>'dtransaksi',
             'transaksi/kursi_m'=>'kursi',
             'home_model'=> 'coreM'
-        ));
+            )
+        );
 
         $id_transaksi = $this->input->get('t');
-        #$this->transaksi->where('id_transaksi',$id_transaksi)->update(array('status'=>'lunas'));
-        $this->data['transaksi'] = $this->dtransaksi->where('id_transaksi',$id_transaksi)->with_transaksi()->with_film()->with_studio()->get();
+        $this->data['transaksi'] = $this->dtransaksi
+            ->where('id_transaksi', $id_transaksi)
+            ->with_transaksi()
+            ->with_film()
+            ->with_studio()
+            ->get();
         $id_trans = $this->coreM->id_transaksi($id_transaksi);
-        $this->data['kursi'] = $this->kursi->where('id_detail',$id_trans)->get_all();
+        $this->data['kursi'] = $this->kursi
+            ->where('id_detail', $id_trans)
+            ->get_all();
         $this->render('book/success');
     }
 
@@ -131,9 +192,10 @@ class Home extends MY_Controller
         $this->render('auth/register');
     }
 
-    public function randomString($length = 6) {
+    public function randomString($length = 6)
+    {
         $str = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < $length; $i++) {
             $rand = mt_rand(0, $max);
@@ -141,5 +203,4 @@ class Home extends MY_Controller
         }
         return strtoupper($str);
     }
-
 }

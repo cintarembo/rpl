@@ -5,11 +5,13 @@ class Member extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(array(
+        $this->load->model(
+            array(
             'admin/films/genrefilm_model'=>'gfm',
             'admin/films/film_studio_model'=>'fsm',
             'admin/films/jam_tayang_model'=>'jtm'
-        ));
+            )
+        );
     }
     
     /**
@@ -26,7 +28,6 @@ class Member extends MY_Controller
 
     public function bookedtickets()
     {
-        
         $this->render('member/booked_tickets');
     }
 }

@@ -17,7 +17,7 @@ class Home_model extends MY_Model
      */
     public function id_transaksi($id_transaksi)
     {
-        $this->db->where('id_transaksi',$id_transaksi);
+        $this->db->where('id_transaksi', $id_transaksi);
         $this->db->from('tbl_detailtransaksi');
         $query = $this->db->get()->row();
         return $query->id;
@@ -35,35 +35,51 @@ class Home_model extends MY_Model
      * @param mixed $jam
      * @return void
      */
-    public function checkout($no,$id_transaksi,$id_member,$total_harga,$id_film,$tanggal,$jam)
+    public function checkout($no, $id_transaksi, $id_member, $total_harga, $id_film, $tanggal, $jam)
     {
-        $jumlah = (count($no)/2)-1;
-        $this->db->trans_start();
-        $data = array(
+        if (!empty($no)) {
+            $jumlah = (count($no)/2)-1;
+            $this->db->trans_start();
+            $data = array(
             'id_transaksi'=> $id_transaksi,
             'id_member'=> $id_member,
             'total_harga'=>$total_harga
-        );
-        $this->db->insert('tbl_transaksi',$data);
+            );
+            $this->db->insert('tbl_transaksi', $data);
 
-        $detail = array(
-            'id_transaksi' =>  $id_transaksi, 
+            $detail = array(
+            'id_transaksi' =>  $id_transaksi,
             'id_film'=> $id_film,
             'tanggal'=> $tanggal,
             'jam'=>$jam,
             'studio'=>$this->input->get('studio'),
             'jumlah_beli'=> $jumlah,
             'harga'=>$total_harga
-        );
-        $this->db->insert('tbl_detailtransaksi',$detail);
+            );
+            $this->db->insert('tbl_detailtransaksi', $detail);
         
-        $id_detail = $this->id_transaksi($id_transaksi);
-        for ($i=0; $i < $jumlah ; $i++) { 
-            $this->db->insert('detail_kursi',[
-                'id_detail'=>$id_detail,
-                'no_kursi'=>$no[$i]
-                ]);
+            $id_detail = $this->id_transaksi($id_transaksi);
+            for ($i=0; $i < $jumlah; $i++) {
+                $this->db->insert(
+                    'detail_kursi', [
+                        'id_detail'=>$id_detail,
+                        'no_kursi'=>$no[$i]
+                    ]
+                );
+            }
+        
+            $status = array(
+            'sts'   => true,
+            'id'    => $id_transaksi
+            );
+            echo json_encode($status);
+
+            $this->db->trans_complete();
+        } else {
+            $status = array(
+                'sts'   => false
+            );
+            echo json_encode($status);
         }
-        $this->db->trans_complete();
     }
 }
