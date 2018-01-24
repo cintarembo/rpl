@@ -17,7 +17,7 @@
 </div>
 
 <!-- Main content -->
-<form action="javascript:;" method="post" id="register-form" class="register" novalidate=''>
+<form action="javascript:;" method="post" id="register-form" class="login" novalidate=''>
     <p class="login__title">sign up <br><span class="login-edition">fill all fields</span></p>
     
     <div class="field-wrap">
@@ -51,7 +51,7 @@
 <div class="clearfix"></div>
 
 <script>
-$('.register').submit(function(e) {
+$('#register-form').submit(function(e) {
     e.preventDefault();
     var error = 0;
     var self = $(this);
@@ -83,6 +83,7 @@ $('.register').submit(function(e) {
     self.find('[type=submit]').attr('disabled', 'disabled');
 
     var formInput = self.serialize();
+    
     $.post(base + 'auth/register', formInput, function(res) {
         let data = JSON.parse(res);
         if (data.status == true) {
@@ -98,13 +99,9 @@ $('.register').submit(function(e) {
                 .hide()
                 .delay(300)
                 .fadeIn();
-            $.post(base+'auth/login',{
-                username:$email,
-                password:$pass
-            },(res)=>{
-
-            });
-           // Pjax.replace(base+'pub/home');
+            setTimeout(() => {
+                Pjax.replace(base+'pub/home/login');
+            }, 2000);
         } else {
             let element =
 			'<div class="inv-em alert alert-danger alert-dismissible" role="alert"><strong>' +

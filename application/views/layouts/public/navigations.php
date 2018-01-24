@@ -24,30 +24,8 @@
             
             <!-- Link navigation -->
             <ul id="navigation">
-                <li>
-                    <span class="sub-nav-toggle plus"></span>
-                    <a href="#">Pages</a>
-                    <ul>
-                        <li class="menu__nav-item"><a href="movie-page-left.html">Single movie (rigth sidebar)</a></li>
-                        <li class="menu__nav-item"><a href="movie-page-right.html">Single movie (left sidebar)</a></li>
-                        <li class="menu__nav-item"><a href="movie-page-full.html">Single movie (full widht)</a></li>
-                        <li class="menu__nav-item"><a href="movie-list-left.html">Movies list (rigth sidebar)</a></li>
-                        <li class="menu__nav-item"><a href="movie-list-right.html">Movies list (left sidebar)</a></li>
-                        <li class="menu__nav-item"><a href="movie-list-full.html">Movies list (full widht)</a></li>
-                        <li class="menu__nav-item"><a href="single-cinema.html">Single cinema</a></li>
-                        <li class="menu__nav-item"><a href="cinema-list.html">Cinemas list</a></li>
-                        <li class="menu__nav-item"><a href="trailer.html">Trailers</a></li>
-                        <li class="menu__nav-item"><a href="rates-left.html">Rates (rigth sidebar)</a></li>
-                        <li class="menu__nav-item"><a href="rates-right.html">Rates (left sidebar)</a></li>
-                        <li class="menu__nav-item"><a href="rates-full.html">Rates (full widht)</a></li>
-                        <li class="menu__nav-item"><a href="offers.html">Offers</a></li>
-                        <li class="menu__nav-item"><a href="contact.html">Contact us</a></li>
-                        <li class="menu__nav-item"><a href="404.html">404 error</a></li>
-                        <li class="menu__nav-item"><a href="coming-soon.html">Coming soon</a></li>
-                        <li class="menu__nav-item"><a href="login.html">Login/Registration</a></li>
-                    </ul>
-                </li>
-                <li>
+                <!-- 
+               <li>
                     <span class="sub-nav-toggle plus"></span>
                     <a href="page-elements.html">Features</a>
                     <ul>
@@ -89,6 +67,7 @@
                         <li class="menu__nav-item"><a href="single-page-full.html">Single post (full widht)</a></li>
                     </ul>
                 </li>
+                
                 <li>
                     <span class="sub-nav-toggle plus"></span>
                     <a href="#">Mega menu</a>
@@ -133,6 +112,7 @@
                             </li>
                     </ul>
                 </li>
+                 -->
             </ul>
         </nav>
         
@@ -152,10 +132,7 @@
                         '.$user->username.'
                     </a>
                         <ul class="auth__function">
-                            <li><a href="#" class="auth__function-item">Watchlist</a></li>
                             <li><a href="'.base_url().'pub/member/bookedtickets" class="auth__function-item">Booked tickets</a></li>
-                            <li><a href="#" class="auth__function-item">Discussion</a></li>
-                            <li><a href="#" class="auth__function-item">Settings</a></li>
                             <li><a href="'.base_url().'auth/logout" class="auth__function-item" id="logout">Log out</a></li>
                         </ul>
 

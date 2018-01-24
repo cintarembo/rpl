@@ -69,5 +69,8 @@
                 </tr>
             </tbody>
         </table>
+
+        <label for="bukti">Bukti</label>
+        <img class="img-responsive" src="<?php echo base_url().'public/uploads/originals/'.$laporan_detail->konfirmasi->bukti ?>">
     </div>
 </div>

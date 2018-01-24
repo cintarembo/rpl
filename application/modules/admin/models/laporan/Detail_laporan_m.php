@@ -14,7 +14,7 @@ class Detail_Laporan_M extends MY_Model
             'local_key'     => 'id_transaksi'
         );
         $this->has_one['film'] = array(
-            'foreign_model' => 'films/films_model',
+            'foreign_model' => 'admin/films/films_model',
             'foreign_table' => 'tbl_film',
             'foreign_key'   => 'id_film',
             'local_key'     => 'id_film'

@@ -30,6 +30,7 @@
     
     <div class="login__control">
         <button type='submit' class="btn btn-md btn--warning btn--wider">sign in</button>
+        <a href="<?php echo base_url()?>pub/home/register" class="btn btn-md btn--danger btn--wider">register</a>
         <a href="#" class="login__tracker form__tracker">Forgot password?</a>
     </div>
 </form>
@@ -87,9 +88,9 @@ $('.login').submit(function(e) {
             
         } else {
             let element =
-			'<div class="inv-em alert alert-danger alert-dismissible" role="alert"><strong>' +
-			data.messages +
-			'</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+            '<div class="inv-em alert alert-danger alert-dismissible" role="alert"><strong>' +
+            data.messages +
+            '</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             $(element)
                 .prependTo('.field-wrap')
                 .hide()

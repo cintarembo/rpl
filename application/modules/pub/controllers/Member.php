@@ -28,6 +28,30 @@ class Member extends MY_Controller
 
     public function bookedtickets()
     {
+        $this->load->model(
+            array(
+                'admin/laporan/detail_laporan_m'  => 'detail_transaksi',
+                'admin/laporan/laporan_m'         => 'transaksi'
+            )
+        );
+        $this->data['transaksi'] = $this->transaksi
+            ->with_detail(
+                array(
+                    'fields' => 'id_transaksi,tanggal',
+                    'with'   => array(
+                        'relation'  => 'film' ,
+                        'fields'    => 'judul,mulai_tayang,selesai_tayang,durasi',
+                    )
+                )
+            )
+            ->where(
+                'id_member',
+                $this->ion_auth
+                    ->user()
+                    ->row()
+                    ->id
+            )
+            ->get_all();
         $this->render('member/booked_tickets');
     }
 }
