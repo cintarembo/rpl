@@ -32,7 +32,7 @@
                                     endforeach;?>
                             </p>
                             <li class="last-block">
-                                <a href="movie-page-left.html" class="slide__link">more</a>
+                                <a href="<?php echo base_url()?>pub/home/view/<?php echo $f->slug?>" class="slide__link">more</a>
                             </li>
                         </ul>
                     </div>
